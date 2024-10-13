@@ -1,9 +1,12 @@
-/* Custom Styles */
 .hero-section {
-    background-image: url('images/books_bg.jpg');
+    background-image: url('images/books_hero_bg.jpg');
     background-size: cover;
     background-position: center;
     color: white;
+    text-shadow: 0 0 3px white;
+    .btn {
+        text-shadow: none;
+    }
 }
 
 .card-title {
@@ -16,9 +19,28 @@
 
 body {
     background-image: url("images/silk_bg.jpg");
+    background-attachment: fixed;
 }
 
 .navbar {
     position: sticky;
     top: 0;
+    z-index: 1;
+}
+
+.brand-img {
+    height: 45px;
+}
+
+.brand-title {
+    font-size: 30px;
+    font-family: Castellar, "Times New Roman", Times, serif;
+}
+
+.dropdown-item:hover {
+    background-color: coral;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }

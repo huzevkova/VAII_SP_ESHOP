@@ -16,18 +16,27 @@
 <!-- navigation menu -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="index.html">BB E-shop</a>
+        <a class="navbar-brand" href="index.html"><img class="brand-img" src="images/bb_books.png"></a>
+        <a class="navbar-brand brand-title" href="index.html">BB E-shop</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <!-- Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Nakupovať
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbardrop">
+                        <li><a class="dropdown-item" href="#">Fantasy & Sci-fi</a></li>
+                        <li><a class="dropdown-item" href="#">Biografie</a></li>
+                        <li><a class="dropdown-item" href="#">Romantika</a></li>
+                        <li><a class="dropdown-item" href="#">Učebnice</a></li>
+                        <li><a class="dropdown-item" href="#">Iné...</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Nakupovať</a>
-                </li>
+                <!-- Other Nav Items -->
                 <li class="nav-item">
                     <a class="nav-link" href="#">Prihlásiť</a>
                 </li>
@@ -51,7 +60,7 @@
 <!-- books Section -->
 <section class="featured-books py-5">
     <div class="container">
-        <h2 class="text-center mb-4">Ponuka kníh</h2>
+        <h2 class="text-center mb-4">Ponuka kníh:</h2>
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
@@ -59,7 +68,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kniha č. 1</h5>
                         <p class="card-text">Popis knihy.</p>
-                        <a href="#" class="btn btn-primary">Detaily</a>
+                        <a href="#" class="btn btn-primary stretched-link">Detaily</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +78,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kniha č. 2</h5>
                         <p class="card-text">Popis knihy.</p>
-                        <a href="#" class="btn btn-primary">Detaily</a>
+                        <a href="#" class="btn btn-primary stretched-link">Detaily</a>
                     </div>
                 </div>
             </div>
@@ -79,7 +88,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kniha č. 3</h5>
                         <p class="card-text">Popis knihy.</p>
-                        <a href="#" class="btn btn-primary">Detaily</a>
+                        <a href="#" class="btn btn-primary stretched-link">Detaily</a>
                     </div>
                 </div>
             </div>
@@ -92,7 +101,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kniha č. 1</h5>
                         <p class="card-text">Popis knihy.</p>
-                        <a href="#" class="btn btn-primary">Detaily</a>
+                        <a href="#" class="btn btn-primary stretched-link">Detaily</a>
                     </div>
                 </div>
             </div>
@@ -102,7 +111,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kniha č. 2</h5>
                         <p class="card-text">Popis knihy.</p>
-                        <a href="#" class="btn btn-primary">Detaily</a>
+                        <a href="#" class="btn btn-primary stretched-link">Detaily</a>
                     </div>
                 </div>
             </div>
@@ -112,7 +121,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Kniha č. 3</h5>
                         <p class="card-text">Popis knihy.</p>
-                        <a href="#" class="btn btn-primary">Detaily</a>
+                        <a href="#" class="btn btn-primary stretched-link">Detaily</a>
                     </div>
                 </div>
             </div>
