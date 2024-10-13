@@ -1,0 +1,24 @@
+/* Custom Styles */
+.hero-section {
+    background-image: url('images/books_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.card-title {
+    color: #343a40;
+}
+
+.top-buffer {
+    margin-top:20px;
+}
+
+body {
+    background-image: url("images/silk_bg.jpg");
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+}
