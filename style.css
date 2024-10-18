@@ -45,13 +45,57 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
-/* Sidebar styles */
+
 #sidebar {
     background-color: #f8f9fa;
     border-right: 1px solid black;
-    min-height: 100vh; /* Full height of the viewport */
+    min-height: 100vh;
 }
 
 .sticky-top {
     top: 5em;
+}
+
+
+.book-detail h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.book-detail h4 {
+    font-size: 1.25rem;
+    color: #6c757d;
+}
+
+.book-detail p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.book-detail button {
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.book-detail .img-fluid {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+h1.book {
+    display: inline;
+}
+
+.right-h1 {
+    float: right;
+}
+
+table {
+    width: 80%;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 2.5rem;
+    padding: 35px 0;
 }
