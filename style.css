@@ -99,3 +99,22 @@ table {
     font-size: 2.5rem;
     padding: 35px 0;
 }
+
+h2.login-h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-shadow: 0 0 20px black;
+}
+
+.fas.fa-user-circle {
+    color: lightslategrey;
+}
+
+.btn-primary {
+    padding: 12px 0;
+    font-size: 1.2rem;
+}
+
+.filter {
+    background-color: #f8f9fa;
+}
