@@ -6,6 +6,8 @@
     text-shadow: 0 0 3px white;
     .btn {
         text-shadow: none;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 }
 
@@ -41,8 +43,12 @@ body {
     background-color: coral;
 }
 
-.card:hover, .searchBar:hover {
+.card:hover, .searchResult:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.searchResult {
+    position: relative;
 }
 
 .line-clamp {
@@ -62,6 +68,10 @@ body {
     .description {
         font-size: 0.6em;
     }
+}
+
+.not-visible {
+    font-size: 0;
 }
 
 #sidebar {
@@ -104,16 +114,12 @@ body {
     object-fit: cover;
 }
 
-h1.book {
+h1.book, h4.search {
     display: inline;
 }
 
-.right-h1 {
+.right-h1, .right-h4 {
     float: right;
-}
-
-.top-button {
-    top: 0;
 }
 
 table {
@@ -143,4 +149,31 @@ h2.login-h2 {
 
 .filter {
     background-color: #f8f9fa;
+}
+
+.cart-price-container {
+    height: 100%;
+}
+
+.top-button {
+    margin-bottom: 3em;
+    font-size: 2em;
+    width: 2em;
+    height: 2em;
+}
+
+/* For mobile view or when resizing */
+@media (max-width: 768px) {
+    .cart-price-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .top-button {
+        margin: 0
+    }
+
+    .bottom {
+    }
 }
