@@ -41,15 +41,37 @@ body {
     background-color: coral;
 }
 
-.card:hover {
+.card:hover, .searchBar:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.searchBar {
+    .title {
+        font-size: 1em;
+    }
+    .author {
+        font-size: 1em;
+    }
+    .description {
+        font-size: 0.6em;
+    }
+}
 
 #sidebar {
     background-color: #f8f9fa;
     border-right: 1px solid black;
     min-height: 100vh;
+}
+
+.searchBar {
+    font-size: 1.5em;
 }
 
 .sticky-top {
@@ -88,6 +110,10 @@ h1.book {
 
 .right-h1 {
     float: right;
+}
+
+.top-button {
+    top: 0;
 }
 
 table {
