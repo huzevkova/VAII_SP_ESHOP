@@ -4,15 +4,12 @@
     background-position: center;
     color: white;
     text-shadow: 0 0 3px white;
-    .btn {
-        text-shadow: none;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
 }
 
-.card-title {
-    color: #343a40;
+.hero-section .btn {
+    text-shadow: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .top-buffer {
@@ -43,11 +40,11 @@ body {
     background-color: coral;
 }
 
-.card:hover, .searchResult:hover {
+.card:hover, .relative-position:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
-.searchResult {
+.relative-position {
     position: relative;
 }
 
@@ -70,10 +67,6 @@ body {
     }
 }
 
-.not-visible {
-    font-size: 0;
-}
-
 #sidebar {
     background-color: #f8f9fa;
     border-right: 1px solid black;
@@ -88,25 +81,24 @@ body {
     top: 5em;
 }
 
-
-.book-detail h1 {
-    font-size: 2.5rem;
+h1.book-detail {
+    font-size: 2.5em;
     font-weight: bold;
 }
 
-.book-detail h4 {
-    font-size: 1.25rem;
+h4.book-detail {
+    font-size: 1.25em;
     color: #6c757d;
 }
 
-.book-detail p {
-    font-size: 1rem;
+p.book-detail {
+    font-size: 1em;
     line-height: 1.6;
 }
 
 .book-detail button {
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1em;
 }
 
 .book-detail .img-fluid {
@@ -128,12 +120,12 @@ table {
 
 .price {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 2.5em;
     padding: 35px 0;
 }
 
-h2.login-h2 {
-    font-size: 2rem;
+.login-h2 {
+    font-size: 2em;
     font-weight: bold;
     text-shadow: 0 0 20px black;
 }
@@ -142,17 +134,9 @@ h2.login-h2 {
     color: lightslategrey;
 }
 
-.btn-primary {
-    padding: 12px 0;
-    font-size: 1.2rem;
-}
-
-.filter {
-    background-color: #f8f9fa;
-}
-
-.cart-price-container {
-    height: 100%;
+.btn {
+    padding: 12px 12px;
+    font-size: 1.2em;
 }
 
 .top-button {
@@ -162,7 +146,6 @@ h2.login-h2 {
     height: 2em;
 }
 
-/* For mobile view or when resizing */
 @media (max-width: 768px) {
     .cart-price-container {
         display: flex;
@@ -172,8 +155,5 @@ h2.login-h2 {
 
     .top-button {
         margin: 0
-    }
-
-    .bottom {
     }
 }
