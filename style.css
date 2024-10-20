@@ -55,18 +55,6 @@ body {
     overflow: hidden;
 }
 
-.searchBar {
-    .title {
-        font-size: 1em;
-    }
-    .author {
-        font-size: 1em;
-    }
-    .description {
-        font-size: 0.6em;
-    }
-}
-
 #sidebar {
     background-color: #f8f9fa;
     border-right: 1px solid black;
