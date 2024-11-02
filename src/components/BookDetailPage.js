@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import MyNavbar from './MyNavbar';
 import Footer from "./Footer";
 import BookInfoTable from "./BookInfoTable";
 
@@ -23,7 +23,7 @@ class BookDetailPage extends React.Component {
 
         return (
             <>
-                <Navbar/>
+                <MyNavbar/>
                 <div className="container py-5">
                     <div className="row">
 

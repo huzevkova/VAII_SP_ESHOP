@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar.js';
+import MyNavbar from './MyNavbar.js';
 import Footer from './Footer.js';
 import { FaUserCircle } from "react-icons/fa";
 
@@ -7,7 +7,7 @@ class LoginPage extends React.Component {
     render() {
         return (
             <>
-                <Navbar/>
+                <MyNavbar/>
                 <div className="container py-5">
                     <div className="row justify-content-center">
                         <div className="col-md-6 text-center">

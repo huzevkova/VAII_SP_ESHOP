@@ -8,7 +8,7 @@ const SearchBar = () => {
         <div className="d-flex">
             <input className="form-control flex-grow-1 searchBar" type="text"
                    placeholder="Search.."/>
-            <button type="submit"><FaSearch/></button>
+            <button className="searchIcon" type="submit"><FaSearch/></button>
         </div>
     )
 }

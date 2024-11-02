@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Prechod do React">
+    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Ostránenie starých súborov.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_detail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BookDetailPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BookDetailPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ResultCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ResultList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ResultList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchBar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +125,8 @@
       <workItem from="1730145443514" duration="990000" />
       <workItem from="1730146520146" duration="821000" />
       <workItem from="1730212218806" duration="350000" />
-      <workItem from="1730237312588" duration="1631000" />
+      <workItem from="1730237312588" duration="1842000" />
+      <workItem from="1730548838227" duration="6587000" />
     </task>
     <task id="LOCAL-00001" summary="Prechod do React">
       <option name="closed" value="true" />
@@ -130,7 +136,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730145651050</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Rozdelenie vyhľadávacej stránky na menšie komponenty.">
+      <option name="closed" value="true" />
+      <created>1730239087876</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1730239087877</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Ostránenie starých súborov.">
+      <option name="closed" value="true" />
+      <created>1730239107485</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1730239107486</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +171,19 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Prechod do React" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prechod do React" />
+    <MESSAGE value="Rozdelenie vyhľadávacej stránky na menšie komponenty." />
+    <MESSAGE value="Ostránenie starých súborov." />
+    <option name="LAST_COMMIT_MESSAGE" value="Ostránenie starých súborov." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/BookDetailPage.js</url>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

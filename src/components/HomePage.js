@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar.js';
+import MyNavbar from './MyNavbar.js';
 import Sidebar from './Sidebar.js';
 import Footer from './Footer.js';
 import HeroSection from './HeroSection';
@@ -10,7 +10,7 @@ class HomePage extends React.Component {
     render() {
         return (
             <>
-                <Navbar/>
+                <MyNavbar/>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-lg-2 col-md-3" id="sidebar">

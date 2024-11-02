@@ -31,7 +31,7 @@ body {
     z-index: 1;
 }
 
-.navbar-brand {
+.clickable-component {
     cursor: pointer;
 }
 
@@ -71,6 +71,10 @@ body {
 
 .searchBar {
     font-size: 1.5em;
+}
+
+nav .searchBar {
+    font-size: 1.1em;
 }
 
 .sticky-top {
@@ -140,6 +144,13 @@ table {
     font-size: 2em;
     width: 2em;
     height: 2em;
+    padding: 0.1em 0.2em 0.3em 0.1em;
+    border-radius: 8px;
+}
+
+.top-button:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+    background-color: cornflowerblue;
 }
 
 @media (max-width: 768px) {
@@ -152,4 +163,15 @@ table {
     .top-button {
         margin: 0
     }
+}
+
+.searchIcon {
+    border: none;
+    background: none;
+    font-size: 1.5em;
+}
+
+.empty-btn {
+    border: none;
+    background: none;
 }

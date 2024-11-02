@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import MyNavbar from './MyNavbar';
 import Footer from "./Footer";
 import {FaSearch, FaShoppingCart} from "react-icons/fa";
 import Accordion from 'react-bootstrap/Accordion'
@@ -12,7 +12,7 @@ class SearchPage extends React.Component {
     render() {
         return (
             <>
-                <Navbar/>
+                <MyNavbar/>
 
                 <div className="container py-5">
                     <div className="row">
