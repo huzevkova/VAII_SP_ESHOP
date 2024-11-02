@@ -4,6 +4,7 @@ import LoginPage from "./components/LoginPage";
 import BookDetailPage from "./components/BookDetailPage";
 import SearchPage from "./components/SearchPage";
 import BlogPost from "./components/BlogPost";
+import BlogPage from "./components/BlogPage";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
               <Route path="/search" element={<SearchPage/>}/>
 
               <Route path="/blog" element={<BlogPost/>}/>
+
+              <Route path="/blog_posts" element={<BlogPage/>}/>
         </Routes>
       </Router>
   );

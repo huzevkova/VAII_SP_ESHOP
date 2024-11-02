@@ -4,9 +4,11 @@ import Sidebar from './Sidebar.js';
 import Footer from './Footer.js';
 import HeroSection from './HeroSection';
 import BookCatalogue from './BookCatalogue';
+import {useNavigate} from "react-router-dom";
 
 
 class HomePage extends React.Component {
+
     render() {
         return (
             <>
@@ -16,7 +18,7 @@ class HomePage extends React.Component {
                         <div className="col-lg-2 col-md-3" id="sidebar">
                             <Sidebar/>
                         </div>
-                        <div className="col-lg-9 col-md-8">
+                        <div className="container col-lg-9 col-md-8">
                             <HeroSection/>
                             <BookCatalogue/>
                         </div>

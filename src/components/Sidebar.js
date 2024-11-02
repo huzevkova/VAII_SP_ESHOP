@@ -7,7 +7,7 @@ const Sidebar = () => {
 
     return (
         <div className="sticky-top p-3">
-            <h4 className="clickable-component" onClick={() => navigate('/blog')}>Knižné novinky a recenzie:</h4>
+            <h4 className="clickable-component" onClick={() => navigate('/blog_posts')}>Knižné novinky a recenzie:</h4>
             <button className="blog-btn clickable-component rounded border-0 mt-3" onClick={() => navigate('/blog')}>
                 <p className="fw-bold">(Recenzia) Na čom skutočne v živote záleží?</p>
                 <p>"Víťaz je sám" od Paula Coelha</p>

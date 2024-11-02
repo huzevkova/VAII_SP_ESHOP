@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
-import { Navbar, Nav, NavDropdown, Container, Button, Dropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Container, Button} from 'react-bootstrap';
 import { FaShoppingCart, FaSearch } from 'react-icons/fa';
 import SearchBar from "./SearchBar";
 

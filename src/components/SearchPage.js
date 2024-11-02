@@ -1,8 +1,6 @@
 import React from 'react';
 import MyNavbar from './MyNavbar';
 import Footer from "./Footer";
-import {FaSearch, FaShoppingCart} from "react-icons/fa";
-import Accordion from 'react-bootstrap/Accordion'
 import SearchFilter from "./SearchFilter";
 import SearchBar from "./SearchBar";
 import ResultList from "./ResultList";
