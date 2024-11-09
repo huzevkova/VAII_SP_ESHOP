@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Pridanie detailu článku - blog postu.">
+    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Pridanie samostatnej stránky pre články.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/bb_books.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/book.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/books_hero_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/silk_bg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/silk_dark_bg.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MyNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SearchPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +121,9 @@
       <workItem from="1730146520146" duration="821000" />
       <workItem from="1730212218806" duration="350000" />
       <workItem from="1730237312588" duration="1842000" />
-      <workItem from="1730548838227" duration="15152000" />
+      <workItem from="1730548838227" duration="15260000" />
+      <workItem from="1730745090173" duration="24000" />
+      <workItem from="1731146874086" duration="6479000" />
     </task>
     <task id="LOCAL-00001" summary="Prechod do React">
       <option name="closed" value="true" />
@@ -170,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730566686186</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Pridanie samostatnej stránky pre články.">
+      <option name="closed" value="true" />
+      <created>1730570302534</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1730570302534</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,14 +196,14 @@
     <MESSAGE value="Ostránenie starých súborov." />
     <MESSAGE value="Pridanie vyhľadávania do navbaru.&#10;Premenovanie Navbar na MyNavbar a úprava na React Bootsrap." />
     <MESSAGE value="Pridanie detailu článku - blog postu." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pridanie detailu článku - blog postu." />
+    <MESSAGE value="Pridanie samostatnej stránky pre články." />
+    <option name="LAST_COMMIT_MESSAGE" value="Pridanie samostatnej stránky pre články." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/BookDetailPage.js</url>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
