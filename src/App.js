@@ -5,6 +5,8 @@ import BookDetailPage from "./components/BookDetailPage";
 import SearchPage from "./components/SearchPage";
 import BlogPost from "./components/BlogPost";
 import BlogPage from "./components/BlogPage";
+import RegistrationPage from "./components/RegistrationPage";
+import CartPage from "./components/CartPage";
 
 function App() {
   return (
@@ -22,6 +24,10 @@ function App() {
               <Route path="/blog" element={<BlogPost/>}/>
 
               <Route path="/blog_posts" element={<BlogPage/>}/>
+
+              <Route path="/registration" element={<RegistrationPage/>}/>
+
+              <Route path="/cart" element={<CartPage/>}/>
         </Routes>
       </Router>
   );

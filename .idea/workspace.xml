@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Pridanie samostatnej stránky pre články.">
+    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Pridanie registračného formulára">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MyNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +124,8 @@
       <workItem from="1730237312588" duration="1842000" />
       <workItem from="1730548838227" duration="15260000" />
       <workItem from="1730745090173" duration="24000" />
-      <workItem from="1731146874086" duration="6479000" />
+      <workItem from="1731146874086" duration="7275000" />
+      <workItem from="1731240175084" duration="6020000" />
     </task>
     <task id="LOCAL-00001" summary="Prechod do React">
       <option name="closed" value="true" />
@@ -173,7 +175,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730570302534</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Pridanie registračného formulára">
+      <option name="closed" value="true" />
+      <created>1731170743651</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1731170743651</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,7 +207,8 @@
     <MESSAGE value="Pridanie vyhľadávania do navbaru.&#10;Premenovanie Navbar na MyNavbar a úprava na React Bootsrap." />
     <MESSAGE value="Pridanie detailu článku - blog postu." />
     <MESSAGE value="Pridanie samostatnej stránky pre články." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pridanie samostatnej stránky pre články." />
+    <MESSAGE value="Pridanie registračného formulára" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pridanie registračného formulára" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

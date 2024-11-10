@@ -15,6 +15,10 @@ const MyNavbar = () => {
         navigate('/');
     }
 
+    const goToCart = () => {
+        navigate('/cart');
+    }
+
     return (
         <Navbar bg="light" expand="lg" className="navbar-light">
             <Container>
@@ -55,7 +59,7 @@ const MyNavbar = () => {
                         </Nav.Item>
 
                         <Nav.Item>
-                            <Nav.Link href="#cart">
+                            <Nav.Link onClick={goToCart}>
                                 <FaShoppingCart size={35} />
                             </Nav.Link>
                         </Nav.Item>
