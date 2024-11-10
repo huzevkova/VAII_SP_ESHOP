@@ -4,7 +4,6 @@ import Sidebar from './Sidebar.js';
 import Footer from './Footer.js';
 import HeroSection from './HeroSection';
 import BookCatalogue from './BookCatalogue';
-import {useNavigate} from "react-router-dom";
 
 
 class HomePage extends React.Component {

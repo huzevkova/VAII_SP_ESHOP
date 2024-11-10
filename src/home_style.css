@@ -183,3 +183,8 @@ table {
 .blog-start {
     text-align: center;
 }
+
+.cart-item-image {
+    max-height: 90px;
+    object-fit: cover;
+}
