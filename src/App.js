@@ -1,12 +1,14 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import HomePage from './components/HomePage';
-import LoginPage from "./components/LoginPage";
-import BookDetailPage from "./components/BookDetailPage";
-import SearchPage from "./components/SearchPage";
-import BlogPost from "./components/BlogPost";
-import BlogPage from "./components/BlogPage";
-import RegistrationPage from "./components/RegistrationPage";
-import CartPage from "./components/CartPage";
+import HomePage from './components/Home/HomePage';
+import LoginPage from "./components/Home/LoginPage";
+import BookDetailPage from "./components/Book/BookDetailPage";
+import SearchPage from "./components/Search/SearchPage";
+import BlogPost from "./components/Blog/BlogPost";
+import BlogPage from "./components/Blog/BlogPage";
+import RegistrationPage from "./components/Home/RegistrationPage";
+import CartPage from "./components/Cart/CartPage";
+import CheckoutPage from "./components/Cart/CheckoutPage";
+import OrderDonePage from "./components/Cart/OrderDonePage";
 
 function App() {
   return (
@@ -28,6 +30,10 @@ function App() {
               <Route path="/registration" element={<RegistrationPage/>}/>
 
               <Route path="/cart" element={<CartPage/>}/>
+
+              <Route path="/checkout" element={<CheckoutPage/>}/>
+
+              <Route path="/order_done" element={<OrderDonePage/>}/>
         </Routes>
       </Router>
   );
