@@ -1,9 +1,9 @@
 import React from 'react';
-import MyNavbar from './MyNavbar.js';
-import Sidebar from './Sidebar.js';
-import Footer from './Footer.js';
+import MyNavbar from '../General/MyNavbar.js';
+import Sidebar from '../General/Sidebar.js';
+import Footer from '../General/Footer.js';
 import HeroSection from './HeroSection';
-import BookCatalogue from './BookCatalogue';
+import BookCatalogue from '../Book/BookCatalogue';
 
 
 class HomePage extends React.Component {

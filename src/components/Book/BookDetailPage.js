@@ -1,6 +1,6 @@
 import React from 'react';
-import MyNavbar from './MyNavbar';
-import Footer from "./Footer";
+import MyNavbar from '../General/MyNavbar';
+import Footer from "../General/Footer";
 import BookInfoTable from "./BookInfoTable";
 
 class BookDetailPage extends React.Component {

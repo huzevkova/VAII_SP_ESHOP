@@ -1,6 +1,6 @@
 import React from 'react';
-import MyNavbar from './MyNavbar.js';
-import Footer from './Footer.js';
+import MyNavbar from '../General/MyNavbar.js';
+import Footer from '../General/Footer.js';
 import {Button, Form} from "react-bootstrap";
 
 class RegistrationPage extends React.Component {
@@ -30,7 +30,7 @@ class RegistrationPage extends React.Component {
                                 <Form.Control type="city" placeholder="Mesto"/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="psc" placeholder="PSČ"/>
+                                <Form.Control type="postal_code" placeholder="PSČ"/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                                 <Form.Control type="street" placeholder="Ulica"/>

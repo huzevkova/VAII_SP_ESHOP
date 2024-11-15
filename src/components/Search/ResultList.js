@@ -1,4 +1,3 @@
-import {FaShoppingCart} from "react-icons/fa";
 import React from "react";
 import ResultCard from "./ResultCard";
 import Dropdown from "react-bootstrap/Dropdown";

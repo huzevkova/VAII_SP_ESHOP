@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
-import { Row, Col, Button, Image, Form, InputGroup } from "react-bootstrap";
+import { Row, Button, Image, Form, InputGroup } from "react-bootstrap";
 
 const CartItem = ({ image, title, author, price, number, onRemove, onQuantityChange }) => {
     const [quantity, setQuantity] = useState(number);

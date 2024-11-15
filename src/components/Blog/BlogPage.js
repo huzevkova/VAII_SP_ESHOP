@@ -1,8 +1,7 @@
 import React from "react";
-import MyNavbar from "./MyNavbar";
-import Footer from "./Footer";
-import { Button, Card } from 'react-bootstrap';
-import HeroSection from "./HeroSection";
+import MyNavbar from "../General/MyNavbar";
+import Footer from "../General/Footer";
+import HeroSection from "../Home/HeroSection";
 import BlogCard from "./BlogCard";
 
 class BlogPage extends React.Component {

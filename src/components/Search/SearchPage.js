@@ -1,8 +1,8 @@
 import React from 'react';
-import MyNavbar from './MyNavbar';
-import Footer from "./Footer";
+import MyNavbar from '../General/MyNavbar';
+import Footer from "../General/Footer";
 import SearchFilter from "./SearchFilter";
-import SearchBar from "./SearchBar";
+import SearchBar from "../General/SearchBar";
 import ResultList from "./ResultList";
 
 class SearchPage extends React.Component {

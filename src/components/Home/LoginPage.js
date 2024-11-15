@@ -1,6 +1,6 @@
 import React from 'react';
-import MyNavbar from './MyNavbar.js';
-import Footer from './Footer.js';
+import MyNavbar from '../General/MyNavbar.js';
+import Footer from '../General/Footer.js';
 import {FaUserCircle} from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
 

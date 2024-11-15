@@ -1,7 +1,7 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import { Navbar, Nav, NavDropdown, Container, Button} from 'react-bootstrap';
-import { FaShoppingCart, FaSearch } from 'react-icons/fa';
+import { FaShoppingCart } from 'react-icons/fa';
 import SearchBar from "./SearchBar";
 
 const MyNavbar = () => {

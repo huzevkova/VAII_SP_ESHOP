@@ -1,9 +1,9 @@
 import React from "react";
-import MyNavbar from "./MyNavbar";
-import Sidebar from "./Sidebar";
-import HeroSection from "./HeroSection";
-import Footer from "./Footer";
-import ResultCard from "./ResultCard";
+import MyNavbar from "../General/MyNavbar";
+import Sidebar from "../General/Sidebar";
+import HeroSection from "../Home/HeroSection";
+import Footer from "../General/Footer";
+import ResultCard from "../Search/ResultCard";
 
 
 class BlogPost extends React.Component {
@@ -17,7 +17,7 @@ class BlogPost extends React.Component {
                         <div className="col-lg-2 col-md-3" id="sidebar">
                             <Sidebar/>
                         </div>
-                        <div className="col-lg-9 col-md-8">
+                        <div className="container col-lg-9 col-md-8">
                             <HeroSection/>
                             <div className="container-fluid mt-5 blog-start">
                                 <h1>Názov článku</h1>
