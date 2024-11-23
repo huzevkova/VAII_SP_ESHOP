@@ -1,5 +1,5 @@
 .hero-section {
-    background-image: url('../../vaii_eshop/public/images/books_hero_bg.jpg');
+    background-image: url('../public/images/books_hero_bg.jpg');
     background-size: cover;
     background-position: center;
     color: white;
@@ -17,7 +17,7 @@
 }
 
 body {
-    background-image: url('../../vaii_eshop/public/images/silk_bg.jpg');
+    background-image: url('../public/images/silk_bg.jpg');
     background-attachment: fixed;
 }
 
