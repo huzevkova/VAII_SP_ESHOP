@@ -144,7 +144,7 @@ table {
 }
 
 .top-button {
-    margin-bottom: 3em;
+    margin-bottom: 2.5em;
     font-size: 2em;
     width: 2em;
     height: 2em;
@@ -157,17 +157,6 @@ table {
     background-color: cornflowerblue;
 }
 
-@media (max-width: 768px) {
-    .cart-price-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .top-button {
-        margin: 0
-    }
-}
 
 .searchIcon {
     border: none;
