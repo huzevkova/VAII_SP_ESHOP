@@ -4,7 +4,6 @@ import Footer from "../General/Footer";
 import {Container} from "react-bootstrap";
 
 const OrderDonePage = () => {
-
     return (
         <>
             <MyNavbar/>
@@ -15,7 +14,6 @@ const OrderDonePage = () => {
             <Footer/>
         </>
     )
-
 }
 
 export default OrderDonePage;
