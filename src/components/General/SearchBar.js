@@ -1,7 +1,6 @@
 import {FaSearch} from "react-icons/fa";
 import React from "react";
 
-
 const SearchBar = ({handleSearchInputChange, handleSearch}) => {
     return (
         <div className="d-flex">
