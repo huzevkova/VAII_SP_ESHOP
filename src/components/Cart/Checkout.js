@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
-import CheckoutView from "../../views/CheckoutView";
+import CheckoutView from "../../views/Checkout/CheckoutView";
 
 const Checkout = () => {
 
