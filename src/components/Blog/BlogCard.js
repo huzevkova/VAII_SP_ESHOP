@@ -1,21 +1,18 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
 import {Button, Card} from "react-bootstrap";
 
-const BlogCard = ({ image, title, description }) => {
-
-    const navigate = useNavigate();
-
+const BlogCard = ({ index, image, title, subtitle, description, openBlog }) => {
     return (
         <div className="col-md-4 col-lg-3 mb-4 mt-5">
             <Card style={{width: '18rem'}}>
-                <Card.Img variant="top" src="/images/blog_img.jpg"/>
+                <Card.Img variant="top" src={image}/>
                 <Card.Body>
-                    <Card.Title>Názov článku</Card.Title>
+                    <Card.Title>{title}</Card.Title>
+                    <Card.Subtitle>{subtitle}</Card.Subtitle>
                     <Card.Text>
-                        Ukážka textu článku.
+                        {description}
                     </Card.Text>
-                    <Button variant="primary" onClick={() => navigate('/blog')}>Prečítaj si</Button>
+                    <Button variant="primary" onClick={() => openBlog(index)}>Prečítaj si</Button>
                 </Card.Body>
             </Card>
         </div>

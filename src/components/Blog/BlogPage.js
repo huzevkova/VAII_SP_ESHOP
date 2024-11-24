@@ -1,30 +1,44 @@
-import React from "react";
-import MyNavbar from "../General/MyNavbar";
-import Footer from "../General/Footer";
-import HeroSection from "../Home/HeroSection";
-import BlogCard from "./BlogCard";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import BlogView from "../../views/BlogView";
 
-class BlogPage extends React.Component {
+const BlogPage = () => {
 
-    render() {
-        return (
-            <>
-                <MyNavbar/>
-                <div className="container">
-                        <HeroSection/>
-                    <div className="row">
-                        <BlogCard/>
-                        <BlogCard/>
-                        <BlogCard/>
-                        <BlogCard/>
-                        <BlogCard/>
-                    </div>
+    const navigate = useNavigate();
 
-                </div>
-                <Footer/>
-            </>
-        )
+    const [posts, setPosts] = useState([
+        {image: '/images/blog_img.jpg',
+            title: 'Nadpis článku',
+            subtitle: 'Podnadpis článku',
+            author: 'Autor článku',
+            description: 'Ukážka textu článku.'},
+        {image: '/images/blog_img.jpg',
+            title: 'Nadpis článku',
+            subtitle: 'Podnadpis článku',
+            author: 'Autor článku',
+            description: 'Ukážka textu článku.'},
+        {image: '/images/blog_img.jpg',
+            title: 'Nadpis článku',
+            subtitle: 'Podnadpis článku',
+            author: 'Autor článku',
+            description: 'Ukážka textu článku.'},
+        {image: '/images/blog_img.jpg',
+            title: 'Nadpis článku',
+            subtitle: 'Podnadpis článku',
+            author: 'Autor článku',
+            description: 'Ukážka textu článku.'},
+    ]);
+
+    const openBlog = (index) => {
+        navigate('/post', { state: { post: posts[index] } });
     }
-}
+
+    return (
+        <BlogView
+            posts={posts}
+            openBlog={openBlog}
+        />
+    )
+};
 
 export default BlogPage;
