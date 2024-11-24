@@ -1,10 +1,6 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
 
-const BookCard = ({ image, title, description }) => {
-
-    const navigate = useNavigate();
-
+const BookCard = ({ image, title, description, index, openBookDetail }) => {
     return (
     <div className="col-md-4">
         <div className="card">
@@ -12,7 +8,7 @@ const BookCard = ({ image, title, description }) => {
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">{description}</p>
-                <button className="btn btn-primary stretched-link" onClick={()=>navigate('/book_detail')}>Detaily</button>
+                <button className="btn btn-primary stretched-link" onClick={() => openBookDetail(index)}>Detaily</button>
             </div>
         </div>
     </div>

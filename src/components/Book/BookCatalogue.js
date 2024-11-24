@@ -1,32 +1,42 @@
-import React from "react";
-import BookCard from './BookCard';
+import React, {useState} from "react";
+import BookCatalogueView from "../../views/BookCatalogueView";
+import {useNavigate} from "react-router-dom";
 
-const BookCatalogue = () => (
-    <section className="featured-books py-5">
-        <div className="container">
-            <h2 className="text-center mb-4">Ponuka kníh:</h2>
-            <div className="row">
-                {[1, 2, 3].map(i => (
-                    <BookCard
-                        key={i}
-                        image="images/book.jpg"
-                        title={`Kniha č. ${i}`}
-                        description="Popis knihy."
-                    />
-                ))}
-            </div>
-            <div className="row top-buffer">
-                {[1, 2, 3].map(i => (
-                    <BookCard
-                        key={i + 3}
-                        image="images/book.jpg"
-                        title={`Kniha č. ${i}`}
-                        description="Popis knihy."
-                    />
-                ))}
-            </div>
-        </div>
-    </section>
-);
+const BookCatalogue = () => {
+
+    const navigate = useNavigate();
+
+    const [books, setBooks] = useState([
+        {title: 'Kniha č. 1',
+            image: 'book.jpg',
+            description: 'Popis knihy.'},
+        {title: 'Kniha č. 2',
+            image: 'book.jpg',
+            description: 'Popis knihy.'},
+        {title: 'Kniha č. 3',
+            image: 'book.jpg',
+            description: 'Popis knihy.'},
+        {title: 'Kniha č. 4',
+            image: 'book.jpg',
+            description: 'Popis knihy.'},
+        {title: 'Kniha č. 5',
+            image: 'book.jpg',
+            description: 'Popis knihy.'},
+        {title: 'Kniha č. 6',
+            image: 'book.jpg',
+            description: 'Popis knihy.'}
+    ]);
+
+    const openBookDetail = (index) => {
+        navigate('/book_detail');
+    }
+
+    return (
+        <BookCatalogueView
+            books={books}
+            openBookDetail={openBookDetail}
+        />
+    )
+};
 
 export default BookCatalogue;

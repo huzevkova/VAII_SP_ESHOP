@@ -1,23 +1,23 @@
 import React from 'react';
 
-const BookInfoTable = ({ bookData }) => (
+const BookInfoTable = ({ bookData, onTableClick }) => (
     <table className="table-borderless">
         <tbody>
         <tr>
             <th scope="row" className="fw-bold">Žáner:</th>
-            <td>{bookData.genre}</td>
+            <td className="clickable-component" id="genre" onClick={onTableClick}>{bookData.genre}</td>
             <th scope="row" className="fw-bold">Počet strán:</th>
             <td>{bookData.page_count}</td>
         </tr>
         <tr>
             <th scope="row" className="fw-bold">Dátum vydania:</th>
-            <td>{bookData.date}</td>
+            <td>{bookData.year}</td>
             <th scope="row" className="fw-bold">Veľkosť:</th>
             <td>{bookData.size}</td>
         </tr>
         <tr>
             <th scope="row" className="fw-bold">Jazyk:</th>
-            <td>{bookData.language}</td>
+            <td className="clickable-component" onClick={onTableClick}>{bookData.language}</td>
             <th scope="row" className="fw-bold">Obal:</th>
             <td>{bookData.cover}</td>
         </tr>

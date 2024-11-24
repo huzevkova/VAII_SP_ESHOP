@@ -1,60 +1,82 @@
 import React from 'react';
-import MyNavbar from '../General/MyNavbar';
-import Footer from "../General/Footer";
-import BookInfoTable from "./BookInfoTable";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import IconButton from '@mui/material/IconButton';
+import {useNavigate} from "react-router-dom";
+import BookDetailView from "../../views/BookDetailView";
 
-class BookDetailPage extends React.Component {
+const BookDetailPage = () => {
 
-    render() {
+    const navigate = useNavigate();
 
-        const bookData = {
-            title: 'Názov knihy',
-            part: 'X. Diel série',
-            author: 'Meno Autora',
-            genre: 'Fikcia',
-            date: '01.01.2024',
-            language: 'Slovenský',
-            original: 'Book name',
-            page_count: '200',
-            size: '20x20cm',
-            cover: 'pevný',
-            isbn: '9781529113396',
-        };
+    const [openCart, setOpenCart] = React.useState(false);
+    const [openWish, setOpenWish] = React.useState(false);
 
-        return (
-            <>
-                <MyNavbar/>
-                <div className="container py-5">
-                    <div className="row">
+    const handleCloseCart = () => {
+        setOpenCart(false);
+    };
 
-                        <div className="col-md-5">
-                            <img src="/images/book.jpg" alt="Book Cover" className="img-fluid shadow rounded"/>
-                        </div>
+    const handleCloseWish = () => {
+        setOpenWish(false);
+    };
 
-                        <div className="col-md-7">
-                            <h1 className="book">{bookData.title}</h1>
-                            <h1 className="book right-h1">{bookData.part}</h1>
-                            <h4 className="text-muted">{bookData.author}</h4>
-                            <div className="d-flex justify-content-between align-items-start mt-3">
-                                <BookInfoTable bookData={bookData} />
-                                <p className="price">CENA</p>
-                            </div>
-                            <p className="fw-bold">Popis:</p>
-                            <p className="mt-4">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis, nisi at
-                                pharetra volutpat, felis odio convallis massa, nec bibendum justo nisi ut arcu.
-                            </p>
-                            <div className="d-flex align-items-center mt-4">
-                                <button className="btn btn-primary me-3">Do košíka</button>
-                                <button className="btn btn-outline-secondary">Wishlist</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <Footer/>
-            </>
-        )
+    const bookData = {
+        image: '/images/book.jpg',
+        title: 'Názov knihy',
+        part: 'X. Diel série',
+        author: 'Meno Autora',
+        genre: 'Fikcia',
+        year: '2024',
+        language: 'Slovenský',
+        original: 'Book name',
+        page_count: '200',
+        size: '20x20cm',
+        cover: 'pevný',
+        isbn: '9781529113396',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis, nisi at pharetra volutpat, felis odio convallis massa, nec bibendum justo nisi ut arcu.'
+    };
+
+    const onTableClick = (e) => {
+        const id = e.target.id;
+        const value = e.target.textContent;
+        console.log(`ID: ${id}, Value: ${value}`);
+        navigate('/search');
+    };
+
+    const onCartClick = () => {
+        setOpenCart(true);
     }
-}
+
+    const onWishlistClick = () => {
+        setOpenWish(true);
+    }
+
+    return (
+        <>
+            <BookDetailView
+            bookData={bookData}
+            onCartClick={onCartClick}
+            onWishlistClick={onWishlistClick}
+            onTableClick={onTableClick}
+            />
+            <Dialog open={openCart}>
+                <DialogTitle>
+                    {"Kniha bola pridaná do košíka"}
+                </DialogTitle>
+                <IconButton onClick={handleCloseCart}>
+                    OK
+                </IconButton>
+            </Dialog>
+            <Dialog open={openWish}>
+                <DialogTitle>
+                    {"Kniha bola pridaná do wishlistu"}
+                </DialogTitle>
+                <IconButton onClick={handleCloseWish}>
+                    OK
+                </IconButton>
+            </Dialog>
+        </>
+    )
+};
 
 export default BookDetailPage;
