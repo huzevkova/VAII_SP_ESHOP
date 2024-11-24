@@ -1,63 +1,62 @@
-import React from 'react';
-import MyNavbar from '../General/MyNavbar.js';
-import Footer from '../General/Footer.js';
-import {Button, Form} from "react-bootstrap";
+import React, {useState} from 'react';
+import RegistrationView from '../../views/RegistrationView';
 
-class RegistrationPage extends React.Component {
-    render() {
-        return (
-            <>
-                <MyNavbar/>
-                <div className="container mt-5 col-md-6 text-center">
-                    <div className="row justify-content-center">
-                        <h3 className="mb-3">Registračný formulár:</h3>
-                        <Form>
-                            <p>Povinné údaje:</p>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="name" placeholder="Meno"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="surname" placeholder="Priezvisko"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="email" placeholder="Email"/>
-                            </Form.Group>
-                            <p>Nepovinné údaje (automatické vyplnenie pri objednávke):</p>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="phone" placeholder="Tel. číslo"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="city" placeholder="Mesto"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="postal_code" placeholder="PSČ"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="street" placeholder="Ulica"/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                                <Form.Control type="house" placeholder="Číslo domu"/>
-                            </Form.Group>
+const RegistrationPage = () => {
 
-                            <div className="row justify-content-center">
-                                <div className="col-5">
-                                    <Form.Check className="mt-3" type="checkbox" id="agreement"
-                                                label="Súhlasím so spracovaním osobných údajov."/>
-                                </div>
-                                <div className="col-4">
-                                    <Form.Check className="mt-3" type="checkbox" id="newsletter"
-                                                label="Súhlasím s odberom noviniek."/>
-                                </div>
-                            </div>
+    const [formData, setFormData] = useState(
+        { name: null,
+            surname: null,
+            email: null,
+            phone: null,
+            city: null,
+            city_code: null,
+            street: null,
+            house: null,
+            password: null });
 
-                            <Button className="mt-3 mb-3">Vytvor konto</Button>
-                        </Form>
-                    </div>
-                </div>
-                <Footer/>
-            </>
-        )
+    const [formAgreement, setFormAgreement] = useState(false);
+
+    const [formState, setFormState] = useState(
+        {name: 'normal',
+            surname: 'normal',
+            email: 'normal',
+            password: 'normal',
+            agreement: 'normal'});
+
+    const handleInputChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormState({...formState, [e.target.name]: 'normal'});
+    };
+
+    const handleCheckChange = (e) => {
+        setFormAgreement(!formAgreement);
+        setFormState({...formState, agreement: 'normal'});
     }
-}
+
+    const handleRegistration = (e) => {
+        e.preventDefault();
+        if (formData.name == null) {
+            setFormState({...formState, name: 'wrong'});
+        } else if (formData.surname == null) {
+            setFormState({...formState, surname: 'wrong'});
+        } else if (formData.email == null) {
+            setFormState({...formState, email: 'wrong'})
+        } else if (formData.password == null || formData.password.length < 10) {
+            setFormState({...formState, password: 'wrong'});
+        } else if (!formAgreement) {
+            setFormState({...formState, agreement: 'wrong'});
+        }
+        console.log(formData);
+    }
+
+    return (
+        <RegistrationView
+            formState={formState}
+            handleInputChange={handleInputChange}
+            handleCheckChange={handleCheckChange}
+            handleRegistration={handleRegistration}
+        />
+    )
+};
 
 export default RegistrationPage;
