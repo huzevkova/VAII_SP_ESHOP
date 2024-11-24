@@ -23,7 +23,7 @@ function App() {
 
               <Route path="/search" element={<SearchPage/>}/>
 
-              <Route path="/blog" element={<BlogPost/>}/>
+              <Route path="/post" element={<BlogPost/>}/>
 
               <Route path="/blog_posts" element={<BlogPage/>}/>
 
