@@ -8,9 +8,11 @@ const Sidebar = () => {
 
     const [posts, setPosts] = useState([
         {title: '(Recenzia) Na čom v živote skutočne záleží?',
-            subtitle: 'Víťaz je sám od Paula Coelha'},
+            subtitle: 'Víťaz je sám od Paula Coelha',
+            author: 'Autor článku',},
         {title: 'Nadchádzajúce vydanie:',
-            subtitle: 'Nová kniha od Brandona Sandersona už čoskoro!'}
+            subtitle: 'Nová kniha od Brandona Sandersona už čoskoro!',
+            author: 'Autor článku',}
     ]);
 
     const goToBlog = () => {
@@ -18,7 +20,7 @@ const Sidebar = () => {
     }
 
     const goToBlogPost = (index) => {
-        navigate("/post");
+        navigate('/post', { state: { post: posts[index] } });
     }
 
     return (
