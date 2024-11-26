@@ -52,9 +52,9 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-    const { id, name, email, phone_number, city, city_code, street, house_number } = req.params;
+    const { id, name, email, phone_number, city, city_code, street, house_number, type } = req.body;
     try {
-        const result = await userModel.getUserById(id, name, email, phone_number, city, city_code, street, house_number);
+        const result = await userModel.updateUser({id, name, email, phone_number, city, city_code, street, house_number});
         if (result) {
             res.status(200).json({ message: 'User updated successfully' });
         } else {

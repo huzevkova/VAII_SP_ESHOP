@@ -39,7 +39,7 @@ const saveUserPassword = async (userData) => {
 }
 
 const updateUser = async (userData) => {
-    const query = 'UPDATE users SET name = ?, email = ?, phone_number = ?, city = ?, city_code = ?, street = ?, house_number = ? WHERE id = ?';
+    const query = 'UPDATE users SET name = ?, email = ?, phone_number = ?, city = ?, city_code = ?, street = ?, house_number = ? WHERE id_user = ?';
     const {id, name, email, phone_number, city, city_code, street, house_number} = userData;
 
     try {
