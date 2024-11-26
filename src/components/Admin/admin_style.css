@@ -1,0 +1,25 @@
+body {
+    background-color: #f0f8ff;
+}
+
+.btn-primary {
+    background-color: #1e90ff;
+    border-color: #1e90ff;
+}
+
+.btn-primary:hover {
+    background-color: #4682b4;
+    border-color: #4682b4;
+}
+
+.table-active {
+    background-color: #e0ffff !important;
+}
+
+table:hover {
+    cursor: pointer;
+}
+
+.navbar {
+    background-color: #4682b4;
+}
