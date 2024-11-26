@@ -1,6 +1,21 @@
 const bcrypt = require('bcrypt');
 const userModel = require('../models/userModel');
 
+const getAllUsers = async (req, res) => {
+    try {
+        const users = await userModel.getAllUsers()
+        if (users.length > 0) {
+            res.status(200).json(users);
+        } else {
+            res.status(404).json({ message: 'Users empty' });
+        }
+
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
 const getUserById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -36,4 +51,34 @@ const createUser = async (req, res) => {
     }
 };
 
-module.exports = { getUserById, createUser };
+const updateUser = async (req, res) => {
+    const { id, name, email, phone_number, city, city_code, street, house_number } = req.params;
+    try {
+        const result = await userModel.getUserById(id, name, email, phone_number, city, city_code, street, house_number);
+        if (result) {
+            res.status(200).json({ message: 'User updated successfully' });
+        } else {
+            res.status(404).json({ message: 'User could not be updated' });
+        }
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await userModel.deleteUser(id);
+        if (result) {
+            res.status(200).json({ message: 'User deleted successfully' });
+        } else {
+            res.status(404).json({ message: 'User could not be deleted' });
+        }
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+module.exports = { getUserById, createUser, getAllUsers, updateUser, deleteUser};
