@@ -1,7 +1,7 @@
 import {Button, Form, Table} from "react-bootstrap";
 import React from "react";
 
-const AdminTable = ({data, selectedRow, handleRowSelection,
+const AdminTable = ({addBlocked, data, selectedRow, handleRowSelection,
                     newRow, setNewRow, handleConfirmAdd,
                     editingRow, setEditingRow, handleConfirmEdit,
                     handleAdd, handleEdit, handleDelete}) => {
@@ -80,7 +80,7 @@ const AdminTable = ({data, selectedRow, handleRowSelection,
                 <Button variant="danger" disabled={!selectedRow} onClick={handleDelete}>
                     Odstrániť
                 </Button>
-                <Button variant="success" onClick={handleAdd}>
+                <Button variant="success" disabled={addBlocked} onClick={handleAdd}>
                     Pridať
                 </Button>
                 <Button variant="warning" disabled={!selectedRow} onClick={handleEdit}>
