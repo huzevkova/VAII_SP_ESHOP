@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import SideBarView from "../../views/SideBarView";
+import SideBarView from "../../views/General/SideBarView";
 
 const Sidebar = () => {
 

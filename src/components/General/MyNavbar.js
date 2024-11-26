@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarView from "../../views/NavbarView";
+import NavbarView from "../../views/General/NavbarView";
 import {useNavigate} from "react-router-dom";
 
 const MyNavbar = () => {

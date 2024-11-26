@@ -1,5 +1,5 @@
 import {Button, Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import SearchBar from "../components/General/SearchBar";
+import SearchBar from "../../components/General/SearchBar";
 import {FaShoppingCart} from "react-icons/fa";
 import React from "react";
 import {useNavigate} from "react-router-dom";
