@@ -34,8 +34,8 @@ const getUserById = async (req, res) => {
 const createUser = async (req, res) => {
     const { name, email, phone_number, city, city_code, street, house_number, password } = req.body;
 
-    if (!name || !email) {
-        return res.status(400).json({ message: 'Fields name and email are required' });
+    if (!name || !email || !password) {
+        return res.status(400).json({ message: 'Fields name, email and password are required' });
     }
 
     try {

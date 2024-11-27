@@ -44,13 +44,12 @@ export const updateUser = async (userData) => {
     return response.json();
 };
 
-export const deleteUser = async (userData) => {
-    const response = await fetch(`${API_URL}/delete/${userData.id}`, {
+export const deleteUser = async (userId) => {
+    const response = await fetch(`${API_URL}/delete/${userId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(userData),
     });
     if (!response.ok) {
         throw new Error('Failed to delete user');

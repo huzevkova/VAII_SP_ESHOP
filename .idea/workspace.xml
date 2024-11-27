@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="úprava responzivity">
+    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Oprava chybných volaní">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/General/SearchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/General/SearchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/ResultList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/ResultList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/SearchFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/SearchFilter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Search/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/SearchPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/userApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/userApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Dockerfile" />
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -88,11 +89,11 @@
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views" />
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\General" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Checkout" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\components\Book" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\components\Home" />
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\components\General" />
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\components\Search" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -142,7 +143,10 @@
       <workItem from="1732296818379" duration="85000" />
       <workItem from="1732360055797" duration="8956000" />
       <workItem from="1732386281323" duration="15233000" />
-      <workItem from="1732439304074" duration="30613000" />
+      <workItem from="1732439304074" duration="30985000" />
+      <workItem from="1732571592794" duration="1766000" />
+      <workItem from="1732641870561" duration="15738000" />
+      <workItem from="1732738357746" duration="5146000" />
     </task>
     <task id="LOCAL-00001" summary="Prechod do React">
       <option name="closed" value="true" />
@@ -352,7 +356,63 @@
       <option name="project" value="LOCAL" />
       <updated>1732470309872</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Refaktoring Search komponentov na Views - rozdelenie logiky a vzhľadu">
+      <option name="closed" value="true" />
+      <created>1732471117375</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1732471117376</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Pridanie administratívnej stránky na správu databázy">
+      <option name="closed" value="true" />
+      <created>1732655226249</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1732655226266</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Refaktoring">
+      <option name="closed" value="true" />
+      <created>1732655263269</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1732655263270</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Pridanie CRUD operácii pre dáta o používateľoch">
+      <option name="closed" value="true" />
+      <created>1732655364408</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1732655364408</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Začatie API pre userov.">
+      <option name="closed" value="true" />
+      <created>1732658653757</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1732658653758</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Úprava detailov">
+      <option name="closed" value="true" />
+      <created>1732658690570</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1732658690570</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Oprava chybných volaní">
+      <option name="closed" value="true" />
+      <created>1732658703984</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1732658703984</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,12 +433,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Prechod do React" />
-    <MESSAGE value="Rozdelenie vyhľadávacej stránky na menšie komponenty." />
-    <MESSAGE value="Ostránenie starých súborov." />
-    <MESSAGE value="Pridanie vyhľadávania do navbaru.&#10;Premenovanie Navbar na MyNavbar a úprava na React Bootsrap." />
-    <MESSAGE value="Pridanie detailu článku - blog postu." />
-    <MESSAGE value="Pridanie samostatnej stránky pre články." />
     <MESSAGE value="Pridanie registračného formulára" />
     <MESSAGE value="Pridanie košíka" />
     <MESSAGE value="zmena dizajnových detailov" />
@@ -397,6 +451,13 @@
     <MESSAGE value="Refaktoring Blog komponentov na Views - rozdelenie logiky a vzhľadu" />
     <MESSAGE value="oprava navigácie" />
     <MESSAGE value="úprava responzivity" />
-    <option name="LAST_COMMIT_MESSAGE" value="úprava responzivity" />
+    <MESSAGE value="Refaktoring Search komponentov na Views - rozdelenie logiky a vzhľadu" />
+    <MESSAGE value="Pridanie administratívnej stránky na správu databázy" />
+    <MESSAGE value="Refaktoring" />
+    <MESSAGE value="Pridanie CRUD operácii pre dáta o používateľoch" />
+    <MESSAGE value="Začatie API pre userov." />
+    <MESSAGE value="Úprava detailov" />
+    <MESSAGE value="Oprava chybných volaní" />
+    <option name="LAST_COMMIT_MESSAGE" value="Oprava chybných volaní" />
   </component>
 </project>
