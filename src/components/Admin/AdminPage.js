@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./admin_style.css";
 import AdminView from "../../views/AdminView";
-import {fetchUsers, createUser} from "../../api/userApi";
+import {fetchUsers, updateUser, deleteUser} from "../../api/userApi";
+import {fetchBooks} from "../../api/bookApi";
 
 const AdminPage = () => {
     const [selectedTab, setSelectedTab] = useState(null);
+    const [tableName, setTableName] = useState(null);
     const [userData, setUserData] = useState(null);
     const [bookData, setBookData] = useState(null);
     const [blogData, setBlogData] = useState(null);
     const [data, setData] = useState([]);
+    const [addBlock, setAddBlock] = useState(null);
     const [selectedRow, setSelectedRow] = useState(null);
     const [editingRow, setEditingRow] = useState(null);
     const [newRow, setNewRow] = useState(null);
@@ -19,22 +22,33 @@ const AdminPage = () => {
             try {
                 const response = await fetchUsers();
                 setUserData(response);
-                const updatedData = data.map(obj => {
-                    const { id_user, ...rest } = obj; // Destructure to remove oldKey
-                    return { id: id_user, ...rest }; // Add newKey with the value of oldKey
-                });
-                setData(updatedData);
             } catch (err) {
                 console.error(err);
-                setData([]);
+                setUserData([]);
+            }
+        };
+        const loadBooks = async () => {
+            try {
+                const response = await fetchBooks();
+                setBookData(response);
+            } catch (err) {
+                console.error(err);
+                setBookData([]);
             }
         };
 
-        loadUsers();
+
+        if (userData == null) {
+            loadUsers();
+        }
+        if (bookData == null) {
+            loadBooks();
+        }
     });
 
     const handleTabClick = (tabName) => {
         setSelectedTab(true);
+        setTableName(tabName);
         setData(getDataForTab(tabName));
         setSelectedRow(null);
     };
@@ -43,13 +57,25 @@ const AdminPage = () => {
     const getDataForTab = (tabName) => {
         switch (tabName) {
             case "Používatelia":
-                return userData;
+                setAddBlock(true);
+                const updatedUserData = userData.map(obj => {
+                    const { id_user, ...rest } = obj;
+                    return { id: id_user, ...rest };
+                });
+                setUserData(updatedUserData);
+                return updatedUserData;
             case "Knihy":
-                return [
-                    { id: 1, title: "React Basics", author: "J. Doe" },
-                    { id: 2, title: "Learning JavaScript", author: "M. Smith" },
-                ];
+                setAddBlock(false);
+                const updatedBookData = bookData.map(obj => {
+                    const { id_book, ...rest } = obj;
+                    return { id: id_book, ...rest };
+                });
+                const updatedData = updatedBookData.map(({ description, ...rest }) => rest);
+                setUserData(updatedData);
+                console.log(updatedData);
+                return updatedData;
             case "Bloggeri":
+                setAddBlock(false);
                 return [
                     { id: 1, username: "blogmaster", posts: 5 },
                     { id: 2, username: "coderlife", posts: 10 },
@@ -63,10 +89,16 @@ const AdminPage = () => {
         setSelectedRow(id === selectedRow ? null : id);
     };
 
-    const handleDelete = () => {
-        setData(data.filter((item) => item.id !== selectedRow));
-        setSelectedRow(null);
-
+    const handleDelete = async () => {
+        if (tableName === "Používatelia") {
+            try {
+                const response = await deleteUser(selectedRow);
+                setData(data.filter((item) => item.id !== selectedRow));
+                setSelectedRow(null);
+            } catch (err) {
+                console.error(err);
+            }
+        }
     };
 
     const handleAdd = () => {
@@ -79,18 +111,27 @@ const AdminPage = () => {
     };
 
     const handleConfirmAdd = async () => {
-        try {
-            const response = await createUser(newRow);
-            setData([...data, { id: Date.now(), ...newRow }]);
-            setNewRow(null);
-        } catch (err) {
-            console.error(err);
+        if (tableName === "Knihy") {
+
+        } else if (tableName === "Bloggeri") {
+
         }
     };
 
-    const handleConfirmEdit = () => {
-        setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
-        setEditingRow(null);
+    const handleConfirmEdit = async () => {
+        if (tableName === "Používatelia") {
+            try {
+                console.log(editingRow);
+                const response = await updateUser(editingRow);
+                setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
+                setEditingRow(null);
+            } catch (err) {
+                console.error(err);
+            }
+        } else {
+            setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
+            setEditingRow(null);
+        }
     };
 
     return (
@@ -98,6 +139,7 @@ const AdminPage = () => {
             handleTabClick={handleTabClick}
             selectedTab={selectedTab}
             data={data}
+            addBlocked={addBlock}
             selectedRow={selectedRow}
             handleRowSelection={handleRowSelection}
             newRow={newRow}
