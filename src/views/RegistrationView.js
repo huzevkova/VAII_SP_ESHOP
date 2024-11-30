@@ -26,7 +26,7 @@ const RegistrationView = ({formState, handleInputChange, handleCheckChange, hand
                         </Form.Group>
                         <p>Nepovinné údaje (automatické vyplnenie pri objednávke):</p>
                         <Form.Group className="mb-3" controlId="form.phone">
-                            <Form.Control name="phone" placeholder="Tel. číslo" onChange={handleInputChange}/>
+                            <Form.Control name="phone_number" placeholder="Tel. číslo" onChange={handleInputChange}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="form.city">
                             <Form.Control name="city" placeholder="Mesto" onChange={handleInputChange}/>
@@ -38,7 +38,7 @@ const RegistrationView = ({formState, handleInputChange, handleCheckChange, hand
                             <Form.Control name="street" placeholder="Ulica" onChange={handleInputChange}/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="form.house">
-                            <Form.Control name="house" placeholder="Číslo domu" onChange={handleInputChange}/>
+                            <Form.Control name="house_number" placeholder="Číslo domu" onChange={handleInputChange}/>
                         </Form.Group>
 
                         <div className="row justify-content-center">

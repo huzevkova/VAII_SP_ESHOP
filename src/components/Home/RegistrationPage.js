@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import RegistrationView from '../../views/RegistrationView';
+import {createUser} from "../../api/userApi";
 
 const RegistrationPage = () => {
 
@@ -7,11 +8,11 @@ const RegistrationPage = () => {
         { name: null,
             surname: null,
             email: null,
-            phone: null,
+            phone_number: null,
             city: null,
             city_code: null,
             street: null,
-            house: null,
+            house_number: null,
             password: null });
 
     const [formAgreement, setFormAgreement] = useState(false);
@@ -33,21 +34,40 @@ const RegistrationPage = () => {
         setFormState({...formState, agreement: 'normal'});
     }
 
-    const handleRegistration = (e) => {
+    const handleRegistration = async (e) => {
         e.preventDefault();
-        if (formData.name == null) {
+        let updatedFormData = {...formData};
+
+        if (formData.name != null) {
+            const fullName = formData.name + " " + formData.surname;
+            updatedFormData.name = fullName;
+        }
+
+        if (!updatedFormData.name) {
             setFormState({...formState, name: 'wrong'});
-        } else if (formData.surname == null) {
+            return; // Exit early if validation fails
+        } else if (!formData.surname) {
             setFormState({...formState, surname: 'wrong'});
-        } else if (formData.email == null) {
-            setFormState({...formState, email: 'wrong'})
-        } else if (formData.password == null || formData.password.length < 10) {
+            return;
+        } else if (!formData.email) {
+            setFormState({...formState, email: 'wrong'});
+            return;
+        } else if (!formData.password || formData.password.length < 10) {
             setFormState({...formState, password: 'wrong'});
+            return;
         } else if (!formAgreement) {
             setFormState({...formState, agreement: 'wrong'});
+            return;
         }
-        console.log(formData);
-    }
+
+        setFormData(updatedFormData);
+        console.log(updatedFormData);
+
+        const {userId, message} = await createUser(updatedFormData);
+        console.log(message);
+        console.log(userId);
+    };
+
 
     return (
         <RegistrationView
