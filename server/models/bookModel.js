@@ -33,7 +33,7 @@ const createBook = async (bookData) => {
 };
 
 const updateBook = async (bookData) => {
-    const query = 'UPDATE users SET title = ?, original_title = ?, author = ?, language = ?, page_count = ?, publish_year = ?, publisher = ?, size = ?, price = ?, cover = ?, image = ?, isbn = ?, description = ? WHERE id_book = ?';
+    const query = 'UPDATE books SET title = ?, original_title = ?, author = ?, language = ?, page_count = ?, publish_year = ?, publisher = ?, size = ?, price = ?, cover = ?, image = ?, isbn = ?, description = ? WHERE id_book = ?';
     const {id, title, original_title, author, language, page_count, publish_year, publisher, size, price, cover, image, isbn, description} = bookData;
 
     try {

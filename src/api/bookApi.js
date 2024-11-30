@@ -17,7 +17,7 @@ export const fetchBookById = async (id) => {
 };
 
 export const fetchBookByName = async (name) => {
-    const response = await fetch(`${API_URL}/${name}`);
+    const response = await fetch(`${API_URL}/search/${name}`);
     if (!response.ok) {
         throw new Error('Failed to fetch book');
     }

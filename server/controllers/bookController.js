@@ -30,14 +30,14 @@ const getBookById = async (req, res) => {
     }
 };
 
-const getBookByName = async (req, res) => {
+const getBooksByName = async (req, res) => {
     const { name } = req.params;
     try {
-        const book = await bookModel.getBookById(name);
+        const book = await bookModel.getBooksByName(name);
         if (book) {
             res.status(200).json(book);
         } else {
-            res.status(404).json({ message: 'Book not found' });
+            res.status(404).json({ message: `Book ${name} found` });
         }
     } catch (error) {
         console.error('Error fetching book:', error);
@@ -48,7 +48,7 @@ const getBookByName = async (req, res) => {
 const createBook = async (req, res) => {
     const { title, original_title, author, language, page_count, publish_year, publisher, size, price, cover, image, isbn, description } = req.body;
 
-    if (!title || !author || !language || !page_count || !publish_year || !publisher || !size || !price || !cover || !description) {
+    if (!title || !author || !language || !page_count || !publish_year || !publisher || !size || !price || !cover ) {
         return res.status(400).json({ message: 'Not all required fields are filled.' });
     }
 
@@ -64,7 +64,7 @@ const createBook = async (req, res) => {
 const updateBook = async (req, res) => {
     const { id, title, original_title, author, language, page_count, publish_year, publisher, size, price, cover, image, isbn, description } = req.body;
     try {
-        const result = await bookModel.updateBook({title, original_title, author, language, page_count, publish_year, publisher, size, price, cover, image, isbn, description});
+        const result = await bookModel.updateBook({id, title, original_title, author, language, page_count, publish_year, publisher, size, price, cover, image, isbn, description});
         if (result) {
             res.status(200).json({ message: 'Book updated successfully' });
         } else {
@@ -91,4 +91,4 @@ const deleteBook = async (req, res) => {
     }
 };
 
-module.exports = { getBookById, createBook, getAllBooks, updateBook, deleteBook, getBookByName};
+module.exports = { getBookById, createBook, getAllBooks, updateBook, deleteBook, getBooksByName};
