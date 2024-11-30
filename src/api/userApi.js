@@ -16,6 +16,17 @@ export const fetchUserById = async (id) => {
     return response.json();
 };
 
+export const checkUserCredentials = async (data) => {
+    console.log(data);
+    const response = await fetch(`${API_URL}/auth/${data}`);
+
+    if (!response.ok) {
+        throw new Error('Failed to authorize user');
+    }
+    return response.json();
+};
+
+
 export const createUser = async (userData) => {
     const response = await fetch(`${API_URL}/insert`, {
         method: 'POST',

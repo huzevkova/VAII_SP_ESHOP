@@ -12,8 +12,14 @@ const getUserById = async (id) => {
     return results[0];
 };
 
+const getUserByEmail = async (email) => {
+    const query = 'SELECT id_user, type FROM users WHERE email = ?';
+    const [results] = await db.query(query, [email]);
+    return results[0];
+};
+
 const createUser = async (userData) => {
-    const query = 'INSERT into users VALUES(null, ?, ?, ?, ?, ?, ?, ?, null)';
+    const query = 'INSERT into users VALUES(null, ?, ?, ?, ?, ?, ?, ?, null, 0)';
     const {name, email, phone_number, city, city_code, street, house_number} = userData;
 
     try {
@@ -27,10 +33,10 @@ const createUser = async (userData) => {
 
 const saveUserPassword = async (userData) => {
     const query = 'INSERT into user_passwords VALUES(null, ?, ?)';
-    const {id_user, password} = userData;
+    const {newUserId, hashedPassword} = userData;
 
     try {
-        const [result] = await db.query(query, [id_user, password]);
+        const [result] = await db.query(query, [newUserId, hashedPassword]);
         return result.insertId;
     } catch (err) {
         console.error(err);
@@ -63,4 +69,4 @@ const deleteUser = async (id) => {
 
 }
 
-module.exports = { getUserById, createUser, saveUserPassword, getAllUsers, deleteUser, updateUser };
+module.exports = { getUserById, createUser, saveUserPassword, getAllUsers, deleteUser, updateUser, getUserByEmail };

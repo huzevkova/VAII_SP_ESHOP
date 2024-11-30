@@ -31,6 +31,21 @@ const getUserById = async (req, res) => {
     }
 };
 
+const getUserByEmail = async (req, res) => {
+    const { email } = req.params;
+    try {
+        const user = await userModel.getUserByEmail(email);
+        if (user) {
+            res.status(200).json(user);
+        } else {
+            res.status(404).json({ message: 'User not found' });
+        }
+    } catch (error) {
+        console.error('Error fetching user:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
 const createUser = async (req, res) => {
     const { name, email, phone_number, city, city_code, street, house_number, password } = req.body;
 
@@ -41,9 +56,11 @@ const createUser = async (req, res) => {
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUserId = await userModel.createUser({ name, email, phone_number, city, city_code, street, house_number });
-        const savePass = await userModel.saveUserPassword(newUserId, hashedPassword);
-        if (savePass) {
+        try {
+            const savePass = await userModel.saveUserPassword({newUserId, hashedPassword});
             res.status(201).json({message: 'User created successfully', userId: newUserId});
+        } catch (err) {
+            await userModel.deleteUser(newUserId);
         }
     } catch (err) {
         console.error('Error creating user:', err);
@@ -81,4 +98,4 @@ const deleteUser = async (req, res) => {
     }
 };
 
-module.exports = { getUserById, createUser, getAllUsers, updateUser, deleteUser};
+module.exports = { getUserById, createUser, getAllUsers, updateUser, deleteUser, getUserByEmail};
