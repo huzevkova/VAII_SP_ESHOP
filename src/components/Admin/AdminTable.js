@@ -1,7 +1,7 @@
 import {Button, Form, Table} from "react-bootstrap";
 import React from "react";
 
-const AdminTable = ({addBlocked, data, selectedRow, handleRowSelection,
+const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                     newRow, setNewRow, handleConfirmAdd,
                     editingRow, setEditingRow, handleConfirmEdit,
                     handleAdd, handleEdit, handleDelete}) => {
@@ -35,13 +35,23 @@ const AdminTable = ({addBlocked, data, selectedRow, handleRowSelection,
                             <td key={index}>
                                 <Form.Control
                                     type="text"
+                                    defaultValue=""
                                     placeholder={`Enter ${key}`}
                                     onChange={(e) =>
-                                        setNewRow({ ...newRow, [key]: e.target.value })
+                                        setNewRow({ ...newRow, [key]: e.target.value})
                                     }
                                 />
                             </td>
                         ))}
+                        <td>
+                            <Form.Control
+                                type="text"
+                                placeholder={`Enter password`}
+                                onChange={(e) =>
+                                    setNewRow({ ...newRow, password: e.target.value })
+                                }
+                            />
+                        </td>
                         <td>
                             <Button variant="success" size="sm" onClick={handleConfirmAdd}>
                                 Potvrdiť
@@ -80,7 +90,7 @@ const AdminTable = ({addBlocked, data, selectedRow, handleRowSelection,
                 <Button variant="danger" disabled={!selectedRow} onClick={handleDelete}>
                     Odstrániť
                 </Button>
-                <Button variant="success" disabled={addBlocked} onClick={handleAdd}>
+                <Button variant="success" disabled={dataType === 'Používatelia'} onClick={handleAdd}>
                     Pridať
                 </Button>
                 <Button variant="warning" disabled={!selectedRow} onClick={handleEdit}>

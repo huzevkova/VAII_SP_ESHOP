@@ -2,7 +2,7 @@ import {Button, Col, Container, Navbar, Row} from "react-bootstrap";
 import React from "react";
 import AdminTable from "../components/Admin/AdminTable";
 
-const AdminView = ({handleTabClick, selectedTab, data, addBlocked, selectedRow, handleRowSelection,
+const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, handleRowSelection,
                        newRow, setNewRow, handleConfirmAdd,
                        editingRow, setEditingRow, handleConfirmEdit,
                        handleAdd, handleEdit, handleDelete}) => {
@@ -40,7 +40,7 @@ const AdminView = ({handleTabClick, selectedTab, data, addBlocked, selectedRow, 
                 </Row>
                 {selectedTab ?
                     <AdminTable
-                        addBlocked={addBlocked}
+                        dataType={dataType}
                         data={data}
                         selectedRow={selectedRow}
                         handleRowSelection={handleRowSelection}
