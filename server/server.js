@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
 const bookRoutes = require('./routes/bookRoutes');
+const bloggerRoutes = require('./routes/bloggerRoutes');
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/books', bookRoutes);
+app.use('/api/bloggers', bloggerRoutes);
 
 app.get('/', (req, res) => {
     res.send('Backend is running!');
