@@ -9,6 +9,7 @@ import RegistrationPage from "./components/Home/RegistrationPage";
 import CartPage from "./components/Cart/CartPage";
 import CheckoutPage from "./components/Cart/CheckoutPage";
 import OrderDonePage from "./components/Cart/OrderDonePage";
+import AdminPage from "./components/Admin/AdminPage";
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
               <Route path="/checkout" element={<CheckoutPage/>}/>
 
               <Route path="/order_done" element={<OrderDonePage/>}/>
+
+              <Route path="/administration" element={<AdminPage/>}/>
         </Routes>
       </Router>
   );
