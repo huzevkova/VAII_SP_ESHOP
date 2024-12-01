@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/users'; // Update URL as needed
+const API_URL = 'http://localhost:5000/api/users';
 
 export const fetchUsers = async () => {
     const response = await fetch(`${API_URL}/`);

@@ -5,7 +5,7 @@ const ResultCard = ({bookData, goToBookDetail}) => {
     return (
             <div className="row bg-light p-3 mb-3 border rounded align-items-center relative-position clickable-component" onClick={() => goToBookDetail(bookData.id)}>
                 <div className="col-md-2 col-sm-3">
-                    <img src="/images/book.jpg" alt="Book Cover" className="img-fluid"/>
+                    <img src="/images/books/book.jpg" alt="Book Cover" className="img-fluid"/>
                 </div>
                 <div className="col-md-8 col-sm-7">
                     <h5 className="title">{bookData.title}</h5>

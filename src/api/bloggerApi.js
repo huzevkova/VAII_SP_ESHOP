@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api/bloggers'; // Update URL as needed
+const API_URL = 'http://localhost:5000/api/bloggers';
 
 export const fetchBloggers = async () => {
     const response = await fetch(`${API_URL}/`);

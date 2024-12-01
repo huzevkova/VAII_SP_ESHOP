@@ -4,13 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Oprava chybných volaní">
+    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="Refaktoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/userApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/userApi.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/book.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/books/book.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/bookController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/bookController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/bookModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/bookModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/routes/bookRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/bookRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/bookApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/bookApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book/BookCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book/BookCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book/BookCatalogue.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book/BookCatalogue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book/BookDetailPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book/BookDetailPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book/BookInfoTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book/BookInfoTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/RegistrationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/RegistrationPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/ResultCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/ResultCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/home_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/home_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/BookCatalogueView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/BookCatalogueView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/BookDetailView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/BookDetailView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +77,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bsbia/PhpstormProjects/bb_eshop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/bsbia/PhpstormProjects/bb_eshop/public/images&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -84,16 +93,16 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\public\images" />
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\public\images\books" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\General" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Checkout" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\components\Book" />
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\components\Home" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -146,7 +155,13 @@
       <workItem from="1732439304074" duration="30985000" />
       <workItem from="1732571592794" duration="1766000" />
       <workItem from="1732641870561" duration="15738000" />
-      <workItem from="1732738357746" duration="5146000" />
+      <workItem from="1732738357746" duration="5302000" />
+      <workItem from="1732832079512" duration="8473000" />
+      <workItem from="1732874410631" duration="15661000" />
+      <workItem from="1733008250583" duration="306000" />
+      <workItem from="1733061958157" duration="4081000" />
+      <workItem from="1733082264772" duration="5180000" />
+      <workItem from="1733088304733" duration="7832000" />
     </task>
     <task id="LOCAL-00001" summary="Prechod do React">
       <option name="closed" value="true" />
@@ -412,7 +427,103 @@
       <option name="project" value="LOCAL" />
       <updated>1732658703984</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Pridanie CRUD operácií pre tabuľku &quot;books&quot;">
+      <option name="closed" value="true" />
+      <created>1732746258318</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1732746258319</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Dokončenie operácie deleteUser">
+      <option name="closed" value="true" />
+      <created>1732746284382</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1732746284382</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Ťahanie dát o knihách z databázy">
+      <option name="closed" value="true" />
+      <created>1732746314703</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1732746314703</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Pridanie CRUD oeprácií pre tabuľku &quot;bloggers&quot;">
+      <option name="closed" value="true" />
+      <created>1733008357585</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008357585</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Oprava chybných user parametrov">
+      <option name="closed" value="true" />
+      <created>1733008395997</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008395997</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Oprava chybných book parametrov">
+      <option name="closed" value="true" />
+      <created>1733008409332</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008409332</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Nastavenie pridávania novej knihy a blogera">
+      <option name="closed" value="true" />
+      <created>1733008439140</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008439140</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Ťahanie dát o kníhách a blogeroch z databázy">
+      <option name="closed" value="true" />
+      <created>1733008452590</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008452590</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Vytvorenie nového užívateľa v databáze">
+      <option name="closed" value="true" />
+      <created>1733008471327</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008471327</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Pridanie prihlasovacej logiky">
+      <option name="closed" value="true" />
+      <created>1733008485547</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008485547</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Pridanie cesty pre admin stránku">
+      <option name="closed" value="true" />
+      <created>1733008499812</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008499812</updated>
+    </task>
+    <task id="LOCAL-00045" summary="Refaktoring">
+      <option name="closed" value="true" />
+      <created>1733008521245</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1733008521245</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -433,17 +544,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Pridanie registračného formulára" />
-    <MESSAGE value="Pridanie košíka" />
-    <MESSAGE value="zmena dizajnových detailov" />
-    <MESSAGE value="Utriedenie komponentov do priečinkov podľa stránok." />
-    <MESSAGE value="Pridanie dokončenia objednávky." />
-    <MESSAGE value="Docker - pridanie potrebných súborov" />
-    <MESSAGE value="Vytvorenie servera + prvé spojenie s databázou" />
-    <MESSAGE value="Návrh modelu, kontrolóra a ciest pre komunikáciu s databázou." />
-    <MESSAGE value="Refaktoring Home komponentov na Views - rozdelenie logiky a vzhľadu" />
-    <MESSAGE value="Refaktoring komponentov objednávania na Views - rozdelenie logiky a vzhľadu" />
-    <MESSAGE value="Refaktoring komponentov pre objednávku" />
     <MESSAGE value="Refaktoring Cart komponentov na Views - rozdelenie logiky a vzhľadu" />
     <MESSAGE value="Refaktoring General komponentov na Views - rozdelenie logiky a vzhľadu" />
     <MESSAGE value="Refaktoring General komponentov" />
@@ -453,11 +553,22 @@
     <MESSAGE value="úprava responzivity" />
     <MESSAGE value="Refaktoring Search komponentov na Views - rozdelenie logiky a vzhľadu" />
     <MESSAGE value="Pridanie administratívnej stránky na správu databázy" />
-    <MESSAGE value="Refaktoring" />
     <MESSAGE value="Pridanie CRUD operácii pre dáta o používateľoch" />
     <MESSAGE value="Začatie API pre userov." />
     <MESSAGE value="Úprava detailov" />
     <MESSAGE value="Oprava chybných volaní" />
-    <option name="LAST_COMMIT_MESSAGE" value="Oprava chybných volaní" />
+    <MESSAGE value="Pridanie CRUD operácií pre tabuľku &quot;books&quot;" />
+    <MESSAGE value="Dokončenie operácie deleteUser" />
+    <MESSAGE value="Ťahanie dát o knihách z databázy" />
+    <MESSAGE value="Pridanie CRUD oeprácií pre tabuľku &quot;bloggers&quot;" />
+    <MESSAGE value="Oprava chybných user parametrov" />
+    <MESSAGE value="Oprava chybných book parametrov" />
+    <MESSAGE value="Nastavenie pridávania novej knihy a blogera" />
+    <MESSAGE value="Ťahanie dát o kníhách a blogeroch z databázy" />
+    <MESSAGE value="Vytvorenie nového užívateľa v databáze" />
+    <MESSAGE value="Pridanie prihlasovacej logiky" />
+    <MESSAGE value="Pridanie cesty pre admin stránku" />
+    <MESSAGE value="Refaktoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refaktoring" />
   </component>
 </project>

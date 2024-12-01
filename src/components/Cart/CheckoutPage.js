@@ -22,7 +22,7 @@ const CheckoutPage = () => {
         postal_code: "",
         delivery_option: "",
         payment_option: "",
-        books: ["Book 1", "Book 2"], // Example books
+        books: ["Book 1", "Book 2"],
         total: 39.99,
     });
 

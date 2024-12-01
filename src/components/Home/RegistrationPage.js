@@ -1,8 +1,11 @@
 import React, {useState} from 'react';
 import RegistrationView from '../../views/RegistrationView';
 import {createUser} from "../../api/userApi";
+import {useNavigate} from "react-router-dom";
 
 const RegistrationPage = () => {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState(
         { name: null,
@@ -45,7 +48,7 @@ const RegistrationPage = () => {
 
         if (!updatedFormData.name) {
             setFormState({...formState, name: 'wrong'});
-            return; // Exit early if validation fails
+            return;
         } else if (!formData.surname) {
             setFormState({...formState, surname: 'wrong'});
             return;
@@ -61,11 +64,12 @@ const RegistrationPage = () => {
         }
 
         setFormData(updatedFormData);
-        console.log(updatedFormData);
 
         const {userId, message} = await createUser(updatedFormData);
         console.log(message);
         console.log(userId);
+
+        navigate('/login');
     };
 
 
