@@ -16,13 +16,29 @@ export const fetchBookById = async (id) => {
     return response.json();
 };
 
-export const fetchBookByName = async (name) => {
+export const fetchBooksByName = async (name) => {
     const response = await fetch(`${API_URL}/search/${name}`);
     if (!response.ok) {
-        throw new Error('Failed to fetch book');
+        throw new Error('Failed to fetch books');
     }
     return response.json();
 };
+
+export const fetchRandomBooks = async (number) => {
+    const response = await fetch(`${API_URL}/random/${number}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch books');
+    }
+    return response.json();
+};
+
+export const fetchBookSeries = async (bookId) => {
+    const response = await fetch(`${API_URL}/series/${bookId}`);
+    if (!response.ok) {
+        return null;
+    }
+    return response.json();
+}
 
 export const createBook = async (bookData) => {
     const response = await fetch(`${API_URL}/insert`, {

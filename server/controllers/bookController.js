@@ -33,11 +33,41 @@ const getBookById = async (req, res) => {
 const getBooksByName = async (req, res) => {
     const { name } = req.params;
     try {
-        const book = await bookModel.getBooksByName(name);
-        if (book) {
-            res.status(200).json(book);
+        const books = await bookModel.getBooksByName(name);
+        if (books.lenght > 0) {
+            res.status(200).json(books);
         } else {
-            res.status(404).json({ message: `Book ${name} found` });
+            res.status(404).json({ message: `Books by ${name} found` });
+        }
+    } catch (error) {
+        console.error('Error fetching books:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+const getRandomBooks = async (req, res) => {
+    const { number } = req.params;
+    try {
+        const books = await bookModel.getRandomBooks(parseInt(number, 10));
+        if (books.length > 0) {
+            res.status(200).json(books);
+        } else {
+            res.status(404).json({ message: `Books not found` });
+        }
+    } catch (error) {
+        console.error('Error fetching books:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+const getBookSeries = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const series = await bookModel.getBookSeries(id);
+        if (series) {
+            res.status(200).json(series);
+        } else {
+            res.status(200).json(null);
         }
     } catch (error) {
         console.error('Error fetching book:', error);
@@ -91,4 +121,4 @@ const deleteBook = async (req, res) => {
     }
 };
 
-module.exports = { getBookById, createBook, getAllBooks, updateBook, deleteBook, getBooksByName};
+module.exports = { getBookById, createBook, getAllBooks, updateBook, deleteBook, getBooksByName, getRandomBooks, getBookSeries};
