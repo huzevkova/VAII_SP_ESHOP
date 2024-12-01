@@ -10,8 +10,8 @@ const BookInfoTable = ({ bookData, onTableClick }) => (
             <td>{bookData.page_count}</td>
         </tr>
         <tr>
-            <th scope="row" className="fw-bold">Dátum vydania:</th>
-            <td>{bookData.year}</td>
+            <th scope="row" className="fw-bold">Rok vydania:</th>
+            <td>{bookData.publish_year}</td>
             <th scope="row" className="fw-bold">Veľkosť:</th>
             <td>{bookData.size}</td>
         </tr>

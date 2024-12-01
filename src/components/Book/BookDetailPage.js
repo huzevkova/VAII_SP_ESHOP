@@ -1,16 +1,57 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import BookDetailView from "../../views/BookDetailView";
+import {fetchBookById, fetchBookSeries} from "../../api/bookApi";
 
 const BookDetailPage = () => {
 
     const navigate = useNavigate();
 
-    const [openCart, setOpenCart] = React.useState(false);
-    const [openWish, setOpenWish] = React.useState(false);
+    const location = useLocation();
+    const { bookId } = location.state;
+
+    const [bookData, setBookData] = useState(null);
+    const [series, setSeries] = useState(null);
+    const [openCart, setOpenCart] = useState(false);
+    const [openWish, setOpenWish] = useState(false);
+
+    useEffect(() => {
+        const loadBookData = async () => {
+            try {
+                const response = await fetchBookById(bookId);
+                setBookData(response);
+            } catch (err) {
+                console.error(err);
+                setBookData([]);
+            }
+        };
+
+        const loadBookSeries = async () => {
+            try {
+                const response = await fetchBookSeries(bookId);
+                if (response == null) {
+                    setSeries([]);
+                } else {
+                    setSeries(response);
+                }
+            } catch (err) {
+                console.error(err);
+                setSeries([]);
+            }
+        };
+
+        loadBookData();
+        loadBookSeries();
+    }, [bookId]);
+
+    if (bookData == null || series == null) {
+        return;
+    } else {
+        console.log(series);
+    }
 
     const handleCloseCart = () => {
         setOpenCart(false);
@@ -18,22 +59,6 @@ const BookDetailPage = () => {
 
     const handleCloseWish = () => {
         setOpenWish(false);
-    };
-
-    const bookData = {
-        image: '/images/book.jpg',
-        title: 'Názov knihy',
-        part: 'X. Diel série',
-        author: 'Meno Autora',
-        genre: 'Fikcia',
-        year: '2024',
-        language: 'Slovenský',
-        original: 'Book name',
-        page_count: '200',
-        size: '20x20cm',
-        cover: 'pevný',
-        isbn: '9781529113396',
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis, nisi at pharetra volutpat, felis odio convallis massa, nec bibendum justo nisi ut arcu.'
     };
 
     const onTableClick = (e) => {
@@ -55,6 +80,7 @@ const BookDetailPage = () => {
         <>
             <BookDetailView
             bookData={bookData}
+            bookSeries={series.length === 0 ? null : series}
             onCartClick={onCartClick}
             onWishlistClick={onWishlistClick}
             onTableClick={onTableClick}
