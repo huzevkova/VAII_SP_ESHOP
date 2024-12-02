@@ -222,6 +222,7 @@ const AdminPage = () => {
             handleAdd={handleAdd}
             handleEdit={handleEdit}
             handleDelete={handleDelete}
+            handleLogout={handleLogOut}
         />
     );
 }

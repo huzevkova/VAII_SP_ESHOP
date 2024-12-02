@@ -5,7 +5,7 @@ import AdminTable from "../components/Admin/AdminTable";
 const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, handleRowSelection,
                        newRow, setNewRow, handleConfirmAdd,
                        editingRow, setEditingRow, handleConfirmEdit,
-                       handleAdd, handleEdit, handleDelete}) => {
+                       handleAdd, handleEdit, handleDelete, handleLogout}) => {
     return (
         <div className="App">
             <Navbar bg="primary" variant="dark" className="px-4">
@@ -18,7 +18,7 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                     />
                 </Navbar.Brand>
                 <Navbar.Text className="mx-auto">Administratíva</Navbar.Text>
-                <Button variant="outline-light">Odhlásenie</Button>
+                <Button variant="outline-light" onClick={handleLogout}>Odhlásenie</Button>
             </Navbar>
             <Container className="mt-4">
                 <Row className="mb-3">
