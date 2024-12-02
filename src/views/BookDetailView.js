@@ -16,7 +16,7 @@ const BookDetailView = ({bookData, bookSeries, onTableClick, onCartClick, onWish
 
                     <div className="col-md-7">
                         <h1 className="book">{bookData.title}</h1>
-                        <h4 className="book right-h1 mt-3 mb-3">{bookSeries ? (bookSeries.part + '. diel ' + bookSeries.name) : ''}</h4>
+                        <h4 className="book mt-3 mb-3">{bookSeries ? (bookSeries.part + '. diel ' + bookSeries.name) : ''}</h4>
                         <h4 className="text-muted">{bookData.author}</h4>
                         <div className="d-flex justify-content-between align-items-start mt-3">
                             <BookInfoTable bookData={bookData} onTableClick={onTableClick} />

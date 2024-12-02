@@ -23,7 +23,7 @@ const BookInfoTable = ({ bookData, onTableClick }) => (
         </tr>
         <tr>
             <th scope="row" className="fw-bold">Originálny názov:</th>
-            <td>{bookData.original}</td>
+            <td>{bookData.original_title}</td>
             <th scope="row" className="fw-bold">ISBN:</th>
             <td>{bookData.isbn}</td>
         </tr>
