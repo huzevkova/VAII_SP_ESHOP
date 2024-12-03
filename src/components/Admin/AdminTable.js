@@ -4,11 +4,11 @@ import React from "react";
 const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                     newRow, setNewRow, handleConfirmAdd,
                     editingRow, setEditingRow, handleConfirmEdit,
-                    handleAdd, handleEdit, handleDelete}) => {
+                    handleAdd, handleEdit, handleDelete, handleCancel}) => {
 
     return (
         <>
-            <Table bordered hover responsive>
+            <Table hover responsive>
                 <thead>
                 <tr>
                     {Object.keys(data[0] || {}).map((key) => (
@@ -38,23 +38,31 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                                     defaultValue=""
                                     placeholder={`Enter ${key}`}
                                     onChange={(e) =>
-                                        setNewRow({ ...newRow, [key]: e.target.value})
+                                        setNewRow({...newRow, [key]: e.target.value})
                                     }
                                 />
                             </td>
                         ))}
-                        <td>
-                            <Form.Control
-                                type="text"
-                                placeholder={`Enter password`}
-                                onChange={(e) =>
-                                    setNewRow({ ...newRow, password: e.target.value })
-                                }
-                            />
-                        </td>
+                        {dataType === 'Bloggeri' ?
+                            <td>
+                                <Form.Control
+                                    type="text"
+                                    placeholder={`Enter password`}
+                                    onChange={(e) =>
+                                        setNewRow({...newRow, password: e.target.value})
+                                    }
+                                />
+                            </td>
+                            : null
+                        }
                         <td>
                             <Button variant="success" size="sm" onClick={handleConfirmAdd}>
-                                Potvrdiť
+                                OK
+                            </Button>
+                        </td>
+                        <td>
+                            <Button variant="danger" size="sm" onClick={handleCancel}>
+                                X
                             </Button>
                         </td>
                     </tr>
@@ -78,7 +86,12 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                         ))}
                         <td>
                             <Button variant="success" size="sm" onClick={handleConfirmEdit}>
-                                Potvrdiť
+                                OK
+                            </Button>
+                        </td>
+                        <td>
+                            <Button variant="danger" size="sm" onClick={handleCancel}>
+                                X
                             </Button>
                         </td>
                     </tr>
