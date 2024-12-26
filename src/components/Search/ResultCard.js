@@ -1,11 +1,11 @@
 import {FaShoppingCart} from "react-icons/fa";
 import React from "react";
 
-const ResultCard = ({bookData, goToBookDetail}) => {
+const ResultCard = ({bookData, openBookDetail}) => {
     return (
-            <div className="row bg-light p-3 mb-3 border rounded align-items-center relative-position clickable-component" onClick={() => goToBookDetail(bookData.id)}>
+            <div className="row bg-light p-3 mb-3 border rounded align-items-center relative-position clickable-component" onClick={() => openBookDetail(bookData.id_book)}>
                 <div className="col-md-2 col-sm-3">
-                    <img src="/images/books/book.jpg" alt="Book Cover" className="img-fluid"/>
+                    <img src={"images/books/" + (bookData.path ? bookData.path : "book.jpg")} alt="Book Cover" className="img-fluid"/>
                 </div>
                 <div className="col-md-8 col-sm-7">
                     <h5 className="title">{bookData.title}</h5>

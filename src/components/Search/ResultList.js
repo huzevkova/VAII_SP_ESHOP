@@ -2,7 +2,7 @@ import React from "react";
 import ResultCard from "./ResultCard";
 import Dropdown from "react-bootstrap/Dropdown";
 
-const ResultList = ({books, goToBookDetail, handleDropdownClick}) => {
+const ResultList = ({books, openBookDetail, handleDropdownClick}) => {
     return (
         <section className="py-3">
             <div className="container">
@@ -15,15 +15,15 @@ const ResultList = ({books, goToBookDetail, handleDropdownClick}) => {
 
                         <Dropdown.Menu>
                             <Dropdown.Item id="lowest_price" onClick={handleDropdownClick}>Najnižšej ceny</Dropdown.Item>
-                            <Dropdown.Item id="highest_price"onClick={handleDropdownClick}>Najvyššej ceny</Dropdown.Item>
+                            <Dropdown.Item id="highest_price" onClick={handleDropdownClick}>Najvyššej ceny</Dropdown.Item>
                             <Dropdown.Item id="year" onClick={handleDropdownClick}>Roku vydania</Dropdown.Item>
-                            <Dropdown.Item id="alphabetically" onClick={handleDropdownClick}>Abecedne</Dropdown.Item>
+                            <Dropdown.Item id="alphabetical" onClick={handleDropdownClick}>Abecedne</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </div>
                 <div className="container mt-4">
                     {books.map((book, index) => (
-                        <ResultCard key={index} bookData={book} goToBookDetail={goToBookDetail}/>
+                        <ResultCard key={index} bookData={book} openBookDetail={openBookDetail}/>
                     ))}
                 </div>
             </div>

@@ -1,39 +1,67 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SearchView from "../../views/SearchView";
 import {useNavigate} from "react-router-dom";
+import {fetchBooks, fetchBooksByName} from "../../api/bookApi";
 
 const SearchPage = () => {
 
     const navigate = useNavigate();
 
-    const [books, setBooks] = useState([
-        {id: 1,
-            title: 'Kniha 1',
-            author: 'Autor knihy',
-            price: 'CENA',
-            description: 'Krátky popis danej knihy, zobratí z detailu knihy. V prípade, že je príliš dlhý, tak sa ukáže iba kúsok a zvyšok sa usekne pridaním trojbodky. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-        {id: 2,
-            title: 'Kniha 2',
-            author: 'Autor knihy',
-            price: 'CENA',
-            description: 'Krátky popis danej knihy, zobratí z detailu knihy. V prípade, že je príliš dlhý, tak sa ukáže iba kúsok a zvyšok sa usekne pridaním trojbodky. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-        {id: 3,
-            title: 'Kniha 3',
-            author: 'Autor knihy',
-            price: 'CENA',
-            description: 'Krátky popis danej knihy, zobratí z detailu knihy. V prípade, že je príliš dlhý, tak sa ukáže iba kúsok a zvyšok sa usekne pridaním trojbodky. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'},
-    ]);
+    const [books, setBooks] = useState(null);
+    const [searchInput, setSearchInput] = useState(null);
 
-    const goToBookDetail = (index) => {
-        navigate('/book_detail')
+    useEffect(() => {
+        const loadBooks = async () => {
+            try {
+                const response = await fetchBooks();
+                setBooks(response);
+                console.log(response);
+            } catch (err) {
+                console.error(err);
+                setBooks([]);
+            }
+        };
+
+        loadBooks();
+    }, []);
+
+    if (books == null) {
+        return;
+    }
+
+    const openBookDetail = (id) => {
+        navigate('/book_detail', { state: { bookId: id } });
     }
 
     const handleDropdownClick = (e) => {
+        let sortedBooks = books;
+        if (e.target.id === "lowest_price") {
+            sortedBooks = [...books].sort((a, b) => a.price - b.price);
+        } else if (e.target.id === "highest_price") {
+            sortedBooks = [...books].sort((a, b) => b.price - a.price);
+        } else if (e.target.id === "year") {
+            sortedBooks = [...books].sort((a, b) => a.year - b.year);
+        } else if (e.target.id === "alphabetical") {
+            sortedBooks = [...books].sort((a, b) => a.title.localeCompare(b.title));
+        }
+        setBooks(sortedBooks);
+    };
 
+    const handleInputChange = (e) => {
+        setSearchInput(e.target.value);
     }
 
-    const handleSearch = (e) => {
-
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        if (searchInput) {
+            try {
+                const response = await fetchBooksByName(searchInput);
+                setBooks(response);
+            } catch (err) {
+                console.error(err);
+                setBooks([]);
+            }
+        }
     }
 
     const applyFilters = () => {
@@ -44,7 +72,8 @@ const SearchPage = () => {
         <SearchView
             books={books}
             handleSearch={handleSearch}
-            goToBookDetail={goToBookDetail}
+            handleInputChange={handleInputChange}
+            openBookDetail={openBookDetail}
             handleDropdownClick={handleDropdownClick}
             applyFilters={applyFilters}
         />
