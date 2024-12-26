@@ -22,7 +22,22 @@ const getBookById = async (req, res) => {
         if (book) {
             res.status(200).json(book);
         } else {
-            res.status(404).json({ message: 'Book not found' });
+            res.status(404).json({ message: `Book by ${id} not found` });
+        }
+    } catch (error) {
+        console.error('Error fetching book:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+const getGenresById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const book = await bookModel.getGenresById(id);
+        if (book) {
+            res.status(200).json(book);
+        } else {
+            res.status(404).json({ message: `Genres for ${id} not found` });
         }
     } catch (error) {
         console.error('Error fetching book:', error);
@@ -34,10 +49,41 @@ const getBooksByName = async (req, res) => {
     const { name } = req.params;
     try {
         const books = await bookModel.getBooksByName(name);
-        if (books.lenght > 0) {
+        if (books.length > 0) {
             res.status(200).json(books);
         } else {
-            res.status(404).json({ message: `Books by ${name} found` });
+            res.status(404).json({ message: `Books by ${name} not found` });
+        }
+    } catch (error) {
+        console.error('Error fetching books:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+const getBooksByGenre = async (req, res) => {
+    const { genre } = req.params;
+    try {
+        const books = await bookModel.getBooksByGenre(genre);
+        if (books.length > 0) {
+            res.status(200).json(books);
+        } else {
+            res.status(404).json({ message: `Books by ${genre} not found` });
+        }
+    } catch (error) {
+        console.error('Error fetching books:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+
+const getFilteredBooks = async (req, res) => {
+    const { author, language, priceStart, priceEnd } = req.params;
+    try {
+        const books = await bookModel.getFilteredBooks(author, language, priceStart, priceEnd);
+        if (books.length > 0) {
+            res.status(200).json(books);
+        } else {
+            res.status(404).json({ message: `Books filtered not found` });
         }
     } catch (error) {
         console.error('Error fetching books:', error);
@@ -121,4 +167,48 @@ const deleteBook = async (req, res) => {
     }
 };
 
-module.exports = { getBookById, createBook, getAllBooks, updateBook, deleteBook, getBooksByName, getRandomBooks, getBookSeries};
+const getGenres = async (req, res) => {
+    try {
+        const genres = await bookModel.getGenres()
+        if (genres.length > 0) {
+            res.status(200).json(genres);
+        } else {
+            res.status(404).json({ message: 'genres empty' });
+        }
+
+    } catch (error) {
+        console.error('Error fetching genres:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const getAuthors = async (req, res) => {
+    try {
+        const authors = await bookModel.getAuthors()
+        if (authors.length > 0) {
+            res.status(200).json(authors);
+        } else {
+            res.status(404).json({ message: 'authors empty' });
+        }
+
+    } catch (error) {
+        console.error('Error fetching authors:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const getLangugages = async (req, res) => {
+    try {
+        const languages = await bookModel.getLanguages()
+        if (languages.length > 0) {
+            res.status(200).json(languages);
+        } else {
+            res.status(404).json({ message: 'languages empty' });
+        }
+
+    } catch (error) {
+        console.error('Error fetching languages:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+module.exports = { getBookById, createBook, getAllBooks, updateBook, deleteBook, getBooksByName, getRandomBooks, getBookSeries, getGenres, getAuthors, getLangugages, getGenresById, getFilteredBooks, getBooksByGenre};

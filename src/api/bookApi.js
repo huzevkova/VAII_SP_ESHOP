@@ -9,12 +9,29 @@ export const fetchBooks = async () => {
 };
 
 export const fetchBookById = async (id) => {
-    const response = await fetch(`${API_URL}/${id}`);
+    const response = await fetch(`${API_URL}/book/${id}`);
     if (!response.ok) {
         throw new Error('Failed to fetch book');
     }
     return response.json();
 };
+
+export const fetchBooksByGenre = async (genre) => {
+    const response = await fetch(`${API_URL}/genre/${genre}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch book from genre');
+    }
+    return response.json();
+};
+
+export const fetchGenresById = async (id) => {
+    const response = await fetch(`${API_URL}/book/genre/${id}`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch book genres');
+    }
+    return response.json();
+};
+
 
 export const fetchBooksByName = async (name) => {
     const response = await fetch(`${API_URL}/search/${name}`);
@@ -77,6 +94,30 @@ export const deleteBook = async (bookId) => {
     });
     if (!response.ok) {
         throw new Error('Failed to delete book');
+    }
+    return response.json();
+};
+
+export const fetchGenres = async () => {
+    const response = await fetch(`${API_URL}/genres`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch genres');
+    }
+    return response.json();
+};
+
+export const fetchAuthors = async () => {
+    const response = await fetch(`${API_URL}/authors`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch authors');
+    }
+    return response.json();
+};
+
+export const fetchLanguages = async () => {
+    const response = await fetch(`${API_URL}/languages`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch languages');
     }
     return response.json();
 };
