@@ -1,49 +1,57 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import SearchFilterView from "../../views/SearchFilterView";
+import {fetchAuthors, fetchGenres, fetchLanguages} from "../../api/bookApi";
 
-const SearchFilter = ({ applyFilters }) => {
+const SearchFilter = ({ applyFilters, handleCheckboxChange, handlePriceChange }) => {
 
-    const genres=[
-            { id: 'genreFantasy', value: 'Fantasy', label: 'Fantasy' },
-            { id: 'genreSciFi', value: 'Sci-fi', label: 'Sci-fi' },
-        ];
-    const authors=[
-            { id: 'author1', value: 'Autor1', label: 'Autor 1' },
-            { id: 'author2', value: 'Autor2', label: 'Autor 2' }
-        ];
-    const languages=[
-            { id: 'languageSlovak', value: 'Slovenský', label: 'Slovenský' },
-            { id: 'languageEnglish', value: 'Anglický', label: 'Anglický' },
-        ];
+    const [genres, setGenres] = useState(null);
+    const [authors, setAuthors] = useState(null);
+    const [languages, setLanguages] = useState(null);
+
+    /*
     const availability=[
             { id: 'inStock', value: 'Na sklade', label: 'Na sklade' },
             { id: 'preOrder', value: 'Predobjednávka', label: 'Predobjednávka' },
-        ];
+        ];*/
 
-    const [selectedFilters, setSelectedFilters] = useState({
-        genres: [],
-        authors: [],
-        languages: [],
-        availability: [],
-        price: { from: null, to: null },
-    });
+    useEffect(() => {
+        const loadGenres = async () => {
+            try {
+                const response = await fetchGenres();
+                setGenres(response);
+                console.log(response);
+            } catch (err) {
+                console.error(err);
+                setGenres([]);
+            }
+        };
+        const loadAuthors = async () => {
+            try {
+                const response = await fetchAuthors();
+                setAuthors(response);
+            } catch (err) {
+                console.error(err);
+                setAuthors([]);
+            }
+        };
+        const loadLanguages = async () => {
+            try {
+                const response = await fetchLanguages();
+                setLanguages(response);
+            } catch (err) {
+                console.error(err);
+                setLanguages([]);
+            }
+        };
 
-    const handleCheckboxChange = (category, value) => {
-        setSelectedFilters((prevFilters) => {
-            const updatedCategory = prevFilters[category].includes(value)
-                ? prevFilters[category].filter((item) => item !== value)
-                : [...prevFilters[category], value];
+        loadGenres();
+        loadAuthors();
+        loadLanguages();
+    }, []);
 
-            return { ...prevFilters, [category]: updatedCategory };
-        });
-    };
-
-    const handlePriceChange = (field, value) => {
-        setSelectedFilters((prevFilters) => ({
-            ...prevFilters,
-            price: { ...prevFilters.price, [field]: value },
-        }));
-    };
+    if (genres == null || authors == null || languages == null) {
+        return;
+    }
 
     const renderCheckboxList = (items, category) => {
         return items.map((item) => (
@@ -68,7 +76,6 @@ const SearchFilter = ({ applyFilters }) => {
             genres={genres}
             authors={authors}
             languages={languages}
-            availability={availability}
             handlePriceChange={handlePriceChange}
             applyFilters={applyFilters}
         />
