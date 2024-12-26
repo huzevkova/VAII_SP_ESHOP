@@ -1,11 +1,13 @@
 import React from 'react';
+import {forEach} from "react-bootstrap/ElementChildren";
 
-const BookInfoTable = ({ bookData, onTableClick }) => (
+const BookInfoTable = ({ bookData, bookGenres, onTableClick }) => (
     <table className="table-borderless">
         <tbody>
         <tr>
             <th scope="row" className="fw-bold">Žáner:</th>
-            <td className="clickable-component" id="genre" onClick={onTableClick}>{bookData.genre}</td>
+            <td className="clickable-component" id="genre" onClick={onTableClick}>
+                {bookGenres}</td>
             <th scope="row" className="fw-bold">Počet strán:</th>
             <td>{bookData.page_count}</td>
         </tr>

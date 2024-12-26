@@ -4,7 +4,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import {useLocation, useNavigate} from "react-router-dom";
 import BookDetailView from "../../views/BookDetailView";
-import {fetchBookById, fetchBookSeries} from "../../api/bookApi";
+import {fetchBookById, fetchBookSeries, fetchGenresById} from "../../api/bookApi";
 
 const BookDetailPage = () => {
 
@@ -14,6 +14,7 @@ const BookDetailPage = () => {
     const { bookId } = location.state;
 
     const [bookData, setBookData] = useState(null);
+    const [bookGenres, setBookGenres] = useState(null);
     const [series, setSeries] = useState(null);
     const [openCart, setOpenCart] = useState(false);
     const [openWish, setOpenWish] = useState(false);
@@ -26,6 +27,21 @@ const BookDetailPage = () => {
             } catch (err) {
                 console.error(err);
                 setBookData([]);
+            }
+        };
+
+        const loadBookGenres = async () => {
+            try {
+                const response = await fetchGenresById(bookId);
+                let genresString = "";
+                for (let i = 0; i < response.length; i++) {
+                    genresString += response[i].genre_name + " ";
+                }
+                setBookGenres(genresString);
+                console.log(genresString);
+            } catch (err) {
+                console.error(err);
+                setBookGenres([]);
             }
         };
 
@@ -44,13 +60,12 @@ const BookDetailPage = () => {
         };
 
         loadBookData();
+        loadBookGenres();
         loadBookSeries();
     }, [bookId]);
 
-    if (bookData == null || series == null) {
+    if (bookData == null || series == null || bookGenres == null) {
         return;
-    } else {
-        console.log(series);
     }
 
     const handleCloseCart = () => {
@@ -80,6 +95,7 @@ const BookDetailPage = () => {
         <>
             <BookDetailView
             bookData={bookData}
+            bookGenres={bookGenres}
             bookSeries={series.length === 0 ? null : series}
             onCartClick={onCartClick}
             onWishlistClick={onWishlistClick}
