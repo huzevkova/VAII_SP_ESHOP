@@ -1,21 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NavbarView from "../../views/General/NavbarView";
 import {useNavigate} from "react-router-dom";
 
 const MyNavbar = () => {
 
     const navigate = useNavigate();
+    const [searchInput, setSearchInput] = useState(null);
 
     const handleSearchInputChange = (e) => {
-
+        setSearchInput(e.target.value);
     }
 
     const handleSearch = (e) => {
-        navigate('/search');
+        navigate('/search', { state: { input: searchInput } });
     }
 
     const handleDropdownClick = (e) => {
-        navigate('/search');
+        navigate('/search', { state: { input: searchInput } });
     }
 
     return (

@@ -1,15 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import SearchView from "../../views/SearchView";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {fetchBooks, fetchBooksByGenre, fetchBooksByName} from "../../api/bookApi";
 
 const SearchPage = () => {
 
     const navigate = useNavigate();
+    const location = useLocation();
+    const { input } = location.state;
 
     const [allBooks, setAllBooks] = useState(null);
     const [books, setBooks] = useState(null);
-    const [searchInput, setSearchInput] = useState(null);
+    const [searchInput, setSearchInput] = useState(input);
 
     const [selectedFilters, setSelectedFilters] = useState({
         genres: [],
@@ -19,18 +21,33 @@ const SearchPage = () => {
     });
 
     useEffect(() => {
-        const loadBooks = async () => {
-            try {
-                const response = await fetchBooks();
-                setAllBooks(response);
-                setBooks(response);
-            } catch (err) {
-                console.error(err);
-                setBooks([]);
+        if (input != null) {
+            setSearchInput(input);
+            const loadSearch = async () => {
+                try {
+                    const response = await fetchBooksByName(searchInput);
+                    setBooks(response);
+                } catch (err) {
+                    console.error(err);
+                    setBooks([]);
+                }
             }
-        };
 
-        loadBooks();
+            loadSearch();
+        } else {
+            const loadBooks = async () => {
+                try {
+                    const response = await fetchBooks();
+                    setAllBooks(response);
+                    setBooks(response);
+                } catch (err) {
+                    console.error(err);
+                    setBooks([]);
+                }
+            };
+
+            loadBooks();
+        }
     }, []);
 
     if (books == null) {
@@ -78,7 +95,6 @@ const SearchPage = () => {
     };
 
     const handleSearch = async (e) => {
-        e.preventDefault();
         if (searchInput) {
             try {
                 const response = await fetchBooksByName(searchInput);

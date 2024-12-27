@@ -2,7 +2,7 @@ import Accordion from "react-bootstrap/Accordion";
 import {Button} from "react-bootstrap";
 import React from "react";
 
-const SearchFilterView = ({renderCheckboxList, genres, authors, languages, availability, handlePriceChange, applyFilters}) => {
+const SearchFilterView = ({renderCheckboxList, genres, authors, languages, handlePriceChange, applyFilters}) => {
     return (
         <div className="bg-white p-3 shadow-sm rounded">
             <h4 className="mb-4">FILTRUJ PODĽA:</h4>

@@ -10,7 +10,7 @@ const HeroSection = () => {
             <div className="container">
                 <h1>Vitajte v kníkupectve BB!</h1>
                 <p className="lead">Nájdite svoje ďalšie knižné dobrodružstvo</p>
-                <button className="btn btn-primary btn-lg" onClick={()=> navigate('/search')}>Poďme nakupovať</button>
+                <button className="btn btn-primary btn-lg" onClick={()=> navigate('/search', { state: { input: null } })}>Poďme nakupovať</button>
             </div>
         </section>
     )
