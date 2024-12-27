@@ -76,13 +76,6 @@ const BookDetailPage = () => {
         setOpenWish(false);
     };
 
-    const onTableClick = (e) => {
-        const id = e.target.id;
-        const value = e.target.textContent;
-        console.log(`ID: ${id}, Value: ${value}`);
-        navigate('/search');
-    };
-
     const onCartClick = () => {
         setOpenCart(true);
     }
@@ -99,7 +92,6 @@ const BookDetailPage = () => {
             bookSeries={series.length === 0 ? null : series}
             onCartClick={onCartClick}
             onWishlistClick={onWishlistClick}
-            onTableClick={onTableClick}
             />
             <Dialog open={openCart}>
                 <DialogTitle>

@@ -1,13 +1,11 @@
 import React from 'react';
-import {forEach} from "react-bootstrap/ElementChildren";
 
-const BookInfoTable = ({ bookData, bookGenres, onTableClick }) => (
+const BookInfoTable = ({ bookData, bookGenres }) => (
     <table className="table-borderless">
         <tbody>
         <tr>
             <th scope="row" className="fw-bold">Žáner:</th>
-            <td className="clickable-component" id="genre" onClick={onTableClick}>
-                {bookGenres}</td>
+            <td id="genre">{bookGenres}</td>
             <th scope="row" className="fw-bold">Počet strán:</th>
             <td>{bookData.page_count}</td>
         </tr>
@@ -19,7 +17,7 @@ const BookInfoTable = ({ bookData, bookGenres, onTableClick }) => (
         </tr>
         <tr>
             <th scope="row" className="fw-bold">Jazyk:</th>
-            <td className="clickable-component" onClick={onTableClick}>{bookData.language}</td>
+            <td>{bookData.language}</td>
             <th scope="row" className="fw-bold">Obal:</th>
             <td>{bookData.cover}</td>
         </tr>

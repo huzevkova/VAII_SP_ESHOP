@@ -3,7 +3,7 @@ import BookInfoTable from "../components/Book/BookInfoTable";
 import Footer from "../components/General/Footer";
 import React from "react";
 
-const BookDetailView = ({bookData, bookGenres, bookSeries, onTableClick, onCartClick, onWishlistClick}) => {
+const BookDetailView = ({bookData, bookGenres, bookSeries, onCartClick, onWishlistClick}) => {
     return (
         <>
             <MyNavbar/>
@@ -19,7 +19,7 @@ const BookDetailView = ({bookData, bookGenres, bookSeries, onTableClick, onCartC
                         <h4 className="book mt-3 mb-3">{bookSeries ? (bookSeries.part + '. diel ' + bookSeries.name) : ''}</h4>
                         <h4 className="text-muted">{bookData.author}</h4>
                         <div className="d-flex justify-content-between align-items-start mt-3">
-                            <BookInfoTable bookData={bookData} bookGenres={bookGenres} onTableClick={onTableClick} />
+                            <BookInfoTable bookData={bookData} bookGenres={bookGenres} />
                             <p className="price">{bookData.price}</p>
                         </div>
                         <p className="fw-bold">Popis:</p>
