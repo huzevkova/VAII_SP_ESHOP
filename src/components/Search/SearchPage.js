@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import SearchView from "../../views/SearchView";
+import SearchView from "../../views/Search/SearchView";
 import {useLocation, useNavigate} from "react-router-dom";
 import {fetchBooks, fetchBooksByGenre, fetchBooksByName} from "../../api/bookApi";
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./admin_style.css";
-import AdminView from "../../views/AdminView";
+import AdminView from "../../views/Admin/AdminView";
 import {fetchUsers, updateUser, deleteUser} from "../../api/userApi";
 import {createBook, deleteBook, fetchBooks, updateBook} from "../../api/bookApi";
 import {fetchBloggers, updateBlogger, createBlogger, deleteBlogger} from "../../api/bloggerApi"

@@ -1,6 +1,6 @@
 import {Button, Col, Container, Navbar, Row} from "react-bootstrap";
 import React from "react";
-import AdminTable from "../components/Admin/AdminTable";
+import AdminTable from "../../components/Admin/AdminTable";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";

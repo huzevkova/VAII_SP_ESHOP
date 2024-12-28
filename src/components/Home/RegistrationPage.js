@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import RegistrationView from '../../views/RegistrationView';
+import RegistrationView from '../../views/Home/RegistrationView';
 import {createUser} from "../../api/userApi";
 import {useNavigate} from "react-router-dom";
 

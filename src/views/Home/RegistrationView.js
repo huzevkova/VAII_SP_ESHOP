@@ -1,6 +1,6 @@
 import React from 'react';
-import MyNavbar from '../components/General/MyNavbar.js';
-import Footer from '../components/General/Footer.js';
+import MyNavbar from '../../components/General/MyNavbar.js';
+import Footer from '../../components/General/Footer.js';
 import {Button, Form} from "react-bootstrap";
 
 const RegistrationView = ({formState, handleInputChange, handleCheckChange, handleRegistration}) => {

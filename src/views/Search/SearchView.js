@@ -1,8 +1,8 @@
-import MyNavbar from "../components/General/MyNavbar";
-import SearchFilter from "../components/Search/SearchFilter";
-import SearchBar from "../components/General/SearchBar";
-import ResultList from "../components/Search/ResultList";
-import Footer from "../components/General/Footer";
+import MyNavbar from "../../components/General/MyNavbar";
+import SearchFilter from "../../components/Search/SearchFilter";
+import SearchBar from "../../components/General/SearchBar";
+import ResultList from "../../components/Search/ResultList";
+import Footer from "../../components/General/Footer";
 import React from "react";
 
 const SearchView = ({books, handleSearch, handleInputChange, openBookDetail, handleDropdownClick, applyFilters, handleCheckboxChange, handlePriceChange}) => {

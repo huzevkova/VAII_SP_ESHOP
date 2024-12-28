@@ -1,6 +1,6 @@
 import React from "react";
 import {useLocation} from "react-router-dom";
-import BlogPostView from "../../views/BlogPostView";
+import BlogPostView from "../../views/Blog/BlogPostView";
 
 const BlogPost = () => {
 

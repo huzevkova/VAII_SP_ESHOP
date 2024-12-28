@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import BookCatalogueView from "../../views/BookCatalogueView";
+import BookCatalogueView from "../../views/Book/BookCatalogueView";
 import {useNavigate} from "react-router-dom";
 import {fetchRandomBooks} from "../../api/bookApi";
 

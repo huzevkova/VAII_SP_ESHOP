@@ -3,7 +3,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import {useLocation, useNavigate} from "react-router-dom";
-import BookDetailView from "../../views/BookDetailView";
+import BookDetailView from "../../views/Book/BookDetailView";
 import {fetchBookById, fetchBookSeries, fetchGenresById} from "../../api/bookApi";
 
 const BookDetailPage = () => {

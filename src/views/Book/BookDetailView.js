@@ -1,6 +1,6 @@
-import MyNavbar from "../components/General/MyNavbar";
-import BookInfoTable from "../components/Book/BookInfoTable";
-import Footer from "../components/General/Footer";
+import MyNavbar from "../../components/General/MyNavbar";
+import BookInfoTable from "../../components/Book/BookInfoTable";
+import Footer from "../../components/General/Footer";
 import React from "react";
 
 const BookDetailView = ({bookData, bookGenres, bookSeries, onCartClick, onWishlistClick}) => {

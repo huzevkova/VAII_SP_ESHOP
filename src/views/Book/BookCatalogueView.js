@@ -1,4 +1,4 @@
-import BookCard from "../components/Book/BookCard";
+import BookCard from "../../components/Book/BookCard";
 import React from "react";
 
 const BookCatalogueView = ({books, openBookDetail}) => {

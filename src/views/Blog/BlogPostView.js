@@ -1,9 +1,9 @@
 import React from "react";
-import MyNavbar from "../components/General/MyNavbar";
-import Sidebar from "../components/General/Sidebar";
-import HeroSection from "../components/Home/HeroSection";
-import Footer from "../components/General/Footer";
-import ResultCard from "../components/Search/ResultCard";
+import MyNavbar from "../../components/General/MyNavbar";
+import Sidebar from "../../components/General/Sidebar";
+import HeroSection from "../../components/Home/HeroSection";
+import Footer from "../../components/General/Footer";
+import ResultCard from "../../components/Search/ResultCard";
 
 const BlogPostView = ({post, bookData, goToBook}) => {
     return (

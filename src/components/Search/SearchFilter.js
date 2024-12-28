@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import SearchFilterView from "../../views/SearchFilterView";
+import SearchFilterView from "../../views/Search/SearchFilterView";
 import {fetchAuthors, fetchGenres, fetchLanguages} from "../../api/bookApi";
 
 const SearchFilter = ({ applyFilters, handleCheckboxChange, handlePriceChange }) => {

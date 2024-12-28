@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import LoginView from "../../views/LoginView";
+import LoginView from "../../views/Home/LoginView";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../AuthProvider";
 

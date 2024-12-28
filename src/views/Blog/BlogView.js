@@ -1,7 +1,7 @@
-import MyNavbar from "../components/General/MyNavbar";
-import HeroSection from "../components/Home/HeroSection";
-import BlogCard from "../components/Blog/BlogCard";
-import Footer from "../components/General/Footer";
+import MyNavbar from "../../components/General/MyNavbar";
+import HeroSection from "../../components/Home/HeroSection";
+import BlogCard from "../../components/Blog/BlogCard";
+import Footer from "../../components/General/Footer";
 import React from "react";
 
 const BlogView = ({posts, openBlog}) => {
