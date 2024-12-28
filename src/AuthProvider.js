@@ -6,6 +6,7 @@ const AuthContext = createContext();
 const API_URL = 'http://localhost:5000/api/users';
 
 const AuthProvider = ({ children }) => {
+
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(localStorage.getItem("site") || "");
     const navigate = useNavigate();

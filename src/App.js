@@ -17,7 +17,6 @@ function App() {
       <Router>
           <AuthProvider>
               <Routes>
-                  {/* home page */}
                   <Route path="/" element={<HomePage/>}/>
 
                   <Route path="/login" element={<LoginPage/>}/>
