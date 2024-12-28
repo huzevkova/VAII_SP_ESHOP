@@ -13,7 +13,7 @@ const getUserById = async (id) => {
 };
 
 const getUserByEmail = async (email) => {
-    const query = 'SELECT id_user, type FROM users WHERE email = ?';
+    const query = 'SELECT id_user, type, password FROM users JOIN user_passwords using (id_user) WHERE email = ?';
     const [results] = await db.query(query, [email]);
     return results[0];
 };

@@ -18,7 +18,13 @@ export const fetchUserById = async (id) => {
 
 export const checkUserCredentials = async (data) => {
     console.log(data);
-    const response = await fetch(`${API_URL}/auth/${data}`);
+    const response = await fetch(`${API_URL}/auth/${data.email}`, {
+        method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
 
     if (!response.ok) {
         throw new Error('Failed to authorize user');

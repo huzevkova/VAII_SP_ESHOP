@@ -29,13 +29,14 @@ const LoginPage = () => {
             setLoginState({...loginState, password: 'wrong'})
         } else {
             try {
-                const response = await checkUserCredentials(loginData.email);
+                const response = await checkUserCredentials(loginData);
                 if (response.type === 0) {
                     navigate('/');
                 } else if (response.type === 1) {
                     navigate('/administration');
                 }
             } catch (err) {
+                setLoginState({...loginState, password: 'wrong'})
                 console.error(err);
             }
         }

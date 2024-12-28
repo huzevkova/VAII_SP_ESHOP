@@ -32,11 +32,16 @@ const getUserById = async (req, res) => {
 };
 
 const getUserByEmail = async (req, res) => {
-    const { email } = req.params;
+    const { email, password } = req.body;
     try {
         const user = await userModel.getUserByEmail(email);
         if (user) {
-            res.status(200).json(user);
+            const match = await bcrypt.compare(password, user.password);
+            if (match) {
+                res.status(200).json(user);
+            } else {
+                res.status(401).json({ message: 'Wrong password' });
+            }
         } else {
             res.status(404).json({ message: 'User not found' });
         }
