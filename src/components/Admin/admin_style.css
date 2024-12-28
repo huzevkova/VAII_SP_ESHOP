@@ -16,10 +16,6 @@ body {
     background-color: #e0ffff !important;
 }
 
-table:hover {
-    cursor: pointer;
-}
-
 .navbar {
     background-color: #4682b4;
 }
