@@ -3,10 +3,12 @@ import SearchBar from "../../components/General/SearchBar";
 import {FaShoppingCart} from "react-icons/fa";
 import React from "react";
 import {useNavigate} from "react-router-dom";
+import {useAuth} from "../../AuthProvider";
 
-const NavbarView = ({ handleSearchInputChange, handleSearch, handleDropdownClick}) => {
+const NavbarView = ({ user, handleSearchInputChange, handleSearch, handleDropdownClick}) => {
 
     const navigate = useNavigate();
+    const auth = useAuth();
 
     return (
         <Navbar bg="light" expand="lg" className="navbar-light">
@@ -41,10 +43,14 @@ const NavbarView = ({ handleSearchInputChange, handleSearch, handleDropdownClick
                             <NavDropdown.Item name="other" onClick={handleDropdownClick}>Iné...</NavDropdown.Item>
                         </NavDropdown>
 
-                        <Nav.Item className="p-2">
-                            <Button variant="link" onClick={() => navigate('/login')} className="nav-link p-2">
+                        <Nav.Item className={`p-2 ${user == null ? '' : 'logged-in'}`}>
+                            {user == null ?
+                                <Button variant="link" onClick={() => navigate('/login')} className="nav-link p-2">
                                 Prihlásiť
-                            </Button>
+                            </Button> :
+                                <Button variant="link" onClick={() => navigate('/user')} className="nav-link p-2">
+                                    {user.name}
+                                </Button> }
                         </Nav.Item>
 
                         <Nav.Item>
@@ -52,6 +58,13 @@ const NavbarView = ({ handleSearchInputChange, handleSearch, handleDropdownClick
                                 <FaShoppingCart size={35} />
                             </Nav.Link>
                         </Nav.Item>
+
+                        {user == null ? <></> :
+                        <Nav.Item className="p-2">
+                            <Button variant="link" onClick={auth.logOut} className="nav-link p-2">
+                                Odhlásiť
+                            </Button>
+                        </Nav.Item>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

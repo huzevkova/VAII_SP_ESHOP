@@ -1,11 +1,17 @@
 import React, {useState} from 'react';
 import NavbarView from "../../views/General/NavbarView";
 import {useNavigate} from "react-router-dom";
+import {useAuth} from "../../AuthProvider";
 
 const MyNavbar = () => {
 
     const navigate = useNavigate();
+    const { user, token } = useAuth();
     const [searchInput, setSearchInput] = useState(null);
+
+    if (user) {
+        console.log("navbar here" + token);
+    }
 
     const handleSearchInputChange = (e) => {
         setSearchInput(e.target.value);
@@ -21,6 +27,7 @@ const MyNavbar = () => {
 
     return (
         <NavbarView
+            user={user ? token : null}
             handleSearch={handleSearch}
             handleSearchInputChange={handleSearchInputChange}
             handleDropdownClick={handleDropdownClick}

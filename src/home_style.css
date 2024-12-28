@@ -211,3 +211,7 @@ table {
     background: #007bff;
 }
 
+.logged-in {
+    background-color: sandybrown;
+    border-radius: 15px;
+}
