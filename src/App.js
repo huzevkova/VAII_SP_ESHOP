@@ -10,34 +10,37 @@ import CartPage from "./components/Cart/CartPage";
 import CheckoutPage from "./components/Cart/CheckoutPage";
 import OrderDonePage from "./components/Cart/OrderDonePage";
 import AdminPage from "./components/Admin/AdminPage";
+import AuthProvider from "./AuthProvider";
 
 function App() {
   return (
       <Router>
-          <Routes>
-              {/* home page */}
-              <Route path="/" element={<HomePage/>}/>
+          <AuthProvider>
+              <Routes>
+                  {/* home page */}
+                  <Route path="/" element={<HomePage/>}/>
 
-              <Route path="/login" element={<LoginPage/>}/>
+                  <Route path="/login" element={<LoginPage/>}/>
 
-              <Route path="/book_detail" element={<BookDetailPage/>}/>
+                  <Route path="/book_detail" element={<BookDetailPage/>}/>
 
-              <Route path="/search" element={<SearchPage/>}/>
+                  <Route path="/search" element={<SearchPage/>}/>
 
-              <Route path="/post" element={<BlogPost/>}/>
+                  <Route path="/post" element={<BlogPost/>}/>
 
-              <Route path="/blog_posts" element={<BlogPage/>}/>
+                  <Route path="/blog_posts" element={<BlogPage/>}/>
 
-              <Route path="/registration" element={<RegistrationPage/>}/>
+                  <Route path="/registration" element={<RegistrationPage/>}/>
 
-              <Route path="/cart" element={<CartPage/>}/>
+                  <Route path="/cart" element={<CartPage/>}/>
 
-              <Route path="/checkout" element={<CheckoutPage/>}/>
+                  <Route path="/checkout" element={<CheckoutPage/>}/>
 
-              <Route path="/order_done" element={<OrderDonePage/>}/>
+                  <Route path="/order_done" element={<OrderDonePage/>}/>
 
-              <Route path="/administration" element={<AdminPage/>}/>
-        </Routes>
+                  <Route path="/administration" element={<AdminPage/>}/>
+              </Routes>
+          </AuthProvider>
       </Router>
   );
 }
