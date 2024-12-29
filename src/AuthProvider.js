@@ -19,7 +19,7 @@ const AuthProvider = ({ children }) => {
                 setToken(parsedToken);
             } catch (err) {
                 console.error("Failed to parse token:", err);
-                logOut();
+                navigate('/');
             }
         }
     }, []);
@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
             if (res.type === 0) {
                 setUser(res.id_user);
                 setToken(res);
-                localStorage.setItem("site", res);
+                localStorage.setItem("site", JSON.stringify(res));
                 navigate('/');
                 return;
             } else if (res.type === 1) {
@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
         setUser(null);
         setToken("");
         localStorage.removeItem("site");
-        navigate("/login");
+        navigate("/");
     };
 
     return (

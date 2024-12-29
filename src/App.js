@@ -11,6 +11,8 @@ import CheckoutPage from "./components/Cart/CheckoutPage";
 import OrderDonePage from "./components/Cart/OrderDonePage";
 import AdminPage from "./components/Admin/AdminPage";
 import AuthProvider from "./AuthProvider";
+import UserInfo from "./components/User/UserInfo";
+import Wishlist from "./components/User/Wishlist";
 
 function App() {
   return (
@@ -38,6 +40,11 @@ function App() {
                   <Route path="/order_done" element={<OrderDonePage/>}/>
 
                   <Route path="/administration" element={<AdminPage/>}/>
+
+                  <Route path="/user" element={<UserInfo/>}/>
+
+                  <Route path="/wishlist" element={<Wishlist/>}/>
+
               </Routes>
           </AuthProvider>
       </Router>
