@@ -5,7 +5,7 @@ import Footer from "../../components/General/Footer";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
-const CartView = ({cartItems, handleRemoveItem, handleQuantityChange }) => {
+const CartView = ({cartItems, price, handleRemoveItem, handleQuantityChange }) => {
 
     const navigate = useNavigate();
 
@@ -19,12 +19,12 @@ const CartView = ({cartItems, handleRemoveItem, handleQuantityChange }) => {
                         {cartItems.map((item, index) => (
                             <CartItem
                                 itemData={item}
-                                index={index}
+                                index={item.id_book}
                                 handleRemoveItem={handleRemoveItem}
                                 onQuantityChange={handleQuantityChange}
                             />
                         ))}
-                        <h3 className="mt-3 text-end">Spolu: 30.00€</h3>
+                        <h3 className="mt-3 text-end">Spolu: {price}</h3>
                         <Button onClick={() => navigate('/checkout')}>Prejsť k objednávke</Button>
                     </Container>
                 </div>
