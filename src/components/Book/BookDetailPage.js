@@ -5,10 +5,13 @@ import IconButton from '@mui/material/IconButton';
 import {useLocation, useNavigate} from "react-router-dom";
 import BookDetailView from "../../views/Book/BookDetailView";
 import {fetchBookById, fetchBookSeries, fetchGenresById} from "../../api/bookApi";
+import {addToWishlist, removeFromWishlist} from "../../api/wishlistApi";
+import {useAuth} from "../../AuthProvider";
 
 const BookDetailPage = () => {
 
     const navigate = useNavigate();
+    const {user} = useAuth();
 
     const location = useLocation();
     const { bookId } = location.state;
@@ -80,8 +83,22 @@ const BookDetailPage = () => {
         setOpenCart(true);
     }
 
-    const onWishlistClick = () => {
-        setOpenWish(true);
+    const onWishlistClick = async () => {
+        if (user) {
+            try {
+                const id_book = bookId;
+                console.log(user + " " + id_book);
+                await addToWishlist({user, id_book});
+                setOpenWish(true);
+            } catch (err) {
+                console.error(err);
+                if (err.message === 'This entry already exists in your wishlist') {
+                    alert('Knihu už máte vo wishliste!');
+                }
+            }
+        } else {
+            navigate('/login');
+        }
     }
 
     return (

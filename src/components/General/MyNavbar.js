@@ -9,10 +9,6 @@ const MyNavbar = () => {
     const { user, token } = useAuth();
     const [searchInput, setSearchInput] = useState(null);
 
-    if (user) {
-        console.log("navbar here" + token);
-    }
-
     const handleSearchInputChange = (e) => {
         setSearchInput(e.target.value);
     }
