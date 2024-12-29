@@ -9,7 +9,6 @@ export const fetchWishlist = async (id) => {
 };
 
 export const addToWishlist = async (ids) => {
-    console.log(ids);
     const response = await fetch(`${API_URL}/insert`, {
         method: 'POST',
         headers: {
@@ -27,7 +26,6 @@ export const addToWishlist = async (ids) => {
 };
 
 export const removeFromWishlist = async (ids) => {
-    console.log(ids);
     const response = await fetch(`${API_URL}/delete`, {
         method: 'POST',
         headers: {

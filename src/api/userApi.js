@@ -17,7 +17,6 @@ export const fetchUserById = async (id) => {
 };
 
 export const checkUserCredentials = async (data) => {
-    console.log(data);
     const response = await fetch(`${API_URL}/auth/login`, {
         method: 'POST',
             headers: {
