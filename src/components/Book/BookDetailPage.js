@@ -5,8 +5,9 @@ import IconButton from '@mui/material/IconButton';
 import {useLocation, useNavigate} from "react-router-dom";
 import BookDetailView from "../../views/Book/BookDetailView";
 import {fetchBookById, fetchBookSeries, fetchGenresById} from "../../api/bookApi";
-import {addToWishlist, removeFromWishlist} from "../../api/wishlistApi";
+import {addToWishlist} from "../../api/wishlistApi";
 import {useAuth} from "../../AuthProvider";
+import {addToCart, fetchUserCart} from "../../api/orderApi";
 
 const BookDetailPage = () => {
 
@@ -16,6 +17,7 @@ const BookDetailPage = () => {
     const location = useLocation();
     const { bookId } = location.state;
 
+    const [cart, setCart] = useState(null);
     const [bookData, setBookData] = useState(null);
     const [bookGenres, setBookGenres] = useState(null);
     const [series, setSeries] = useState(null);
@@ -41,7 +43,6 @@ const BookDetailPage = () => {
                     genresString += response[i].genre_name + " ";
                 }
                 setBookGenres(genresString);
-                console.log(genresString);
             } catch (err) {
                 console.error(err);
                 setBookGenres([]);
@@ -62,12 +63,23 @@ const BookDetailPage = () => {
             }
         };
 
+        const loadCart = async () => {
+            try {
+                const response = await fetchUserCart(user);
+                setCart(response);
+            } catch (err) {
+                console.error(err);
+                setCart([]);
+            }
+        }
+
         loadBookData();
         loadBookGenres();
         loadBookSeries();
+        loadCart();
     }, [bookId]);
 
-    if (bookData == null || series == null || bookGenres == null) {
+    if (bookData == null || series == null || bookGenres == null || cart == null) {
         return;
     }
 
@@ -79,8 +91,22 @@ const BookDetailPage = () => {
         setOpenWish(false);
     };
 
-    const onCartClick = () => {
-        setOpenCart(true);
+    const onCartClick = async () => {
+        if (user) {
+            try {
+                const id_book = bookId;
+                const id_order = cart.id_order;
+                await addToCart({id_book, id_order});
+                setOpenCart(true);
+            } catch (err) {
+                console.error(err);
+                if (err.message === 'This book is already in cart') {
+                    alert('Knihu už máte v košíku!');
+                }
+            }
+        } else {
+            navigate('/login');
+        }
     }
 
     const onWishlistClick = async () => {
