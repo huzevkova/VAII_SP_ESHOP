@@ -10,5 +10,6 @@ router.post('/insert', orderController.insertIntoCart);
 router.post('/delete', orderController.removeFromCart);
 router.post('/update_count', orderController.updateCartItemCount);
 router.post('/update/:id', orderController.updateOrderStatus);
+router.post('/update_options/:id', orderController.updateOrderDeliveryAndPayment);
 
 module.exports = router;

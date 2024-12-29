@@ -90,3 +90,17 @@ export const updateOrder = async (data) => {
     }
     return response.json();
 }
+
+export const updateOrderOptions = async (data) => {
+    const response = await fetch(`${API_URL}/update_options/${data.id_order}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+        throw new Error('Failed to update order');
+    }
+    return response.json();
+}

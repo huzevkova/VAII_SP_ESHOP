@@ -25,7 +25,7 @@ const getAllOrders = async () => {
 }
 
 const createCart = async (id) => {
-    const query = 'INSERT into orders VALUES (null, ?, 0, null, 1, 0)';
+    const query = 'INSERT into orders VALUES (null, ?, 0, null, 1, 0, null, null)';
     try {
         const [result] = await db.query(query, [id]);
         return result.insertId;
@@ -85,4 +85,16 @@ const updateOrderStatus = async (data) => {
     }
 }
 
-module.exports = {getAllOrders, getUserOrders, getCartItems, getUserCart, insertIntoCart, createCart, updateOrderStatus, removeFromCart, updateCartItemCount};
+const updateDeliveryAndPayment = async (data) => {
+    const query = 'UPDATE orders SET delivery = ?, payment = ? WHERE id_order = ?';
+    const {delivery, payment, id_order} = data;
+    try {
+        const [result] = await db.query(query, [delivery, payment, id_order]);
+        return result.affectedRows !== 0;
+    } catch (err) {
+        console.error(err);
+        return false;
+    }
+}
+
+module.exports = {getAllOrders, getUserOrders, getCartItems, getUserCart, insertIntoCart, createCart, updateOrderStatus, removeFromCart, updateCartItemCount, updateDeliveryAndPayment};

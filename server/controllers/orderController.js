@@ -16,9 +16,9 @@ const getAllOrders = async (req, res) => {
 }
 
 const getUserOrders = async (req, res) => {
-    const { user } = req.params;
+    const { id } = req.params;
     try {
-        const orders = await orderModel.getUserOrders(user);
+        const orders = await orderModel.getUserOrders(id);
         if (orders.length > 0) {
             res.status(200).json(orders);
         } else {
@@ -124,4 +124,19 @@ const updateOrderStatus = async (req, res) => {
     }
 }
 
-module.exports = {getUserOrders, getAllOrders, getCartItems, getUserCart, insertIntoCart, removeFromCart, updateOrderStatus, updateCartItemCount};
+const updateOrderDeliveryAndPayment = async (req, res) => {
+    const {delivery, payment, id_order} = req.body;
+    try {
+        const item = await orderModel.updateDeliveryAndPayment({delivery, payment, id_order});
+        if (item) {
+            res.status(201).json({message: 'Order updated successfully'});
+        } else {
+            res.status(404).json({ message: 'Order not found' });
+        }
+    } catch (error) {
+        console.error('Error updating order:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+module.exports = {getUserOrders, getAllOrders, getCartItems, getUserCart, insertIntoCart, removeFromCart, updateOrderStatus, updateCartItemCount, updateOrderDeliveryAndPayment};
