@@ -1,19 +1,19 @@
 import {Alert} from "react-bootstrap";
 import React from "react";
 
-const CheckoutSummaryView = ({formData}) => {
+const CheckoutSummaryView = ({userData, orderData, orderOptions, cart}) => {
     return (
         <Alert variant="success">
             <h4>Zhrnutie</h4>
-            <p><b>Meno a priezvisko:</b> {formData.name + " " + formData.surname}</p>
-            <p><b>Email:</b> {formData.email}</p>
+            <p><b>Meno a priezvisko:</b> {userData.name}</p>
+            <p><b>Email:</b> {userData.email}</p>
             <p>
-                <b>Adresa:</b> {`${formData.street} ${formData.house}, ${formData.postal_code} ${formData.city}`}
+                <b>Adresa:</b> {`${userData.street} ${userData.house_number}, ${userData.city_code} ${userData.city}`}
             </p>
-            <p><b>Doručenie:</b> {formData.delivery_option}</p>
-            <p><b>Platba:</b> {formData.payment_option}</p>
-            <p><b>Objednávka:</b> {formData.books.join(", ")}</p>
-            <p><b>Cena:</b> ${formData.total.toFixed(2)}</p>
+            <p><b>Doručenie:</b> {orderOptions.delivery}</p>
+            <p><b>Platba:</b> {orderOptions.payment}</p>
+            <p><b>Objednávka:</b> {orderData.map(book => book.title).join(", ")}</p>
+            <p><b>Cena:</b> ${cart.price}</p>
         </Alert>
     )
 };

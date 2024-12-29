@@ -4,7 +4,7 @@ import CheckoutInfoView from "./CheckoutInfoView";
 import CheckoutDeliveryView from "./CheckoutDeliveryView";
 import CheckoutSummaryView from "./CheckoutSummaryView";
 
-const CheckoutView = ({currentStep, formData, handleInputChange, handlePrevious, handleOrder, handleNext, buttonDisable }) => {
+const CheckoutView = ({currentStep, userData, orderData, orderOptions, cart, handleInputChange, handlePrevious, handleOrder, handleNext, buttonDisable }) => {
 
     return (
         <Container fluid="md">
@@ -21,9 +21,9 @@ const CheckoutView = ({currentStep, formData, handleInputChange, handlePrevious,
             </Row>
             <Row className="mt-5">
                 <Col>
-                    {currentStep === 1 ? <CheckoutInfoView formData={formData} handleInputChange={handleInputChange}/>
-                        : currentStep === 2 ? <CheckoutDeliveryView formData={formData} handleInputChange={handleInputChange}/>
-                            : <CheckoutSummaryView formData={formData}/>}
+                    {currentStep === 1 ? <CheckoutInfoView userData={userData} handleInputChange={handleInputChange}/>
+                        : currentStep === 2 ? <CheckoutDeliveryView orderOptions={orderOptions} handleInputChange={handleInputChange}/>
+                            : <CheckoutSummaryView orderData={orderData} userData={userData} orderOptions={orderOptions} cart={cart}/>}
                 </Col>
             </Row>
             <Row className="mt-4">

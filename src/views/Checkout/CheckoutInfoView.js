@@ -1,7 +1,7 @@
 import {Col, Form, Row} from "react-bootstrap";
 import React from "react";
 
-const CheckoutInfoView = ({formData, handleInputChange}) => {
+const CheckoutInfoView = ({userData, handleInputChange}) => {
 
     return(
         <Form>
@@ -10,28 +10,18 @@ const CheckoutInfoView = ({formData, handleInputChange}) => {
                 <Form.Control
                     type="text"
                     name="name"
-                    placeholder="Zadajte svoje meno"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                />
-            </Form.Group>
-            <Form.Group className="mb-3">
-                <Form.Label>Priezvisko</Form.Label>
-                <Form.Control
-                    type="text"
-                    name="surname"
-                    placeholder="Zadajte svoje priezvisko"
-                    value={formData.surname}
+                    placeholder="Zadajte svoje meno a priezvisko"
+                    value={userData.name}
                     onChange={handleInputChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
-                    type="email"
+                    type="text"
                     name="email"
                     placeholder="Zadajte svoj email"
-                    value={formData.email}
+                    value={userData.email}
                     onChange={handleInputChange}
                 />
             </Form.Group>
@@ -39,9 +29,9 @@ const CheckoutInfoView = ({formData, handleInputChange}) => {
                 <Form.Label>Telefónne číslo</Form.Label>
                 <Form.Control
                     type="phone"
-                    name="phone"
+                    name="phone_number"
                     placeholder="Zadajte svoje telefónne číslo"
-                    value={formData.phone}
+                    value={userData.phone_number}
                     onChange={handleInputChange}
                 />
             </Form.Group>
@@ -51,7 +41,7 @@ const CheckoutInfoView = ({formData, handleInputChange}) => {
                     type="text"
                     name="street"
                     placeholder="Zadajte ulicu"
-                    value={formData.street}
+                    value={userData.street}
                     onChange={handleInputChange}
                 />
             </Form.Group>
@@ -61,9 +51,9 @@ const CheckoutInfoView = ({formData, handleInputChange}) => {
                         <Form.Label>Číslo domu</Form.Label>
                         <Form.Control
                             type="text"
-                            name="house"
+                            name="house_number"
                             placeholder="Zadajte číslo domu"
-                            value={formData.house}
+                            value={userData.house_number}
                             onChange={handleInputChange}
                         />
                     </Form.Group>
@@ -73,9 +63,9 @@ const CheckoutInfoView = ({formData, handleInputChange}) => {
                         <Form.Label>PSČ</Form.Label>
                         <Form.Control
                             type="text"
-                            name="postal_code"
+                            name="city_code"
                             placeholder="Zadajte PSČ"
-                            value={formData.postal_code}
+                            value={userData.city_code}
                             onChange={handleInputChange}
                         />
                     </Form.Group>
@@ -87,7 +77,7 @@ const CheckoutInfoView = ({formData, handleInputChange}) => {
                     type="text"
                     name="city"
                     placeholder="Zadajte mesto"
-                    value={formData.city}
+                    value={userData.city}
                     onChange={handleInputChange}
                 />
             </Form.Group>
