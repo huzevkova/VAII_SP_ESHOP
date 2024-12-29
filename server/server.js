@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const userRoutes = require('./routes/userRoutes');
 const bookRoutes = require('./routes/bookRoutes');
 const bloggerRoutes = require('./routes/bloggerRoutes');
+const wishlistRoutes = require('./routes/wishlistRoutes');
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/books', bookRoutes);
 app.use('/api/bloggers', bloggerRoutes);
+app.use('/api/wishlists', wishlistRoutes);
 
 app.get('/', (req, res) => {
     res.send('Backend is running!');
