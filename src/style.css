@@ -134,6 +134,10 @@ table {
     height: 2em;
 }
 
+.user-font {
+    font-size: 5em;
+}
+
 @media (max-width: 768px) {
     .cart-price-container {
         display: flex;

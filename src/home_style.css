@@ -60,6 +60,10 @@ table .clickable-component {
     min-height: 37em;
 }
 
+.result-card {
+    max-height: 10em;
+}
+
 .relative-position {
     position: relative;
 }
