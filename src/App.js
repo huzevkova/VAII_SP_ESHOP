@@ -13,6 +13,7 @@ import AdminPage from "./components/Admin/AdminPage";
 import AuthProvider from "./AuthProvider";
 import UserInfo from "./components/User/UserInfo";
 import Wishlist from "./components/User/Wishlist";
+import Orders from "./components/User/Orders";
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
                   <Route path="/user" element={<UserInfo/>}/>
 
                   <Route path="/wishlist" element={<Wishlist/>}/>
+
+                  <Route path="/order_history" element={<Orders/>}/>
 
               </Routes>
           </AuthProvider>
