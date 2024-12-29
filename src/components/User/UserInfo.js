@@ -70,16 +70,12 @@ const UserInfo = () => {
                                     </div>
 
                                     <div className="d-flex align-content-end gap-2 mt-3">
-                                        <button
-                                            className="btn btn-primary shadow-sm px-4"
-                                            onClick={() => navigate('/wishlist')}
-                                        >
+                                        <button className="btn btn-primary shadow-sm px-4"
+                                            onClick={() => navigate('/wishlist')}>
                                             Wishlist
                                         </button>
-                                        <button
-                                            className="btn btn-secondary shadow-sm px-4"
-                                            onClick={() => navigate('/login')}
-                                        >
+                                        <button className="btn btn-secondary shadow-sm px-4"
+                                            onClick={() => navigate('/order_history')}>
                                             Objednávky
                                         </button>
                                     </div>
