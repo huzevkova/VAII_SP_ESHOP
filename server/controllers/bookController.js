@@ -211,4 +211,88 @@ const getLangugages = async (req, res) => {
         res.status(500).json({ message: 'Server error' });
     }
 }
-module.exports = { getBookById, createBook, getAllBooks, updateBook, deleteBook, getBooksByName, getRandomBooks, getBookSeries, getGenres, getAuthors, getLangugages, getGenresById, getFilteredBooks, getBooksByGenre};
+
+const getImages = async (req, res) => {
+    try {
+        const images = await bookModel.getImages()
+        if (images.length > 0) {
+            res.status(200).json(images);
+        } else {
+            res.status(404).json({ message: 'images empty' });
+        }
+
+    } catch (error) {
+        console.error('Error fetching images:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const createBookImage = async (req, res) => {
+    const {path, name, id_book} = req.body;
+    try {
+        const id_image = await bookModel.insertImage({path, name})
+        if (id_image && id_book != null) {
+            try {
+                await bookModel.updateBookImage({id_image, id_book});
+                res.status(201).json({message: 'Image created succesfully', id: id_image});
+            } catch (err) {
+                console.error('Error assigning image:', err);
+                res.status(500).json({ message: 'Server error' });
+            }
+        } else {
+            res.status(201).json({message: 'Image created succesfully', id: id_image});
+        }
+    } catch (error) {
+        console.error('Error creating image:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const updateImage = async (req, res) => {
+    const {path, name, id} = req.body;
+    try {
+        const result = await bookModel.updateImage({path, name, id});
+        if (result) {
+            res.status(200).json({ message: 'Image updated successfully' });
+        } else {
+            res.status(404).json({ message: 'Image could not be updated' });
+        }
+    } catch (error) {
+        console.error('Error updating image:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const updateBookImage = async (req, res) => {
+    const {id_image, id_book} = req.body;
+    try {
+        const result = await bookModel.updateBookImage({id_image, id_book});
+        if (result) {
+            res.status(200).json({ message: 'Book image updated successfully' });
+        } else {
+            res.status(404).json({ message: 'Book image could not be updated' });
+        }
+    } catch (error) {
+        console.error('Error updating book image:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const deleteImage = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const result = await bookModel.deleteImage(id);
+        if (result) {
+            res.status(200).json({ message: 'Image deleted successfully' });
+        } else {
+            res.status(404).json({ message: 'Image could not be deleted' });
+        }
+    } catch (error) {
+        console.error('Error deleting image:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+};
+
+module.exports = { getBookById, createBook, getAllBooks, updateBook, deleteBook, getBooksByName,
+    getRandomBooks, getBookSeries, getGenres, getAuthors, getLangugages, getGenresById,
+    getFilteredBooks, getBooksByGenre, getImages, createBookImage, updateBookImage, updateImage, deleteImage};

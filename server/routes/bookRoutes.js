@@ -15,5 +15,11 @@ router.post('/delete/:id', bookController.deleteBook);
 router.get('/genres', bookController.getGenres);
 router.get('/authors', bookController.getAuthors);
 router.get('/languages', bookController.getLangugages);
-router.get('/filtered', bookController.getFilteredBooks)
+router.get('/filtered', bookController.getFilteredBooks);
+router.get('/images', bookController.getImages);
+router.post('/book_image', bookController.createBookImage);
+router.post('/image/update', bookController.updateImage);
+router.post('/book_image/update', bookController.updateBookImage);
+router.post('/image/delete/:id', bookController.deleteImage);
+
 module.exports = router;

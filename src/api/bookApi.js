@@ -121,3 +121,66 @@ export const fetchLanguages = async () => {
     }
     return response.json();
 };
+
+export const fetchImages = async () => {
+    const response = await fetch(`${API_URL}/images`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch images');
+    }
+    return response.json();
+};
+
+export const createImage = async (imageData) => {
+    const response = await fetch(`${API_URL}/book_image`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(imageData),
+    });
+    if (!response.ok) {
+        throw new Error('Failed to create image');
+    }
+    return response.json();
+};
+
+export const updateImage = async (imageData) => {
+    const response = await fetch(`${API_URL}/image/update`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(imageData),
+    });
+    if (!response.ok) {
+        throw new Error('Failed to update image');
+    }
+    return response.json();
+}
+
+export const updateBookImage = async (data) => {
+    const response = await fetch(`${API_URL}/book_image/update`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+        throw new Error('Failed to update book image');
+    }
+    return response.json();
+}
+
+export const deleteImage = async (id) => {
+    const response = await fetch(`${API_URL}/image/delete/${id}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    if (!response.ok) {
+        throw new Error('Failed to delete image');
+    }
+    return response.json();
+}

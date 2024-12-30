@@ -1,4 +1,5 @@
 const db = require('../db');
+const {id} = require("date-fns/locale");
 
 const getAllBooks = async () => {
     const query = 'SELECT * FROM books left join images on (books.image = images.id_image)';
@@ -103,4 +104,59 @@ const getLanguages = async () => {
     return results;
 }
 
-module.exports = { getAllBooks, getBookById, getBooksByName, createBook, updateBook, deleteBook, getRandomBooks, getBookSeries, getGenres, getAuthors, getLanguages, getGenresById, getFilteredBooks, getBooksByGenre};
+const getImages = async () => {
+    const query = 'SELECT id_image, path, name, id_book FROM images LEFT JOIN books ON (id_image = image)';
+    const [results] = await db.query(query);
+    return results;
+}
+
+const insertImage = async (data) => {
+    const query = 'INSERT into images VALUES (null, ?, ?)';
+    const {path, name } = data;
+    try {
+        const [result] = await db.query(query, [path, name]);
+        return result.insertId;
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+}
+
+const updateImage = async (data) => {
+    const query = 'UPDATE images SET path = ?, name = ? WHERE id_image = ?';
+    const {path, name, id} = data;
+    try {
+        const [result] = await db.query(query, [path, name, id]);
+        return result.affectedRows !== 0;
+    } catch (err) {
+        console.error(err);
+        return false;
+    }
+}
+
+const updateBookImage = async (ids) => {
+    const query = 'UPDATE books SET image = ? WHERE id_book = ?';
+    const {id_image, id_book} = ids;
+    try {
+        const [result] = await db.query(query, [id_image, id_book]);
+        return result.affectedRows !== 0;
+    } catch (err) {
+        console.error(err);
+        return false;
+    }
+}
+
+const deleteImage = async (id) => {
+    const query = 'DELETE FROM images WHERE id_image = ?';
+    try {
+        const [result] = await db.query(query, [id]);
+        return result.affectedRows !== 0;
+    } catch (err) {
+        console.error(err);
+        return false;
+    }
+}
+
+module.exports = { getAllBooks, getBookById, getBooksByName, createBook, updateBook, deleteBook,
+    getRandomBooks, getBookSeries, getGenres, getAuthors, getLanguages, getGenresById,
+    getFilteredBooks, getBooksByGenre, getImages, insertImage, updateBookImage, updateImage, deleteImage};
