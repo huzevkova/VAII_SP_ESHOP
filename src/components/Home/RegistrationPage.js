@@ -66,8 +66,6 @@ const RegistrationPage = () => {
         setFormData(updatedFormData);
 
         const {userId, message} = await createUser(updatedFormData);
-        console.log(message);
-        console.log(userId);
 
         navigate('/login');
     };

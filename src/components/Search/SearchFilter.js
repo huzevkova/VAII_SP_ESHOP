@@ -19,7 +19,6 @@ const SearchFilter = ({ applyFilters, handleCheckboxChange, handlePriceChange })
             try {
                 const response = await fetchGenres();
                 setGenres(response);
-                console.log(response);
             } catch (err) {
                 console.error(err);
                 setGenres([]);

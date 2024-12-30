@@ -5,7 +5,6 @@ import MyNavbar from "../General/MyNavbar";
 import Footer from "../General/Footer";
 import Sidebar from "../General/Sidebar";
 import {fetchUserOrders} from "../../api/orderApi";
-import {FaShoppingCart} from "react-icons/fa";
 import {format} from "date-fns";
 
 const Orders = () => {

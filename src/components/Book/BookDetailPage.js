@@ -113,7 +113,6 @@ const BookDetailPage = () => {
         if (user) {
             try {
                 const id_book = bookId;
-                console.log(user + " " + id_book);
                 await addToWishlist({user, id_book});
                 setOpenWish(true);
             } catch (err) {

@@ -36,7 +36,6 @@ const Wishlist = () => {
     }
 
     const handleDelete = async (id_book) => {
-        console.log(user + " " + id_book);
         try {
             await removeFromWishlist({user, id_book})
         } catch (err) {

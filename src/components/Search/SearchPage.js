@@ -84,7 +84,6 @@ const SearchPage = () => {
 
             return { ...prevFilters, [category]: updatedCategory };
         });
-        console.log(selectedFilters);
     };
 
     const handlePriceChange = (field, value) => {
