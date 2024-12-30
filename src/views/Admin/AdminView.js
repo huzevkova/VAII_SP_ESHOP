@@ -38,8 +38,13 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                         </Button>
                     </Col>
                     <Col>
-                        <Button variant="primary" onClick={() => handleTabClick("Bloggeri")}>
-                            Bloggeri
+                        <Button variant="primary" onClick={() => handleTabClick("Objednávky")}>
+                            Objednávky
+                        </Button>
+                    </Col>
+                    <Col>
+                        <Button variant="primary" onClick={() => handleTabClick("Obrázky")}>
+                            Obrázky
                         </Button>
                     </Col>
                 </Row>

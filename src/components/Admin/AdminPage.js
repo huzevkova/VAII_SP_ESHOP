@@ -3,16 +3,31 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./admin_style.css";
 import AdminView from "../../views/Admin/AdminView";
 import {fetchUsers, updateUser, deleteUser} from "../../api/userApi";
-import {createBook, deleteBook, fetchBooks, updateBook} from "../../api/bookApi";
-import {fetchBloggers, updateBlogger, createBlogger, deleteBlogger} from "../../api/bloggerApi"
+import {
+    createBook,
+    createImage,
+    deleteBook, deleteImage,
+    fetchBooks,
+    fetchImages,
+    updateBook,
+    updateBookImage,
+    updateImage
+} from "../../api/bookApi";
 import {useNavigate} from "react-router-dom";
+import {useAuth} from "../../AuthProvider";
+import {fetchOrders} from "../../api/orderApi";
 
 const AdminPage = () => {
+
+    const navigate = useNavigate();
+    const auth = useAuth();
+
     const [selectedTab, setSelectedTab] = useState(null);
     const [tableName, setTableName] = useState(null);
     const [userData, setUserData] = useState(null);
     const [bookData, setBookData] = useState(null);
-    const [bloggerData, setBloggerData] = useState(null);
+    const [orderData, setOrderData] = useState(null);
+    const [imageData, setImageData] = useState(null);
     const [data, setData] = useState([]);
     const [selectedRow, setSelectedRow] = useState(null);
     const [editingRow, setEditingRow] = useState(null);
@@ -21,7 +36,11 @@ const AdminPage = () => {
     const [description, setDescription] = useState(null);
     const [newDescription, setNewDescription] = useState(false);
 
-    const navigate = useNavigate();
+    const {user} = useAuth();
+
+    if (user !== "admin") {
+        navigate('/login');
+    }
 
     useEffect(() => {
         const loadUsers = async () => {
@@ -43,13 +62,23 @@ const AdminPage = () => {
             }
         };
 
-        const loadBloggers = async () => {
+        const loadOrders= async () => {
             try {
-                const response = await fetchBloggers();
-                setBloggerData(response);
+                const response = await fetchOrders();
+                setOrderData(response);
             } catch (err) {
                 console.error(err);
-                setBloggerData([{ id: "#", name: null, email: null, image: null }]);
+                setOrderData([]);
+            }
+        };
+
+        const loadImages= async () => {
+            try {
+                const response = await fetchImages();
+                setImageData(response);
+            } catch (err) {
+                console.error(err);
+                setImageData([]);
             }
         };
 
@@ -59,8 +88,11 @@ const AdminPage = () => {
         if (bookData == null) {
             loadBooks();
         }
-        if (bloggerData == null) {
-            loadBloggers();
+        if (orderData == null) {
+            loadOrders();
+        }
+        if (imageData == null) {
+            loadImages();
         }
     });
 
@@ -72,11 +104,10 @@ const AdminPage = () => {
     };
 
     const handleLogOut = () => {
-        navigate('/');
+        auth.logOut();
     }
 
     const handleDescription = (e) => {
-        console.log(e.target.value);
         setDescription(e.target.value);
     }
 
@@ -94,16 +125,24 @@ const AdminPage = () => {
                     const { id_book, ...rest } = obj;
                     return { id: id_book, ...rest };
                 });
-                const updatedData = updatedBookData.map(({ description, ...rest }) => rest);
+                let updatedData = updatedBookData.map(({ description, ...rest }) => rest);
+                updatedData = updatedData.map(({id_image, path, name, ...rest}) => rest);
                 setBookData(updatedBookData);
                 return updatedData;
-            case "Bloggeri":
-                const updatedBloggerData = bloggerData.map(obj => {
-                    const { id_blogger, ...rest } = obj;
-                    return { id: id_blogger, ...rest };
+            case "Objednávky":
+                const updatedOrderData = orderData.map(obj => {
+                    const { id_order, ...rest } = obj;
+                    return { id: id_order, ...rest };
                 });
-                setBloggerData(updatedBloggerData);
-                return updatedBloggerData;
+                setOrderData(updatedOrderData);
+                return updatedOrderData;
+            case "Obrázky":
+                const updatedImageData = imageData.map(obj => {
+                    const { id_image, ...rest } = obj;
+                    return { id: id_image, ...rest };
+                });
+                setImageData(updatedImageData);
+                return updatedImageData;
             default:
                 return [];
         }
@@ -132,10 +171,10 @@ const AdminPage = () => {
             } catch (err) {
                 console.error(err);
             }
-        } else if (tableName === "Bloggeri") {
+        } else if (tableName === "Obrázky") {
             try {
-                const response = await deleteBlogger(selectedRow);
-                setBloggerData(data.filter((item) => item.id !== selectedRow));
+                const response = await deleteImage(selectedRow);
+                setImageData(data.filter((item) => item.id !== selectedRow));
                 setData(data.filter((item) => item.id !== selectedRow));
                 setSelectedRow(null);
             } catch (err) {
@@ -154,7 +193,6 @@ const AdminPage = () => {
     };
 
     const handleConfirmAdd = async () => {
-
         if (tableName === "Knihy") {
             if (openDescription === false) {
                 setNewDescription(true);
@@ -172,23 +210,28 @@ const AdminPage = () => {
                     setBookData([...data, newRowWithDescription]);
                     setData([...data, completeRow]);
                     setNewRow(null);
-                    console.log(message);
                 } catch (err) {
                     console.error(err);
                 }
                 setOpenDescription(false);
                 setNewDescription(false);
             }
-        } else if (tableName === "Bloggeri") {
+        } else if (tableName === "Obrázky") {
             try {
-                const {bloggerId, message} = await createBlogger(newRow);
-                const newTableRow = { id: bloggerId, ...newRow};
+                let newRowUpdated;
+                if (!newRow.hasOwnProperty("id_book")) {
+                    newRowUpdated = {id_book: null, ...newRow};
+                } else {
+                    newRowUpdated = newRow;
+                }
+                const {id} = await createImage(newRowUpdated);
+                const newTableRow = {id: id, ...newRow};
                 const requiredKeys = data[0] ? Object.keys(data[0]) : [];
                 const completeRow = requiredKeys.reduce((acc, key) => {
                     acc[key] = newTableRow[key] || "";
                     return acc;
                 }, {});
-                setBloggerData([...data, completeRow]);
+                setImageData([...data, newTableRow]);
                 setData([...data, completeRow]);
                 setNewRow(null);
             } catch (err) {
@@ -200,7 +243,6 @@ const AdminPage = () => {
     const handleConfirmEdit = async () => {
         if (tableName === "Používatelia") {
             try {
-                console.log(editingRow);
                 const response = await updateUser(editingRow);
                 setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                 setUserData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
@@ -211,7 +253,6 @@ const AdminPage = () => {
         } else if (tableName === "Knihy") {
             if (openDescription === false) {
                 const book = bookData.find((row) => row.id === editingRow.id);
-                console.log(book.description);
                 setDescription(book.description);
                 setOpenDescription(true);
             } else {
@@ -226,11 +267,15 @@ const AdminPage = () => {
                 }
                 setOpenDescription(false);
             }
-        } else if (tableName === "Bloggeri") {
+        } else if (tableName === "Obrázky") {
             try {
-                const response = await updateBlogger(editingRow);
+                const {id, path, name} = editingRow;
+                const responseImage = await updateImage({path, name, id});
+                const id_image = editingRow.id;
+                const id_book = editingRow.id_book;
+                const responseBook = await updateBookImage({id_image, id_book});
                 setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
-                setBloggerData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
+                setImageData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                 setEditingRow(null);
             } catch (err) {
                 console.error(err);

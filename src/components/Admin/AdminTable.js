@@ -33,28 +33,17 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                     <tr>
                         {Object.keys(data[0] || {}).map((key, index) => (
                             <td key={index}>
+                                {key !== "id" ?
                                 <Form.Control
                                     type="text"
                                     defaultValue=""
-                                    placeholder={`Enter ${key}`}
+                                    placeholder=""
                                     onChange={(e) =>
                                         setNewRow({...newRow, [key]: e.target.value})
                                     }
-                                />
+                                /> : index+1}
                             </td>
                         ))}
-                        {dataType === 'Bloggeri' ?
-                            <td>
-                                <Form.Control
-                                    type="text"
-                                    placeholder={`Enter password`}
-                                    onChange={(e) =>
-                                        setNewRow({...newRow, password: e.target.value})
-                                    }
-                                />
-                            </td>
-                            : null
-                        }
                         <td>
                             <Button variant="success" size="sm" onClick={handleConfirmAdd}>
                                 OK
@@ -72,6 +61,7 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                     <tr>
                         {Object.keys(editingRow).map((key, index) => (
                             <td key={index}>
+                                {key !== "id" ?
                                 <Form.Control
                                     type="text"
                                     value={editingRow[key]}
@@ -81,7 +71,7 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                                             [key]: e.target.value,
                                         })
                                     }
-                                />
+                                /> : index}
                             </td>
                         ))}
                         <td>
@@ -100,10 +90,10 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
             </Table>
 
             <div className="d-flex gap-2">
-                <Button variant="danger" disabled={!selectedRow} onClick={handleDelete}>
+                <Button variant="danger" disabled={!selectedRow || dataType === 'Objednávky'} onClick={handleDelete}>
                     Odstrániť
                 </Button>
-                <Button variant="success" disabled={dataType === 'Používatelia'} onClick={handleAdd}>
+                <Button variant="success" disabled={dataType === 'Používatelia' || dataType === 'Objednávky'} onClick={handleAdd}>
                     Pridať
                 </Button>
                 <Button variant="warning" disabled={!selectedRow} onClick={handleEdit}>
