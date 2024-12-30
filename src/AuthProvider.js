@@ -15,8 +15,13 @@ const AuthProvider = ({ children }) => {
         if (token) {
             try {
                 const parsedToken = JSON.parse(token);
-                setUser(parsedToken.id_user);
-                setToken(parsedToken);
+                if (parsedToken.type === 1) {
+                    setUser("admin");
+                    setToken(parsedToken);
+                } else {
+                    setUser(parsedToken.id_user);
+                    setToken(parsedToken);
+                }
             } catch (err) {
                 console.error("Failed to parse token:", err);
                 navigate('/');
@@ -41,6 +46,9 @@ const AuthProvider = ({ children }) => {
                 navigate('/');
                 return;
             } else if (res.type === 1) {
+                setUser("admin");
+                setToken(res);
+                localStorage.setItem("site", JSON.stringify(res));
                 navigate('/administration');
                 return;
             }
@@ -51,7 +59,6 @@ const AuthProvider = ({ children }) => {
     };
 
     const logOut = () => {
-        console.log("logging out");
         setUser(null);
         setToken("");
         localStorage.removeItem("site");
