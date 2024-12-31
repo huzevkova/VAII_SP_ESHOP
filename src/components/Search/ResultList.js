@@ -2,7 +2,7 @@ import React from "react";
 import ResultCard from "./ResultCard";
 import Dropdown from "react-bootstrap/Dropdown";
 
-const ResultList = ({books, openBookDetail, handleDropdownClick}) => {
+const ResultList = ({books, addToCart, openBookDetail, handleDropdownClick}) => {
     return (
         <section className="py-3">
             <div className="container">
@@ -23,7 +23,7 @@ const ResultList = ({books, openBookDetail, handleDropdownClick}) => {
                 </div>
                 <div className="container mt-4">
                     {books.map((book, index) => (
-                        <ResultCard key={index} bookData={book} openBookDetail={openBookDetail}/>
+                        <ResultCard key={index} bookData={book} openBookDetail={openBookDetail} addToCart={addToCart}/>
                     ))}
                 </div>
             </div>

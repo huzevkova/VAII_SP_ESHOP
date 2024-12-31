@@ -2,16 +2,24 @@ import React, {useEffect, useState} from 'react';
 import SearchView from "../../views/Search/SearchView";
 import {useLocation, useNavigate} from "react-router-dom";
 import {fetchBooks, fetchBooksByGenre, fetchBooksByName} from "../../api/bookApi";
+import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
+import Dialog from "@mui/material/Dialog";
+import {addToCart, fetchUserCart} from "../../api/orderApi";
+import {useAuth} from "../../AuthProvider";
 
 const SearchPage = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const { input } = location.state;
+    const { input, genre } = location.state || [];
+    const {user} = useAuth();
 
     const [allBooks, setAllBooks] = useState(null);
     const [books, setBooks] = useState(null);
+    const [cart, setCart] = useState(null);
     const [searchInput, setSearchInput] = useState(input);
+    const [openCart, setOpenCart] = useState(false);
 
     const [selectedFilters, setSelectedFilters] = useState({
         genres: [],
@@ -34,6 +42,18 @@ const SearchPage = () => {
             }
 
             loadSearch();
+        } else if (genre != null) {
+            const loadBooksGenre = async () => {
+                try {
+                    const response = await fetchBooksByGenre(genre);
+                    setBooks(response);
+                } catch (err) {
+                    console.error(err);
+                    setBooks([]);
+                }
+            };
+
+            loadBooksGenre();
         } else {
             const loadBooks = async () => {
                 try {
@@ -48,9 +68,24 @@ const SearchPage = () => {
 
             loadBooks();
         }
-    }, []);
+        const loadCart = async () => {
+            try {
+                const response = await fetchUserCart(user);
+                setCart(response);
+            } catch (err) {
+                console.error(err);
+                setCart([]);
+            }
+        }
 
-    if (books == null) {
+        if (user) {
+            loadCart();
+        } else {
+            setCart([]);
+        }
+    }, [location.state]);
+
+    if (books == null || cart == null) {
         return;
     }
 
@@ -130,10 +165,36 @@ const SearchPage = () => {
         setBooks(filteredBooks);
     };
 
+    const handleCloseCart = () => {
+        setOpenCart(false);
+    };
+
+
+    const addToCartClick = async (id) => {
+        if (user) {
+            try {
+                const id_book = id;
+                const id_order = cart.id_order;
+                await addToCart({id_book, id_order});
+                setOpenCart(true);
+            } catch (err) {
+                console.error(err);
+                if (err.message === 'This book is already in cart') {
+                    alert('Knihu už máte v košíku!');
+                }
+            }
+        } else {
+            navigate('/login');
+        }
+    }
+
+
     return (
+        <>
         <SearchView
             books={books}
             handleSearch={handleSearch}
+            addToCart={addToCartClick}
             handleInputChange={handleInputChange}
             openBookDetail={openBookDetail}
             handleDropdownClick={handleDropdownClick}
@@ -141,6 +202,15 @@ const SearchPage = () => {
             handleCheckboxChange={handleCheckboxChange}
             handlePriceChange={handlePriceChange}
         />
+            <Dialog open={openCart}>
+                <DialogTitle>
+                    {"Kniha bola pridaná do košíka"}
+                </DialogTitle>
+                <IconButton onClick={handleCloseCart}>
+                    OK
+                </IconButton>
+            </Dialog>
+        </>
     )
 };
 

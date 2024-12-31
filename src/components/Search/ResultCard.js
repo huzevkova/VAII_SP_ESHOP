@@ -1,7 +1,7 @@
 import {FaShoppingCart} from "react-icons/fa";
 import React from "react";
 
-const ResultCard = ({bookData, openBookDetail}) => {
+const ResultCard = ({bookData, openBookDetail, addToCart}) => {
     return (
             <div className="row bg-light p-3 mb-3 border rounded align-items-center relative-position clickable-component" onClick={() => openBookDetail(bookData.id_book)}>
                 <div className="col-md-2 col-sm-3">
@@ -13,7 +13,11 @@ const ResultCard = ({bookData, openBookDetail}) => {
                     <p className="line-clamp description">{bookData.description}</p>
                 </div>
                 <div className="col-md-2 col-sm-2 cart-price-container text-center">
-                    <button className="top-button align-content-center" type="button"><FaShoppingCart/></button>
+                    <button className="top-button align-content-center" type="button" onClick={(e) => {
+                        e.stopPropagation();
+                        addToCart(bookData.id_book);
+                    }}>
+                        <FaShoppingCart/></button>
                     <h4 className="bottom">{bookData.price}</h4>
                 </div>
             </div>

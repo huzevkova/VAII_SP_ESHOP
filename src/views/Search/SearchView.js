@@ -5,7 +5,7 @@ import ResultList from "../../components/Search/ResultList";
 import Footer from "../../components/General/Footer";
 import React from "react";
 
-const SearchView = ({books, handleSearch, handleInputChange, openBookDetail, handleDropdownClick, applyFilters, handleCheckboxChange, handlePriceChange}) => {
+const SearchView = ({books, addToCart, handleSearch, handleInputChange, openBookDetail, handleDropdownClick, applyFilters, handleCheckboxChange, handlePriceChange}) => {
     return (
         <>
             <MyNavbar/>
@@ -16,7 +16,7 @@ const SearchView = ({books, handleSearch, handleInputChange, openBookDetail, han
                     </div>
                     <div className="col-md-9 py-2">
                         <SearchBar handleSearchInputChange={handleInputChange} handleSearch={handleSearch}/>
-                        <ResultList books={books} openBookDetail={openBookDetail} handleDropdownClick={handleDropdownClick}/>
+                        <ResultList books={books} openBookDetail={openBookDetail} handleDropdownClick={handleDropdownClick} addToCart={addToCart}/>
                     </div>
                 </div>
             </div>

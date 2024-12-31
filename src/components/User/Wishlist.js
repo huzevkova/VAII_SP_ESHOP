@@ -6,11 +6,17 @@ import Footer from "../General/Footer";
 import Sidebar from "../General/Sidebar";
 import {fetchWishlist, removeFromWishlist} from "../../api/wishlistApi";
 import ResultCard from "../Search/ResultCard";
+import {addToCart, fetchUserCart} from "../../api/orderApi";
+import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
+import Dialog from "@mui/material/Dialog";
 
 const Wishlist = () => {
 
     const navigate = useNavigate();
     const [wishlist, setWishlist] = useState(null);
+    const [cart, setCart] = useState(null);
+    const [openCart, setOpenCart] = useState(false);
     const {user} = useAuth();
 
     if (!user) {
@@ -28,6 +34,17 @@ const Wishlist = () => {
             }
         };
 
+        const loadCart = async () => {
+            try {
+                const response = await fetchUserCart(user);
+                setCart(response);
+            } catch (err) {
+                console.error(err);
+                setCart([]);
+            }
+        }
+
+        loadCart();
         loadWishlist();
     });
 
@@ -44,6 +61,29 @@ const Wishlist = () => {
     }
     const openBookDetail = (id) => {
         navigate('/book_detail', { state: { bookId: id } });
+    }
+
+    const handleCloseCart = () => {
+        setOpenCart(false);
+    };
+
+
+    const addToCartClick = async (id) => {
+        if (user) {
+            try {
+                const id_book = id;
+                const id_order = cart.id_order;
+                await addToCart({id_book, id_order});
+                setOpenCart(true);
+            } catch (err) {
+                console.error(err);
+                if (err.message === 'This book is already in cart') {
+                    alert('Knihu už máte v košíku!');
+                }
+            }
+        } else {
+            navigate('/login');
+        }
     }
 
     return (
@@ -72,6 +112,14 @@ const Wishlist = () => {
                 </div>
             </div>
             <Footer/>
+            <Dialog open={openCart}>
+                <DialogTitle>
+                    {"Kniha bola pridaná do košíka"}
+                </DialogTitle>
+                <IconButton onClick={handleCloseCart}>
+                    OK
+                </IconButton>
+            </Dialog>
         </>
     )
 }
