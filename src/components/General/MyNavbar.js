@@ -14,11 +14,16 @@ const MyNavbar = () => {
     }
 
     const handleSearch = (e) => {
-        navigate('/search', { state: { input: searchInput } });
+        navigate('/search', { state: { input: searchInput, genre: null } });
     }
 
     const handleDropdownClick = (e) => {
-        navigate('/search', { state: { input: searchInput } });
+        if (e.target.name === "all") {
+            console.log(e.target.name);
+            navigate('/search', { state: { input: null, genre: null } });
+        } else {
+            navigate('/search', {state: {input: null, genre: e.target.name}});
+        }
     }
 
     return (

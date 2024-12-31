@@ -36,11 +36,11 @@ const NavbarView = ({ user, handleSearchInputChange, handleSearch, handleDropdow
 
                     <Nav className="ms-auto">
                         <NavDropdown className="p-2" title="Nakupovať" id="navbardrop" size="sm">
-                            <NavDropdown.Item name="fantasy" onClick={handleDropdownClick}>Fantasy</NavDropdown.Item>
-                            <NavDropdown.Item name="detective" onClick={handleDropdownClick}>Detektívka</NavDropdown.Item>
-                            <NavDropdown.Item name="romance" onClick={handleDropdownClick}>Romantika</NavDropdown.Item>
-                            <NavDropdown.Item name="scifi" onClick={handleDropdownClick}>Sci-fi</NavDropdown.Item>
-                            <NavDropdown.Item name="other" onClick={handleDropdownClick}>Iné...</NavDropdown.Item>
+                            <NavDropdown.Item name="Fantasy" onClick={handleDropdownClick}>Fantasy</NavDropdown.Item>
+                            <NavDropdown.Item name="Detektivka" onClick={handleDropdownClick}>Detektívka</NavDropdown.Item>
+                            <NavDropdown.Item name="Romantika" onClick={handleDropdownClick}>Romantika</NavDropdown.Item>
+                            <NavDropdown.Item name="Sci-fi" onClick={handleDropdownClick}>Sci-fi</NavDropdown.Item>
+                            <NavDropdown.Item name="all" onClick={handleDropdownClick}>Iné...</NavDropdown.Item>
                         </NavDropdown>
 
                         <Nav.Item className={`p-2 ${user == null ? '' : 'logged-in'}`}>
