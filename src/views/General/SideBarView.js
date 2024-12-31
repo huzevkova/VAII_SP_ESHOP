@@ -1,6 +1,6 @@
 import React from "react";
 
-const SideBarView = ({posts, goToBlog, goToBlogPost}) => {
+const SideBarView = ({posts, goToBlogPost}) => {
 
     const postItem = (post, index) => {
         return (
@@ -15,7 +15,7 @@ const SideBarView = ({posts, goToBlog, goToBlogPost}) => {
 
     return (
         <div className="sticky-top p-3">
-            <h4 className="clickable-component" onClick={goToBlog}>Knižné novinky a recenzie:</h4>
+            <h4>Knižné novinky a recenzie:</h4>
             <>
                 {posts.map((post, index) => (postItem(post, index)))}
             </>

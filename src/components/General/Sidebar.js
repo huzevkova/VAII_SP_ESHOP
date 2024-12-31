@@ -15,10 +15,6 @@ const Sidebar = () => {
             author: 'Autor článku',}
     ]);
 
-    const goToBlog = () => {
-        navigate('/blog_posts');
-    }
-
     const goToBlogPost = (index) => {
         navigate('/post', { state: { post: posts[index] } });
     }
@@ -26,7 +22,6 @@ const Sidebar = () => {
     return (
         <SideBarView
             posts={posts}
-            goToBlog={goToBlog}
             goToBlogPost={goToBlogPost}
         />
     )
