@@ -55,15 +55,15 @@ const UserInfo = () => {
                                             <tbody>
                                             <tr>
                                                 <th className="fw-bold text-dark">Tel. číslo:</th>
-                                                <td>{userData.phone_number}</td>
+                                                <td>{userData.phone_number == null ? "" : userData.phone_number}</td>
                                             </tr>
                                             <tr>
                                                 <th className="fw-bold text-dark">Mesto:</th>
-                                                <td>{userData.city_code + " " + userData.city}</td>
+                                                <td>{userData.city_code == null ? "" : userData.city_code + " " + userData.city == null ? "" : userData.city}</td>
                                             </tr>
                                             <tr>
                                                 <th className="fw-bold text-dark">Ulica:</th>
-                                                <td>{userData.street + " " + userData.house_number}</td>
+                                                <td>{userData.street == null ? "" : userData.street + " " + userData.house_number == null ? "" : userData.house_number}</td>
                                             </tr>
                                             </tbody>
                                         </table>
