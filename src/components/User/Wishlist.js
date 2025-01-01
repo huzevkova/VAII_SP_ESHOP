@@ -99,7 +99,7 @@ const Wishlist = () => {
                         <div className="container mt-4">
                             {wishlist.map((book, index) => (
                                 <div className="d-flex justify-content-end" key={index}>
-                                    <ResultCard bookData={book} openBookDetail={openBookDetail} />
+                                    <ResultCard bookData={book} openBookDetail={openBookDetail} addToCart={addToCartClick}/>
                                     <button
                                         className="btn btn-danger btn-sm position-absolute delete-button mt-1"
                                         onClick={() => handleDelete(book.id_book)}>
