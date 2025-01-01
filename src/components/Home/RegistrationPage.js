@@ -16,7 +16,8 @@ const RegistrationPage = () => {
             city_code: null,
             street: null,
             house_number: null,
-            password: null });
+            password: null,
+            password_confirmation: null,});
 
     const [formAgreement, setFormAgreement] = useState(false);
 
@@ -25,6 +26,7 @@ const RegistrationPage = () => {
             surname: 'normal',
             email: 'normal',
             password: 'normal',
+            password_confirmation: 'normal',
             agreement: 'normal'});
 
     const handleInputChange = (e) => {
@@ -58,6 +60,9 @@ const RegistrationPage = () => {
         } else if (!formData.password || formData.password.length < 10) {
             setFormState({...formState, password: 'wrong'});
             return;
+        } else if (!formData.password_confirmation || formData.password_confirmation !== formData.password) {
+            setFormState( {...formState, password_confirmation: 'wrong'});
+            return;
         } else if (!formAgreement) {
             setFormState({...formState, agreement: 'wrong'});
             return;
@@ -65,7 +70,11 @@ const RegistrationPage = () => {
 
         setFormData(updatedFormData);
 
-        const {userId, message} = await createUser(updatedFormData);
+        try {
+            await createUser(updatedFormData);
+        } catch (err) {
+            console.log(err);
+        }
 
         navigate('/login');
     };

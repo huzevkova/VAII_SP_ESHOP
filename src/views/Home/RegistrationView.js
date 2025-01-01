@@ -24,6 +24,9 @@ const RegistrationView = ({formState, handleInputChange, handleCheckChange, hand
                         <Form.Group className="mb-3" controlId="form.password">
                             <Form.Control className={formState.password} name="password" type="password" placeholder="Heslo (aspoň 10 znakov)" onChange={handleInputChange}/>
                         </Form.Group>
+                        <Form.Group className="mb-3" controlId="form.password">
+                            <Form.Control className={formState.password_confirmation} name="password_confirmation" type="password" placeholder="Znova zadajte heslo" onChange={handleInputChange}/>
+                        </Form.Group>
                         <p>Nepovinné údaje (automatické vyplnenie pri objednávke):</p>
                         <Form.Group className="mb-3" controlId="form.phone">
                             <Form.Control name="phone_number" placeholder="Tel. číslo" onChange={handleInputChange}/>
