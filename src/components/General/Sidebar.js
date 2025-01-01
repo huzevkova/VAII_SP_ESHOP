@@ -1,19 +1,31 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import SideBarView from "../../views/General/SideBarView";
+import {fetchBlogPosts} from "../../api/bloggerApi";
 
 const Sidebar = () => {
 
     const navigate = useNavigate();
 
-    const [posts, setPosts] = useState([
-        {title: '(Recenzia) Na čom v živote skutočne záleží?',
-            subtitle: 'Víťaz je sám od Paula Coelha',
-            author: 'Autor článku',},
-        {title: 'Nadchádzajúce vydanie:',
-            subtitle: 'Nová kniha od Brandona Sandersona už čoskoro!',
-            author: 'Autor článku',}
-    ]);
+    const [posts, setPosts] = useState(null);
+
+    useEffect(() => {
+        const loadBlogPosts = async () => {
+            try {
+                const response = await fetchBlogPosts();
+                setPosts(response);
+            } catch (err) {
+                console.error(err);
+                setPosts([]);
+            }
+        };
+
+        loadBlogPosts();
+    });
+
+    if (posts == null) {
+        return;
+    }
 
     const goToBlogPost = (index) => {
         navigate('/post', { state: { post: posts[index] } });
@@ -21,7 +33,7 @@ const Sidebar = () => {
 
     return (
         <SideBarView
-            posts={posts}
+            posts={posts.slice(0, 6)}
             goToBlogPost={goToBlogPost}
         />
     )
