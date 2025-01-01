@@ -103,6 +103,19 @@ const updateDeliveryAndPayment = async (data) => {
     }
 }
 
+const getDeliveryOptions = async () => {
+    const query = 'SELECT * FROM delivery_options';
+    const [results] = await db.query(query, []);
+    return results;
+}
+
+const getPaymentOptions = async () => {
+    const query = 'SELECT * FROM payment_options';
+    const [results] = await db.query(query, []);
+    return results;
+}
+
 module.exports = {getAllOrders, getUserOrders, getCartItems, getUserCart,
     insertIntoCart, createCart, updateOrderStatus, removeFromCart,
-    updateCartItemCount, updateDeliveryAndPayment, getOrderStatusOptions};
+    updateCartItemCount, updateDeliveryAndPayment, getOrderStatusOptions,
+    getPaymentOptions, getDeliveryOptions};

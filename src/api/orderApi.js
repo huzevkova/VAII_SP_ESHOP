@@ -40,6 +40,22 @@ export const fetchOrderOptions = async () => {
     return response.json();
 }
 
+export const fetchDeliveryOptions = async () => {
+    const response = await fetch(`${API_URL}/order/delivery`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch delivery options');
+    }
+    return response.json();
+}
+
+export const fetchPaymentOptions = async () => {
+    const response = await fetch(`${API_URL}/order/payment`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch payment options');
+    }
+    return response.json();
+}
+
 export const addToCart = async (ids) => {
     const response = await fetch(`${API_URL}/insert`, {
         method: 'POST',

@@ -52,12 +52,16 @@ const getUserCart = async (req, res) => {
         if (cart) {
             res.status(200).json(cart);
         } else {
-            const insertCart = await orderModel.createCart(id);
-            if (insertCart) {
-                const newCart = await orderModel.getUserCart(id);
-                res.status(200).json(newCart);
+            if (id != null) {
+                const insertCart = await orderModel.createCart(id);
+                if (insertCart) {
+                    const newCart = await orderModel.getUserCart(id);
+                    res.status(200).json(newCart);
+                } else {
+                    res.status(404).json({message: 'Cart could not be created'});
+                }
             } else {
-                res.status(404).json({ message: 'Cart could not be created' });
+                res.status(404).json({message: 'Cart could not be created'});
             }
         }
     } catch (error) {
@@ -109,6 +113,21 @@ const updateCartItemCount = async (req, res) => {
     }
 }
 
+const getOrderStatusOptions = async (req, res) => {
+    try {
+        const options = await orderModel.getOrderStatusOptions();
+        if (options.length > 0) {
+            res.status(200).json(options);
+        } else {
+            res.status(404).json({ message: 'Options empty' });
+        }
+
+    } catch (error) {
+        console.error('Error fetching options:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
 const updateOrderStatus = async (req, res) => {
     const {status, id_order, id_user} = req.body;
     try {
@@ -139,4 +158,34 @@ const updateOrderDeliveryAndPayment = async (req, res) => {
     }
 }
 
-module.exports = {getUserOrders, getAllOrders, getCartItems, getUserCart, insertIntoCart, removeFromCart, updateOrderStatus, updateCartItemCount, updateOrderDeliveryAndPayment};
+const getDeliveryOptions = async (req, res) => {
+    try {
+        const options = await orderModel.getDeliveryOptions();
+        if (options.length > 0) {
+            res.status(200).json(options);
+        } else {
+            res.status(404).json({ message: 'Delivery options empty' });
+        }
+    } catch (error) {
+        console.error('Error fetching delivery options:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+const getPaymentOptions = async (req, res) => {
+    try {
+        const options = await orderModel.getPaymentOptions();
+        if (options.length > 0) {
+            res.status(200).json(options);
+        } else {
+            res.status(404).json({ message: 'Payment options empty' });
+        }
+    } catch (error) {
+        console.error('Error fetching payment options:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+}
+
+module.exports = {getUserOrders, getAllOrders, getCartItems, getUserCart,
+    insertIntoCart, removeFromCart, updateOrderStatus, updateCartItemCount,
+    updateOrderDeliveryAndPayment, getOrderStatusOptions, getDeliveryOptions, getPaymentOptions};
