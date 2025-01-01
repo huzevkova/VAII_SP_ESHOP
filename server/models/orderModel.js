@@ -72,6 +72,12 @@ const updateCartItemCount = async (data) => {
     }
 }
 
+const getOrderStatusOptions = async () => {
+    const query = 'SELECT * FROM order_status';
+    const [results] = await db.query(query, []);
+    return results;
+}
+
 const updateOrderStatus = async (data) => {
     const query = 'UPDATE orders SET status = ? WHERE id_order = ? AND id_user = ?';
     const {status, id_order, id_user} = data;
@@ -97,4 +103,6 @@ const updateDeliveryAndPayment = async (data) => {
     }
 }
 
-module.exports = {getAllOrders, getUserOrders, getCartItems, getUserCart, insertIntoCart, createCart, updateOrderStatus, removeFromCart, updateCartItemCount, updateDeliveryAndPayment};
+module.exports = {getAllOrders, getUserOrders, getCartItems, getUserCart,
+    insertIntoCart, createCart, updateOrderStatus, removeFromCart,
+    updateCartItemCount, updateDeliveryAndPayment, getOrderStatusOptions};

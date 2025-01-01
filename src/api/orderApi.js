@@ -32,6 +32,14 @@ export const fetchUserCart = async (id) => {
     return response.json();
 };
 
+export const fetchOrderOptions = async () => {
+    const response = await fetch(`${API_URL}/order/options`);
+    if (!response.ok) {
+        throw new Error('Failed to fetch order options');
+    }
+    return response.json();
+}
+
 export const addToCart = async (ids) => {
     const response = await fetch(`${API_URL}/insert`, {
         method: 'POST',
