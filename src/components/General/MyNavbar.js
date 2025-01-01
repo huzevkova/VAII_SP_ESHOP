@@ -3,7 +3,7 @@ import NavbarView from "../../views/General/NavbarView";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../AuthProvider";
 
-const MyNavbar = () => {
+const MyNavbar = ({search}) => {
 
     const navigate = useNavigate();
     const { user, token } = useAuth();
@@ -29,6 +29,7 @@ const MyNavbar = () => {
     return (
         <NavbarView
             user={user ? token : null}
+            search={search}
             handleSearch={handleSearch}
             handleSearchInputChange={handleSearchInputChange}
             handleDropdownClick={handleDropdownClick}

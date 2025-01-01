@@ -8,7 +8,7 @@ import React from "react";
 const SearchView = ({books, addToCart, handleSearch, handleInputChange, openBookDetail, handleDropdownClick, applyFilters, handleCheckboxChange, handlePriceChange}) => {
     return (
         <>
-            <MyNavbar/>
+            <MyNavbar search={false}/>
             <div className="container py-5">
                 <div className="row">
                     <div className="col-md-3">

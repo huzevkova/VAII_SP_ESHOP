@@ -5,7 +5,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../AuthProvider";
 
-const NavbarView = ({ user, handleSearchInputChange, handleSearch, handleDropdownClick}) => {
+const NavbarView = ({ user, search, handleSearchInputChange, handleSearch, handleDropdownClick}) => {
 
     const navigate = useNavigate();
     const auth = useAuth();
@@ -30,9 +30,10 @@ const NavbarView = ({ user, handleSearchInputChange, handleSearch, handleDropdow
 
                 <Navbar.Collapse id="navbarNav">
 
+                    {search === false ? <></> :
                     <div className="flex-grow-1 d-flex justify-content-center align-items-center w-50">
                         <SearchBar handleSearch={handleSearch} handleSearchInputChange={handleSearchInputChange}/>
-                    </div>
+                    </div> }
 
                     <Nav className="ms-auto">
                         <NavDropdown className="p-2" title="Nakupovať" id="navbardrop" size="sm">
