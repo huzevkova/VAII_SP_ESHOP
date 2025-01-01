@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/books', bookRoutes);
-app.use('/api/bloggers', bloggerRoutes);
+app.use('/api/blog', bloggerRoutes);
 app.use('/api/wishlists', wishlistRoutes);
 app.use('/api/orders', orderRoutes);
 
