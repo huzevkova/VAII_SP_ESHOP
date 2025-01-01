@@ -4,7 +4,8 @@ import React from "react";
 const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                     newRow, setNewRow, handleConfirmAdd,
                     editingRow, setEditingRow, handleConfirmEdit,
-                    handleAdd, handleEdit, handleDelete, handleCancel}) => {
+                    handleAdd, handleEdit, handleDelete, handleCancel,
+                    orderOptions, setOrderStatus}) => {
 
     return (
         <>
@@ -59,7 +60,8 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
 
                 {editingRow && (
                     <tr>
-                        {Object.keys(editingRow).map((key, index) => (
+                        {dataType !== "Objednávky" ?
+                        Object.keys(editingRow).map((key, index) => (
                             <td key={index}>
                                 {key !== "id" ?
                                 <Form.Control
@@ -73,7 +75,21 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                                     }
                                 /> : index}
                             </td>
-                        ))}
+                        )) :
+                            Object.keys(editingRow).map((key, index) => (
+                                <td key={index}>
+                                    {key === "description" ?
+                                        <Form.Select value={editingRow[key]}>
+                                            {orderOptions.map((option) => (
+                                                <option onClick={() => {
+                                                    setOrderStatus(option);
+                                                    setEditingRow({...editingRow, [key]: option.description});
+                                                }}>{option.description}</option>
+                                            ))}
+                                        </Form.Select> : editingRow[key]}
+                                </td>
+                            ))
+                        }
                         <td>
                             <Button variant="success" size="sm" onClick={handleConfirmEdit}>
                                 OK

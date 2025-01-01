@@ -15,7 +15,7 @@ import {
 } from "../../api/bookApi";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../AuthProvider";
-import {fetchOrders} from "../../api/orderApi";
+import {fetchOrderOptions, fetchOrders, updateOrder} from "../../api/orderApi";
 
 const AdminPage = () => {
 
@@ -29,6 +29,8 @@ const AdminPage = () => {
     const [orderData, setOrderData] = useState(null);
     const [imageData, setImageData] = useState(null);
     const [data, setData] = useState([]);
+    const [orderStatus, setOrderStatus] = useState(null);
+    const [orderStatusOptions, setOrderStatusOptions] = useState(null);
     const [selectedRow, setSelectedRow] = useState(null);
     const [editingRow, setEditingRow] = useState(null);
     const [newRow, setNewRow] = useState(null);
@@ -82,6 +84,16 @@ const AdminPage = () => {
             }
         };
 
+        const loadOrderStatusOptions = async () => {
+            try {
+                const response = await fetchOrderOptions();
+                setOrderStatusOptions(response);
+            } catch (err) {
+                console.error(err);
+                setOrderStatusOptions([]);
+            }
+        }
+
         if (userData == null) {
             loadUsers();
         }
@@ -93,6 +105,9 @@ const AdminPage = () => {
         }
         if (imageData == null) {
             loadImages();
+        }
+        if (orderStatusOptions == null) {
+            loadOrderStatusOptions();
         }
     });
 
@@ -189,7 +204,7 @@ const AdminPage = () => {
 
     const handleEdit = () => {
         const rowToEdit = data.find((item) => item.id === selectedRow);
-        setEditingRow({ ...rowToEdit });
+        setEditingRow({...rowToEdit});
     };
 
     const handleConfirmAdd = async () => {
@@ -280,6 +295,19 @@ const AdminPage = () => {
             } catch (err) {
                 console.error(err);
             }
+        } else if (tableName === "Objednávky") {
+            try {
+                const status = orderStatus.id_status;
+                const id_order = editingRow.id;
+                const id_user = editingRow.id_user;
+                const updatedEditingRow = { ...editingRow, description: orderStatus.description, id_status: status, status: status };
+                const response = await updateOrder({status, id_order, id_user});
+                setData(data.map((item) => (item.id === updatedEditingRow.id ? updatedEditingRow : item)));
+                setOrderData(data.map((item) => (item.id === updatedEditingRow.id ? updatedEditingRow : item)));
+                setEditingRow(null);
+            } catch (err) {
+                console.error(err);
+            }
         }
     };
 
@@ -311,6 +339,8 @@ const AdminPage = () => {
             handleDescription={handleDescription}
             description={description}
             newDescription={newDescription}
+            orderOptions={orderStatusOptions}
+            setOrderStatus={setOrderStatus}
         />
     );
 }

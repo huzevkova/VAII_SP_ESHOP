@@ -10,7 +10,8 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                        newRow, setNewRow, handleConfirmAdd,
                        editingRow, setEditingRow, handleConfirmEdit,
                        handleAdd, handleEdit, handleDelete, handleLogout, handleCancel,
-                       openDescription, handleDescription, description, newDescription}) => {
+                       openDescription, handleDescription, description, newDescription,
+                        orderOptions, setOrderStatus}) => {
     return (
         <div>
             <Navbar bg="primary" variant="dark" className="px-4">
@@ -64,6 +65,8 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                         handleEdit={handleEdit}
                         handleDelete={handleDelete}
                         handleCancel={handleCancel}
+                        orderOptions={orderOptions}
+                        setOrderStatus={setOrderStatus}
                     /> : <></>
                 }
             </Container>
