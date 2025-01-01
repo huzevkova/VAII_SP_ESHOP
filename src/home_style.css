@@ -6,6 +6,10 @@
     text-shadow: 0 0 3px white;
 }
 
+.blog-text {
+    white-space: pre-wrap;
+}
+
 .hero-section .btn {
     text-shadow: none;
     padding-left: 10px;
