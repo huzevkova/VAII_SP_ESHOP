@@ -6,7 +6,14 @@ import MyNavbar from "../General/MyNavbar";
 import {Container} from "react-bootstrap";
 import Footer from "../General/Footer";
 import {useAuth} from "../../AuthProvider";
-import {fetchCartItems, fetchUserCart, updateOrder, updateOrderOptions} from "../../api/orderApi";
+import {
+    fetchCartItems,
+    fetchDeliveryOptions,
+    fetchPaymentOptions,
+    fetchUserCart,
+    updateOrder,
+    updateOrderOptions
+} from "../../api/orderApi";
 import {fetchUserById, updateUser} from "../../api/userApi";
 
 const CheckoutPage = () => {
@@ -15,10 +22,13 @@ const CheckoutPage = () => {
     const [currentStep, setCurrentStep] = useState(1);
     const [userData, setUserData] = useState(null);
     const [cart, setCart] = useState(null);
+    const [delivery, setDelivery] = useState(null);
+    const [payment, setPayment] = useState(null);
     const [orderData, setOrderData] = useState(null);
+    const [extra, setExtra] = useState(0);
     const [orderOptions, setOrderOptions] = useState({
-        delivery: "",
-        payment: "",});
+        delivery: null,
+        payment: null,});
     const {user} = useAuth();
 
     if (!user) {
@@ -45,8 +55,30 @@ const CheckoutPage = () => {
             }
         };
 
+        const loadDeliveryOptions = async () => {
+            try {
+                const response = await fetchDeliveryOptions();
+                setDelivery(response);
+            } catch (err) {
+                console.error(err);
+                setDelivery([]);
+            }
+        };
+        const loadPaymentOptions = async () => {
+            try {
+                const response = await fetchPaymentOptions();
+                setPayment(response);
+            } catch (err) {
+                console.error(err);
+                setPayment([]);
+            }
+        };
+
+
         loadUserCart();
         loadUserData();
+        loadDeliveryOptions();
+        loadPaymentOptions();
     }, []);
 
 
@@ -65,7 +97,7 @@ const CheckoutPage = () => {
         loadOrderData();
     }, [cart]);
 
-    if (userData == null || cart == null) {
+    if (userData == null || cart == null || delivery == null || payment == null) {
         return;
     } else if (orderData == null) {
         return;
@@ -88,6 +120,8 @@ const CheckoutPage = () => {
             setCurrentStep(2);
         } else if (currentStep === 2 && isStep2Valid) {
             setCurrentStep(3);
+            setExtra(delivery.find((item) => item.id_delivery === parseInt(orderOptions.delivery)).price +
+                payment.find((item) => item.id_payment === parseInt(orderOptions.payment)).extra);
         }
     };
 
@@ -112,8 +146,8 @@ const CheckoutPage = () => {
             const id_order = cart.id_order;
             const id_user = user;
             const status = 2;
-            const delivery = orderOptions.delivery;
-            const payment = orderOptions.payment;
+            const delivery = parseInt(orderOptions.delivery);
+            const payment = parseInt(orderOptions.payment);
             await updateOrderOptions( {delivery, payment, id_order});
             await updateOrder({status, id_order, id_user});
             const updatedUserData = userData;
@@ -135,6 +169,8 @@ const CheckoutPage = () => {
                     userData={userData}
                     orderData={orderData}
                     orderOptions={orderOptions}
+                    payment={payment}
+                    delivery={delivery}
                     cart={cart}
                     handleInputChange={handleInputChange}
                     handleNext={handleNext}
@@ -142,6 +178,7 @@ const CheckoutPage = () => {
                     handleOrder={handleOrder}
                     buttonDisable={(currentStep === 1 && !isStep1Valid) ||
                         (currentStep === 2 && !isStep2Valid)}
+                    extra={extra}
                 />
             </Container>
             <Footer/>

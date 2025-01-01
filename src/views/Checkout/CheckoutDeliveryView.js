@@ -1,62 +1,39 @@
 import {Form} from "react-bootstrap";
 import React from "react";
 
-const CheckoutDeliveryView = ({orderOptions, handleInputChange}) => {
+const CheckoutDeliveryView = ({orderOptions, delivery, payment, handleInputChange}) => {
     return (
         <>
-            <h3>Choose Delivery</h3>
+            <h3>Výber doručenia</h3>
             <Form>
                 <div className="mb-3">
-                    <Form.Check
-                        type="radio"
-                        id="delivery-SPS"
-                        label="Doručenie na adresu - Slovenská pošta (+2,99€)"
-                        name="delivery"
-                        value="Doručenie na adresu - Slovenská pošta"
-                        checked={orderOptions.delivery === "Doručenie na adresu - Slovenská pošta"}
-                        onChange={handleInputChange}
-                    />
-                    <Form.Check
-                        type="radio"
-                        id="delivery-packeta"
-                        label="Doručenie na adresu - Packeta (+2,99€)"
-                        name="delivery"
-                        value="Doručenie na adresu - Packeta"
-                        checked={orderOptions.delivery === "Doručenie na adresu - Packeta"}
-                        onChange={handleInputChange}
-                    />
-                    <Form.Check
-                        type="radio"
-                        id="delivery-GLS"
-                        label="Doručenie na adresu - GLS (+2,99€)"
-                        name="delivery"
-                        value="Doručenie na adresu - GLS"
-                        checked={orderOptions.delivery === "Doručenie na adresu - GLS"}
-                        onChange={handleInputChange}
-                    />
+                    {delivery.map((item, index) => (
+                        <Form.Check
+                            type="radio"
+                            id={index}
+                            label={item.type + " (" + item.price + "€)"}
+                            name="delivery"
+                            value={item.id_delivery}
+                            checked={parseInt(orderOptions.delivery) === item.id_delivery}
+                            onChange={handleInputChange}
+                        />
+                    ))}
                 </div>
             </Form>
             <h3>Výber platby</h3>
             <Form>
                 <div className="mb-3">
-                    <Form.Check
-                        type="radio"
-                        id="credit-card"
-                        label="Platba prevodom"
-                        name="payment"
-                        value="Platba prevodom"
-                        checked={orderOptions.payment === "Platba prevodom"}
-                        onChange={handleInputChange}
-                    />
-                    <Form.Check
-                        type="radio"
-                        id="cash-on-delivery"
-                        label="Dobierka (+1,00€)"
-                        name="payment"
-                        value="Dobierka"
-                        checked={orderOptions.payment === "Dobierka"}
-                        onChange={handleInputChange}
-                    />
+                    {payment.map((item, index) => (
+                        <Form.Check
+                            type="radio"
+                            id={index}
+                            label={item.type + " (" + parseFloat(item.extra).toFixed(2) + "€)"}
+                            name="payment"
+                            value={item.id_payment}
+                            checked={parseInt(orderOptions.payment) === item.id_payment}
+                            onChange={handleInputChange}
+                        />
+                    ))}
                 </div>
             </Form>
         </>
