@@ -8,12 +8,6 @@ const SearchFilter = ({ applyFilters, handleCheckboxChange, handlePriceChange })
     const [authors, setAuthors] = useState(null);
     const [languages, setLanguages] = useState(null);
 
-    /*
-    const availability=[
-            { id: 'inStock', value: 'Na sklade', label: 'Na sklade' },
-            { id: 'preOrder', value: 'Predobjednávka', label: 'Predobjednávka' },
-        ];*/
-
     useEffect(() => {
         const loadGenres = async () => {
             try {

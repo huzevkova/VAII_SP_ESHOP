@@ -24,15 +24,6 @@ const SearchFilterView = ({renderCheckboxList, genres, authors, languages, handl
                     <Accordion.Body>{renderCheckboxList(languages, "languages")}</Accordion.Body>
                 </Accordion.Item>
 
-                {/*
-                <Accordion.Item eventKey="4">
-                    <Accordion.Header id="headingAvailability">Dostupnosť</Accordion.Header>
-                    <Accordion.Body>
-                        {renderCheckboxList(availability, "availability")}
-                    </Accordion.Body>
-                </Accordion.Item>
-                */}
-
                 <Accordion.Item eventKey="5">
                     <Accordion.Header id="headingPrice">Cena</Accordion.Header>
                     <Accordion.Body>
