@@ -18,15 +18,4 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
-    depends_on:
-      - db
-
-  db:
-    image: mysql:8
-    environment:
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_DATABASE: ${DB_NAME}
-    ports:
-      - "3307:3306" # Maps the database to localhost for development
-    volumes:
-      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+      DB_HOST: ${DB_HOST}
