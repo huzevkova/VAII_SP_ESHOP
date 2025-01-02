@@ -1,0 +1,19 @@
+FROM node:18
+
+WORKDIR /app
+
+# Copy only package.json and package-lock.json initially
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application files
+COPY . .
+
+# Ensure native modules like bcrypt are built for the container architecture
+RUN npm rebuild bcrypt --build-from-source
+
+EXPOSE 5000
+
+CMD ["node", "server.js"]

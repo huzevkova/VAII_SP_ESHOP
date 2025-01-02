@@ -4,21 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="opravy chýb">
+    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="pridanie možností doručenia a platby z databázy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/orderController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/models/orderModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/orderModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/orderRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/orderRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/orderApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/orderApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Cart/CheckoutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart/CheckoutPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/RegistrationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/RegistrationPage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/User/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/Orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Checkout/CheckoutDeliveryView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Checkout/CheckoutDeliveryView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Checkout/CheckoutInfoView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Checkout/CheckoutInfoView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Checkout/CheckoutSummaryView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Checkout/CheckoutSummaryView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Checkout/CheckoutView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Checkout/CheckoutView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,42 +65,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/bsbia/PhpstormProjects/bb_eshop/public/images&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.npm start.executor&quot;: &quot;Run&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.reader.mode&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2024.2.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/bsbia/PhpstormProjects/bb_eshop",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "npm.npm start.executor": "Run",
+    "npm.start.executor": "Run",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settings.ide.settings.web.browsers",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2024.2.2\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\public\images" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop" />
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\server" />
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\public\images" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\server" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Search" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Home" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Book" />
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Blog" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2">
+        <option name="LaunchBrowser.Before.Run" browser="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" url="localhost:3000/" />
+      </method>
     </configuration>
     <configuration name="npm start" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -117,8 +121,15 @@
       </scripts>
       <node-interpreter value="project" />
       <envs />
+      <EXTENSION ID="com.intellij.lang.javascript.buildTools.npm.rc.StartBrowserRunConfigurationExtension">
+        <browser name="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" url="http://localhost:3000/" />
+      </EXTENSION>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="JavaScript Debug.Debug Application" />
+      <item itemvalue="npm.npm start" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -175,215 +186,15 @@
       <workItem from="1735263191815" duration="1490000" />
       <workItem from="1735410838817" duration="18246000" />
       <workItem from="1735467488502" duration="21000" />
-      <workItem from="1735474326589" duration="23344000" />
-    </task>
-    <task id="LOCAL-00032" summary="Úprava detailov">
-      <option name="closed" value="true" />
-      <created>1732658690570</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1732658690570</updated>
-    </task>
-    <task id="LOCAL-00033" summary="Oprava chybných volaní">
-      <option name="closed" value="true" />
-      <created>1732658703984</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1732658703984</updated>
-    </task>
-    <task id="LOCAL-00034" summary="Pridanie CRUD operácií pre tabuľku &quot;books&quot;">
-      <option name="closed" value="true" />
-      <created>1732746258318</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1732746258319</updated>
-    </task>
-    <task id="LOCAL-00035" summary="Dokončenie operácie deleteUser">
-      <option name="closed" value="true" />
-      <created>1732746284382</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1732746284382</updated>
-    </task>
-    <task id="LOCAL-00036" summary="Ťahanie dát o knihách z databázy">
-      <option name="closed" value="true" />
-      <created>1732746314703</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1732746314703</updated>
-    </task>
-    <task id="LOCAL-00037" summary="Pridanie CRUD oeprácií pre tabuľku &quot;bloggers&quot;">
-      <option name="closed" value="true" />
-      <created>1733008357585</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008357585</updated>
-    </task>
-    <task id="LOCAL-00038" summary="Oprava chybných user parametrov">
-      <option name="closed" value="true" />
-      <created>1733008395997</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008395997</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Oprava chybných book parametrov">
-      <option name="closed" value="true" />
-      <created>1733008409332</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008409332</updated>
-    </task>
-    <task id="LOCAL-00040" summary="Nastavenie pridávania novej knihy a blogera">
-      <option name="closed" value="true" />
-      <created>1733008439140</created>
-      <option name="number" value="00040" />
-      <option name="presentableId" value="LOCAL-00040" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008439140</updated>
-    </task>
-    <task id="LOCAL-00041" summary="Ťahanie dát o kníhách a blogeroch z databázy">
-      <option name="closed" value="true" />
-      <created>1733008452590</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008452590</updated>
-    </task>
-    <task id="LOCAL-00042" summary="Vytvorenie nového užívateľa v databáze">
-      <option name="closed" value="true" />
-      <created>1733008471327</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008471327</updated>
-    </task>
-    <task id="LOCAL-00043" summary="Pridanie prihlasovacej logiky">
-      <option name="closed" value="true" />
-      <created>1733008485547</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008485547</updated>
-    </task>
-    <task id="LOCAL-00044" summary="Pridanie cesty pre admin stránku">
-      <option name="closed" value="true" />
-      <created>1733008499812</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008499812</updated>
-    </task>
-    <task id="LOCAL-00045" summary="Refaktoring">
-      <option name="closed" value="true" />
-      <created>1733008521245</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1733008521245</updated>
-    </task>
-    <task id="LOCAL-00046" summary="Pridanie obrázkov">
-      <option name="closed" value="true" />
-      <created>1733096958088</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1733096958090</updated>
-    </task>
-    <task id="LOCAL-00047" summary="Pridanie doplnkových CRUD operácii (výber náhodných kníh, výber knižnej série)">
-      <option name="closed" value="true" />
-      <created>1733097017980</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1733097017980</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Napojenie stránky knižného katalógu na databázu">
-      <option name="closed" value="true" />
-      <created>1733097056360</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1733097056360</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Napojenie stránky detailu knihy na databázu">
-      <option name="closed" value="true" />
-      <created>1733097074439</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1733097074439</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Úprava dizajnu obrázkov">
-      <option name="closed" value="true" />
-      <created>1733097087065</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1733097087066</updated>
-    </task>
-    <task id="LOCAL-00051" summary="Refaktoring">
-      <option name="closed" value="true" />
-      <created>1733097213334</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1733097213334</updated>
-    </task>
-    <task id="LOCAL-00052" summary="Pridanie odhlásenia">
-      <option name="closed" value="true" />
-      <created>1733179173684</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1733179173686</updated>
-    </task>
-    <task id="LOCAL-00053" summary="Oprava pretekajúceho textu">
-      <option name="closed" value="true" />
-      <created>1733179190714</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1733179190714</updated>
-    </task>
-    <task id="LOCAL-00054" summary="Pridanie možnosti zmeniť popis knihy">
-      <option name="closed" value="true" />
-      <created>1733256315541</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1733256315544</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Pridanie vyhľadávania kníh a zoradenia podľa podmienky.">
-      <option name="closed" value="true" />
-      <created>1735225584437</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1735225584437</updated>
-    </task>
-    <task id="LOCAL-00056" summary="Oprava vypísania viacerých žánrov pri knihe">
-      <option name="closed" value="true" />
-      <created>1735251635132</created>
-      <option name="number" value="00056" />
-      <option name="presentableId" value="LOCAL-00056" />
-      <option name="project" value="LOCAL" />
-      <updated>1735251635132</updated>
-    </task>
-    <task id="LOCAL-00057" summary="Pridanie filtrovania kníh podľa žánru, autora, jazyka a ceny">
-      <option name="closed" value="true" />
-      <created>1735251661607</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1735251661607</updated>
+      <workItem from="1735474326589" duration="23838000" />
+      <workItem from="1735506464344" duration="1205000" />
+      <workItem from="1735511745522" duration="5153000" />
+      <workItem from="1735566430039" duration="30189000" />
+      <workItem from="1735639840453" duration="12081000" />
+      <workItem from="1735672065761" duration="3654000" />
+      <workItem from="1735739744269" duration="68000" />
+      <workItem from="1735748629141" duration="12859000" />
+      <workItem from="1735819598139" duration="10957000" />
     </task>
     <task id="LOCAL-00058" summary="Doplnenie CRUD operácii">
       <option name="closed" value="true" />
@@ -569,7 +380,215 @@
       <option name="project" value="LOCAL" />
       <updated>1735498792851</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="pridanie knižnice date-fns na prácu s dátumami">
+      <option name="closed" value="true" />
+      <created>1735503683908</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1735503683908</updated>
+    </task>
+    <task id="LOCAL-00082" summary="pridanie chýbajúcich funkcií na vytvorenie objednávky">
+      <option name="closed" value="true" />
+      <created>1735503703758</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1735503703758</updated>
+    </task>
+    <task id="LOCAL-00083" summary="prepojenie frontendu a backendu pri tvorbe objednávky">
+      <option name="closed" value="true" />
+      <created>1735503725647</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1735503725647</updated>
+    </task>
+    <task id="LOCAL-00084" summary="pridanie stránky histórie objednávok">
+      <option name="closed" value="true" />
+      <created>1735503751620</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1735503751620</updated>
+    </task>
+    <task id="LOCAL-00085" summary="úprava vzhľadu histórie objednávok">
+      <option name="closed" value="true" />
+      <created>1735503772857</created>
+      <option name="number" value="00085" />
+      <option name="presentableId" value="LOCAL-00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1735503772857</updated>
+    </task>
+    <task id="LOCAL-00086" summary="ošetrneie prístupu administrátora">
+      <option name="closed" value="true" />
+      <created>1735598962205</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1735598962207</updated>
+    </task>
+    <task id="LOCAL-00087" summary="odstránenie loggovania na debugovanie">
+      <option name="closed" value="true" />
+      <created>1735599098235</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1735599098236</updated>
+    </task>
+    <task id="LOCAL-00088" summary="pridanie CRUD operácii na prácu s obrázkami ku knihám">
+      <option name="closed" value="true" />
+      <created>1735599131039</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1735599131039</updated>
+    </task>
+    <task id="LOCAL-00089" summary="pridanie obrázkov do UI pre administrátora + odstránenie bloggerov">
+      <option name="closed" value="true" />
+      <created>1735599191341</created>
+      <option name="number" value="00089" />
+      <option name="presentableId" value="LOCAL-00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1735599191341</updated>
+    </task>
+    <task id="LOCAL-00090" summary="sfunkčnenie tlačidla košík v karte knihy">
+      <option name="closed" value="true" />
+      <created>1735640096655</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1735640096656</updated>
+    </task>
+    <task id="LOCAL-00091" summary="odstránenie prepojenia na blog stránku">
+      <option name="closed" value="true" />
+      <created>1735640131724</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1735640131724</updated>
+    </task>
+    <task id="LOCAL-00092" summary="sfunkčnenie search baru a prepojenia s dropdown menu">
+      <option name="closed" value="true" />
+      <created>1735640410393</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1735640410393</updated>
+    </task>
+    <task id="LOCAL-00093" summary="ošetrenie null hodnôt">
+      <option name="closed" value="true" />
+      <created>1735640425498</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1735640425498</updated>
+    </task>
+    <task id="LOCAL-00094" summary="sfunkčnenie tlačidla na pridanie do košíka">
+      <option name="closed" value="true" />
+      <created>1735750202590</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1735750202591</updated>
+    </task>
+    <task id="LOCAL-00095" summary="nahradenie volaní do tabuľky bloggerov volaniami do tabuľky s blog postami">
+      <option name="closed" value="true" />
+      <created>1735750285596</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1735750285596</updated>
+    </task>
+    <task id="LOCAL-00096" summary="oprava textu blog príspevku">
+      <option name="closed" value="true" />
+      <created>1735750307481</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1735750307481</updated>
+    </task>
+    <task id="LOCAL-00097" summary="pridanie ťahania príspevkov z databázy">
+      <option name="closed" value="true" />
+      <created>1735750336551</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1735750336551</updated>
+    </task>
+    <task id="LOCAL-00098" summary="úprava tabuľky objednávky - zmena stavu ako výber z možností">
+      <option name="closed" value="true" />
+      <created>1735750496743</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1735750496744</updated>
+    </task>
+    <task id="LOCAL-00099" summary="Skrývanie vyhľadávacieho poľa podľa stránky">
+      <option name="closed" value="true" />
+      <created>1735750554676</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1735750554676</updated>
+    </task>
+    <task id="LOCAL-00100" summary="oprava textu blog príspevku">
+      <option name="closed" value="true" />
+      <created>1735750578578</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1735750578578</updated>
+    </task>
+    <task id="LOCAL-00101" summary="operácie na získanie možností stavu objednávky">
+      <option name="closed" value="true" />
+      <created>1735751050075</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1735751050075</updated>
+    </task>
+    <task id="LOCAL-00102" summary="pridanie vypísania položiek objednávky">
+      <option name="closed" value="true" />
+      <created>1735751067623</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1735751067623</updated>
+    </task>
+    <task id="LOCAL-00103" summary="pridanie overovania hesla">
+      <option name="closed" value="true" />
+      <created>1735764623304</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1735764623305</updated>
+    </task>
+    <task id="LOCAL-00104" summary="operácie na získanie možností doručenia a platby z DB">
+      <option name="closed" value="true" />
+      <created>1735764655186</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1735764655186</updated>
+    </task>
+    <task id="LOCAL-00105" summary="zmena cesty">
+      <option name="closed" value="true" />
+      <created>1735764671146</created>
+      <option name="number" value="00105" />
+      <option name="presentableId" value="LOCAL-00105" />
+      <option name="project" value="LOCAL" />
+      <updated>1735764671146</updated>
+    </task>
+    <task id="LOCAL-00106" summary="pridanie možností doručenia a platby z databázy">
+      <option name="closed" value="true" />
+      <created>1735764695998</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1735764695998</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,31 +609,31 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Oprava vypísania viacerých žánrov pri knihe" />
-    <MESSAGE value="Pridanie filtrovania kníh podľa žánru, autora, jazyka a ceny" />
-    <MESSAGE value="Doplnenie CRUD operácii" />
-    <MESSAGE value="Opravenie vyhľadávania v navbare" />
-    <MESSAGE value="odstránenie možnosti klikania v tabuľke informácii" />
-    <MESSAGE value="Dokončenie prihlasovania - validácia hesla" />
-    <MESSAGE value="úprava vzhľadu tabuľky" />
-    <MESSAGE value="pr" />
-    <MESSAGE value="oprava overenia používateľa" />
-    <MESSAGE value="úprava vzhľadu po úspešnom prihlásení" />
-    <MESSAGE value="pridanie autorizácie a tokenov pre prihlásenie" />
-    <MESSAGE value="refaktoring - rozdelenie view componentov do priečinkov" />
-    <MESSAGE value="Pridanie stránky pre prihláseného usera (osobné údaje)." />
-    <MESSAGE value="Pridanie stránky s wishlistom pre prihláseného usera" />
-    <MESSAGE value="pridanie operácii na prácu s tabuľkou wishlist" />
-    <MESSAGE value="refaktoring" />
-    <MESSAGE value="pridanie ciest pre wishlist" />
-    <MESSAGE value="oprava odhlasovania" />
-    <MESSAGE value="CRUD operácie pre prácu s tabuľkami orders a book_to_order" />
-    <MESSAGE value="API pre prácu s objednávkami" />
-    <MESSAGE value="pridanie stránky pre históriu objednávok" />
-    <MESSAGE value="pridanie cesty pre objednávky" />
-    <MESSAGE value="napojenie frontendu na databázu objednávok a košíka" />
-    <MESSAGE value="sfunkčnené pridávanie do košíka" />
-    <MESSAGE value="opravy chýb" />
-    <option name="LAST_COMMIT_MESSAGE" value="opravy chýb" />
+    <MESSAGE value="pridanie knižnice date-fns na prácu s dátumami" />
+    <MESSAGE value="pridanie chýbajúcich funkcií na vytvorenie objednávky" />
+    <MESSAGE value="prepojenie frontendu a backendu pri tvorbe objednávky" />
+    <MESSAGE value="pridanie stránky histórie objednávok" />
+    <MESSAGE value="úprava vzhľadu histórie objednávok" />
+    <MESSAGE value="ošetrneie prístupu administrátora" />
+    <MESSAGE value="odstránenie loggovania na debugovanie" />
+    <MESSAGE value="pridanie CRUD operácii na prácu s obrázkami ku knihám" />
+    <MESSAGE value="pridanie obrázkov do UI pre administrátora + odstránenie bloggerov" />
+    <MESSAGE value="sfunkčnenie tlačidla košík v karte knihy" />
+    <MESSAGE value="odstránenie prepojenia na blog stránku" />
+    <MESSAGE value="sfunkčnenie search baru a prepojenia s dropdown menu" />
+    <MESSAGE value="ošetrenie null hodnôt" />
+    <MESSAGE value="sfunkčnenie tlačidla na pridanie do košíka" />
+    <MESSAGE value="nahradenie volaní do tabuľky bloggerov volaniami do tabuľky s blog postami" />
+    <MESSAGE value="pridanie ťahania príspevkov z databázy" />
+    <MESSAGE value="úprava tabuľky objednávky - zmena stavu ako výber z možností" />
+    <MESSAGE value="Skrývanie vyhľadávacieho poľa podľa stránky" />
+    <MESSAGE value="oprava textu blog príspevku" />
+    <MESSAGE value="operácie na získanie možností stavu objednávky" />
+    <MESSAGE value="pridanie vypísania položiek objednávky" />
+    <MESSAGE value="pridanie overovania hesla" />
+    <MESSAGE value="operácie na získanie možností doručenia a platby z DB" />
+    <MESSAGE value="zmena cesty" />
+    <MESSAGE value="pridanie možností doručenia a platby z databázy" />
+    <option name="LAST_COMMIT_MESSAGE" value="pridanie možností doručenia a platby z databázy" />
   </component>
 </project>
