@@ -3,9 +3,9 @@ import React from "react";
 
 const ResultCard = ({bookData, openBookDetail, addToCart}) => {
     return (
-            <div className="row bg-light p-3 mb-3 border rounded align-items-center relative-position clickable-component" onClick={() => openBookDetail(bookData.id_book)}>
+            <div className="result-card row bg-light p-3 mb-3 border rounded align-items-center relative-position clickable-component" onClick={() => openBookDetail(bookData.id_book)}>
                 <div className="col-md-2 col-sm-3">
-                    <img src={"images/books/" + (bookData.path ? bookData.path : "book.jpg")} alt="Book Cover" className="img-fluid result-card"/>
+                    <img src={"images/books/" + (bookData.path ? bookData.path : "book.jpg")} alt="Book Cover" className="img-fluid result-img"/>
                 </div>
                 <div className="col-md-8 col-sm-7">
                     <h5 className="title">{bookData.title}</h5>
