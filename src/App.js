@@ -3,12 +3,10 @@ import HomePage from './components/Home/HomePage';
 import LoginPage from "./components/Home/LoginPage";
 import BookDetailPage from "./components/Book/BookDetailPage";
 import SearchPage from "./components/Search/SearchPage";
-import BlogPost from "./components/Blog/BlogPost";
-import BlogPage from "./components/Blog/BlogPage";
 import RegistrationPage from "./components/Home/RegistrationPage";
 import CartPage from "./components/Cart/CartPage";
 import CheckoutPage from "./components/Cart/CheckoutPage";
-import OrderDonePage from "./components/Cart/OrderDonePage";
+import OrderDoneView from "./views/Checkout/OrderDoneView";
 import AdminPage from "./components/Admin/AdminPage";
 import AuthProvider from "./AuthProvider";
 import UserInfo from "./components/User/UserInfo";
@@ -28,17 +26,13 @@ function App() {
 
                   <Route path="/search" element={<SearchPage/>}/>
 
-                  <Route path="/post" element={<BlogPost/>}/>
-
-                  <Route path="/blog_posts" element={<BlogPage/>}/>
-
                   <Route path="/registration" element={<RegistrationPage/>}/>
 
                   <Route path="/cart" element={<CartPage/>}/>
 
                   <Route path="/checkout" element={<CheckoutPage/>}/>
 
-                  <Route path="/order_done" element={<OrderDonePage/>}/>
+                  <Route path="/order_done" element={<OrderDoneView/>}/>
 
                   <Route path="/administration" element={<AdminPage/>}/>
 

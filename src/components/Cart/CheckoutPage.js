@@ -79,7 +79,7 @@ const CheckoutPage = () => {
         loadUserData();
         loadDeliveryOptions();
         loadPaymentOptions();
-    }, []);
+    }, [user]);
 
 
     useEffect(() => {
@@ -136,7 +136,7 @@ const CheckoutPage = () => {
     const handleInputChange = (e) => {
         if (currentStep === 1) {
             setUserData({...userData, [e.target.name]: e.target.value});
-        } else if (currentStep == 2) {
+        } else if (currentStep === 2) {
             setOrderOptions({...orderOptions, [e.target.name]: e.target.value})
         }
     };

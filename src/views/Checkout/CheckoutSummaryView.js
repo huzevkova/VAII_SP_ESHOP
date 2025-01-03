@@ -12,7 +12,7 @@ const CheckoutSummaryView = ({userData, orderData, orderOptions, cart, extra}) =
             </p>
             <p><b>Doručenie:</b> {orderOptions.delivery}</p>
             <p><b>Platba:</b> {orderOptions.payment}</p>
-            <p><b>Objednávka:</b> {orderData.map(book => book.title).join(", ")}</p>
+            <p><b>Objednávka:</b> {orderData.map(book => book.title + " (" + book.count + "ks)").join(", ")}</p>
             <p><b>Cena:</b> ${parseFloat(parseFloat(cart.price) + extra).toFixed(2)}</p>
         </Alert>
     )

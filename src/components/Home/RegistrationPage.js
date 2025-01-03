@@ -34,7 +34,7 @@ const RegistrationPage = () => {
         setFormState({...formState, [e.target.name]: 'normal'});
     };
 
-    const handleCheckChange = (e) => {
+    const handleCheckChange = () => {
         setFormAgreement(!formAgreement);
         setFormState({...formState, agreement: 'normal'});
     }
@@ -44,8 +44,7 @@ const RegistrationPage = () => {
         let updatedFormData = {...formData};
 
         if (formData.name != null) {
-            const fullName = formData.name + " " + formData.surname;
-            updatedFormData.name = fullName;
+            updatedFormData.name = formData.name + " " + formData.surname;
         }
 
         if (!updatedFormData.name) {

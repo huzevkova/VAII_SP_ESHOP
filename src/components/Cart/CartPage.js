@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import CartView from "../../views/Cart/CartView";
 import {useAuth} from "../../AuthProvider";
 import {useNavigate} from "react-router-dom";
-import {fetchUserById} from "../../api/userApi";
 import {fetchCartItems, fetchUserCart, removeFromCart, updateItemCount} from "../../api/orderApi";
 
 const CartPage = () => {
