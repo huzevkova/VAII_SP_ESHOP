@@ -1,7 +1,7 @@
 import MyNavbar from "../../components/General/MyNavbar";
 import SearchFilter from "../../components/Search/SearchFilter";
 import SearchBar from "../../components/General/SearchBar";
-import ResultList from "../../components/Search/ResultList";
+import ResultListView from "../Search/ResultListView";
 import Footer from "../../components/General/Footer";
 import React from "react";
 
@@ -16,7 +16,7 @@ const SearchView = ({books, addToCart, handleSearch, handleInputChange, openBook
                     </div>
                     <div className="col-md-9 py-2">
                         <SearchBar handleSearchInputChange={handleInputChange} handleSearch={handleSearch}/>
-                        <ResultList books={books} openBookDetail={openBookDetail} handleDropdownClick={handleDropdownClick} addToCart={addToCart}/>
+                        <ResultListView books={books} openBookDetail={openBookDetail} handleDropdownClick={handleDropdownClick} addToCart={addToCart}/>
                     </div>
                 </div>
             </div>

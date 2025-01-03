@@ -1,4 +1,4 @@
-import BookCard from "../../components/Book/BookCard";
+import BookCardView from "/BookCardView";
 import React from "react";
 
 const BookCatalogueView = ({books, openBookDetail}) => {
@@ -8,7 +8,7 @@ const BookCatalogueView = ({books, openBookDetail}) => {
                 <h2 className="text-center mb-4">Ponuka kníh:</h2>
                 <div className="row">
                     {books ? books.slice(0, 3).map((book, index)=> (
-                        <BookCard
+                        <BookCardView
                             key={index}
                             image={'images/books/' + (book.path ? book.path : 'book.jpg')}
                             title={book.title}
@@ -20,7 +20,7 @@ const BookCatalogueView = ({books, openBookDetail}) => {
                 </div>
                 <div className="row mt-5">
                     {books ? books.slice(3, 6).map((book, index) => (
-                        <BookCard
+                        <BookCardView
                             key={index}
                             image={'images/books/' + (book.path ? book.path : 'book.jpg')}
                             title={book.title}

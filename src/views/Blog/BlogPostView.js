@@ -1,9 +1,9 @@
 import React from "react";
 import MyNavbar from "../../components/General/MyNavbar";
 import Sidebar from "../../components/General/Sidebar";
-import HeroSection from "../../components/Home/HeroSection";
+import HeroSectionView from "../../components/Home/HeroSectionView";
 import Footer from "../../components/General/Footer";
-import ResultCard from "../../components/Search/ResultCard";
+import ResultCardView from "../../components/Search/ResultCardView";
 
 const BlogPostView = ({post, bookData, goToBook}) => {
     return (
@@ -15,7 +15,7 @@ const BlogPostView = ({post, bookData, goToBook}) => {
                         <Sidebar/>
                     </div>
                     <div className="container col-lg-9 col-md-8">
-                        <HeroSection/>
+                        <HeroSectionView/>
                         <div className="container-fluid mt-5 blog-start">
                             <h1>{post.title}</h1>
                             <h3>{post.subtitle}</h3>
@@ -27,7 +27,7 @@ const BlogPostView = ({post, bookData, goToBook}) => {
                             </p>
                         </div>
                         <div className="mt-5">
-                            {bookData == null ? <p/> : <ResultCard bookData={bookData} goToBookDetail={goToBook}/>}
+                            {bookData == null ? <p/> : <ResultCardView bookData={bookData} goToBookDetail={goToBook}/>}
                         </div>
                     </div>
                 </div>

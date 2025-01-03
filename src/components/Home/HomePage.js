@@ -2,7 +2,7 @@ import React from 'react';
 import MyNavbar from '../General/MyNavbar.js';
 import Sidebar from '../General/Sidebar.js';
 import Footer from '../General/Footer.js';
-import HeroSection from './HeroSection';
+import HeroSectionView from '../../views/Home/HeroSectionView';
 import BookCatalogue from '../Book/BookCatalogue';
 
 
@@ -16,7 +16,7 @@ const HomePage = () => {
                         <Sidebar/>
                     </div>
                     <div className="container col-lg-9 col-md-8">
-                        <HeroSection/>
+                        <HeroSectionView/>
                         <BookCatalogue/>
                     </div>
                 </div>
