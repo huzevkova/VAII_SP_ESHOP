@@ -19,3 +19,7 @@ body {
 .navbar {
     background-color: #4682b4;
 }
+
+.brand-img {
+    height: 2.5em;
+}

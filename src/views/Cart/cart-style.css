@@ -1,0 +1,17 @@
+.cart-item-image {
+    max-height: 90px;
+    object-fit: cover;
+}
+
+.out-progress, .arrow {
+    text-align: center;
+    padding: 10px;
+    background: #ccc;
+    color: white;
+    font-size: 18px;
+    border-radius: 4px;
+}
+
+.out-progress, .arrow.active {
+    background: #007bff;
+}

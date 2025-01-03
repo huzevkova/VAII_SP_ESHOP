@@ -1,0 +1,17 @@
+.book-card {
+    min-height: 37em;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 25em;
+    object-fit: contain;
+    object-position: center;
+    background-color: white;
+}
+
+.price {
+    font-weight: bold;
+    font-size: 3em;
+    padding: 35px 0;
+}

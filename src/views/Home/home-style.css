@@ -1,0 +1,73 @@
+.hero-section {
+    background-image: url('../../../public/images/books_hero_bg.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-shadow: 0 0 3px white;
+}
+
+.hero-section .btn {
+    text-shadow: none;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.brand-img {
+    height: 2.5em;
+}
+
+.dropdown-item:hover {
+    background-color: coral !important;
+}
+
+.searchBar {
+    font-size: 1.5em;
+}
+
+.searchBar {
+    font-size: 1.5em;
+}
+
+nav .searchBar {
+    font-size: 1.1em;
+}
+
+.sticky-top {
+    top: 5em;
+}
+
+.searchIcon {
+    border: none;
+    background: none;
+    font-size: 1.5em;
+}
+
+.login-h2 {
+    font-size: 2em;
+    font-weight: bold;
+    text-shadow: 0 0 20px black;
+}
+
+.wrong {
+    box-shadow: 0 0 20px 2px rgba(255,21,0,1);
+}
+
+.blog-btn:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.logged-in {
+    background-color: sandybrown;
+    border-radius: 15px;
+}
+
+#sidebar {
+    background-color: #f8f9fa;
+    border-right: 1px solid black;
+    min-height: 100vh;
+}
+
+.navbar-brand {
+    font-size: 1.5em !important;
+    font-family: Castellar, "Times New Roman", Times, serif;
+}
