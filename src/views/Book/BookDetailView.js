@@ -1,7 +1,9 @@
 import MyNavbar from "../../components/General/MyNavbar";
 import BookInfoTable from "../../components/Book/BookInfoTable";
-import Footer from "../../components/General/Footer";
+import FooterView from "../General/FooterView";
 import React from "react";
+import "./book-style.css";
+
 
 const BookDetailView = ({bookData, bookGenres, bookSeries, onCartClick, onWishlistClick}) => {
     return (
@@ -33,7 +35,7 @@ const BookDetailView = ({bookData, bookGenres, bookSeries, onCartClick, onWishli
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 };

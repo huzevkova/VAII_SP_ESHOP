@@ -1,6 +1,7 @@
 import React from 'react';
+import "./home-style.css";
 import MyNavbar from '../../components/General/MyNavbar.js';
-import Footer from '../../components/General/Footer.js';
+import FooterView from '../General/FooterView.js';
 import {FaUserCircle} from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
 
@@ -40,7 +41,7 @@ const LoginView = ({loginState, handleInputChange, handleLogin}) => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 }

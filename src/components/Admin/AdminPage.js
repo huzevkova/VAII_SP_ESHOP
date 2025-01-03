@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./admin_style.css";
 import AdminView from "../../views/Admin/AdminView";
 import {fetchUsers, updateUser, deleteUser} from "../../api/userApi";
 import {
@@ -170,7 +169,7 @@ const AdminPage = () => {
     const handleDelete = async () => {
         if (tableName === "Používatelia") {
             try {
-                const response = await deleteUser(selectedRow);
+                await deleteUser(selectedRow);
                 setUserData(data.filter((item) => item.id !== selectedRow));
                 setData(data.filter((item) => item.id !== selectedRow));
                 setSelectedRow(null);
@@ -179,7 +178,7 @@ const AdminPage = () => {
             }
         } else if (tableName === "Knihy") {
             try {
-                const response = await deleteBook(selectedRow);
+                await deleteBook(selectedRow);
                 setBookData(data.filter((item) => item.id !== selectedRow));
                 setData(data.filter((item) => item.id !== selectedRow));
                 setSelectedRow(null);
@@ -188,7 +187,7 @@ const AdminPage = () => {
             }
         } else if (tableName === "Obrázky") {
             try {
-                const response = await deleteImage(selectedRow);
+                await deleteImage(selectedRow);
                 setImageData(data.filter((item) => item.id !== selectedRow));
                 setData(data.filter((item) => item.id !== selectedRow));
                 setSelectedRow(null);
@@ -258,7 +257,7 @@ const AdminPage = () => {
     const handleConfirmEdit = async () => {
         if (tableName === "Používatelia") {
             try {
-                const response = await updateUser(editingRow);
+                await updateUser(editingRow);
                 setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                 setUserData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                 setEditingRow(null);
@@ -273,7 +272,7 @@ const AdminPage = () => {
             } else {
                 try {
                     const editingRowWithDescription = { ...editingRow, description: description };
-                    const response = await updateBook(editingRowWithDescription);
+                    await updateBook(editingRowWithDescription);
                     setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                     setBookData(data.map((item) => (item.id === editingRowWithDescription.id ? editingRowWithDescription : item)));
                     setEditingRow(null);
@@ -285,10 +284,10 @@ const AdminPage = () => {
         } else if (tableName === "Obrázky") {
             try {
                 const {id, path, name} = editingRow;
-                const responseImage = await updateImage({path, name, id});
+                await updateImage({path, name, id});
                 const id_image = editingRow.id;
                 const id_book = editingRow.id_book;
-                const responseBook = await updateBookImage({id_image, id_book});
+                await updateBookImage({id_image, id_book});
                 setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                 setImageData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                 setEditingRow(null);
@@ -301,7 +300,7 @@ const AdminPage = () => {
                 const id_order = editingRow.id;
                 const id_user = editingRow.id_user;
                 const updatedEditingRow = { ...editingRow, description: orderStatus.description, id_status: status, status: status };
-                const response = await updateOrder({status, id_order, id_user});
+                await updateOrder({status, id_order, id_user});
                 setData(data.map((item) => (item.id === updatedEditingRow.id ? updatedEditingRow : item)));
                 setOrderData(data.map((item) => (item.id === updatedEditingRow.id ? updatedEditingRow : item)));
                 setEditingRow(null);

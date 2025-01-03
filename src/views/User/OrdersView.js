@@ -1,7 +1,7 @@
 import MyNavbar from "../../components/General/MyNavbar";
 import Sidebar from "../../components/General/Sidebar";
 import {format} from "date-fns";
-import Footer from "../../components/General/Footer";
+import FooterView from "../General/FooterView";
 import React from "react";
 
 const OrderView = ({orders, orderData}) => {
@@ -34,7 +34,7 @@ const OrderView = ({orders, orderData}) => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 };

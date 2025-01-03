@@ -1,7 +1,7 @@
 import MyNavbar from "../../components/General/MyNavbar";
 import {Button, Container} from "react-bootstrap";
 import CartItem from "../../components/Cart/CartItem";
-import Footer from "../../components/General/Footer";
+import FooterView from "../General/FooterView";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -29,7 +29,7 @@ const CartView = ({cartItems, price, handleRemoveItem, handleQuantityChange }) =
                     </Container>
                 </div>
             </section>
-            <Footer/>
+            <FooterView/>
         </>
     )
 };

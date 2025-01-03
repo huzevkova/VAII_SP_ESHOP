@@ -1,10 +1,10 @@
 import React, {useEffect} from "react";
 import { useState } from "react";
 import {useNavigate} from "react-router-dom";
-import CheckoutView from "../../views/Checkout/CheckoutView";
+import CheckoutView from "../../views/Cart/CheckoutView";
 import MyNavbar from "../General/MyNavbar";
 import {Container} from "react-bootstrap";
-import Footer from "../General/Footer";
+import FooterView from "../../views/General/FooterView";
 import {useAuth} from "../../AuthProvider";
 import {
     fetchCartItems,
@@ -181,7 +181,7 @@ const CheckoutPage = () => {
                     extra={extra}
                 />
             </Container>
-            <Footer/>
+            <FooterView/>
         </>
     );
 }

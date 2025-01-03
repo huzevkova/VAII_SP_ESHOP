@@ -2,9 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {fetchUserById} from "../../api/userApi";
 import {useAuth} from "../../AuthProvider";
 import {useNavigate} from "react-router-dom";
-import MyNavbar from "../General/MyNavbar";
-import Footer from "../General/Footer";
-import Sidebar from "../General/Sidebar";
 import UserInfoView from "../../views/User/UserInfoView";
 
 const UserInfo = () => {

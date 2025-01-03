@@ -1,5 +1,6 @@
 import {FaShoppingCart} from "react-icons/fa";
 import React from "react";
+import "./search-style.css";
 
 const ResultCardView = ({bookData, openBookDetail, addToCart}) => {
     return (

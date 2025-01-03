@@ -1,6 +1,7 @@
 import Accordion from "react-bootstrap/Accordion";
 import {Button} from "react-bootstrap";
 import React from "react";
+import "./search-style.css";
 
 const SearchFilterView = ({renderCheckboxList, genres, authors, languages, handlePriceChange, applyFilters}) => {
     return (

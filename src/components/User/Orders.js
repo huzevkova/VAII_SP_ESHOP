@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useAuth} from "../../AuthProvider";
 import {useNavigate} from "react-router-dom";
-import MyNavbar from "../General/MyNavbar";
-import Footer from "../General/Footer";
-import Sidebar from "../General/Sidebar";
 import {fetchCartItems, fetchUserOrders} from "../../api/orderApi";
-import {format} from "date-fns";
 import OrderView from "../../views/User/OrdersView";
 
 const Orders = () => {

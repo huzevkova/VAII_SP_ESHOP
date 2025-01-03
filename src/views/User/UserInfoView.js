@@ -1,6 +1,6 @@
 import MyNavbar from "../../components/General/MyNavbar";
 import Sidebar from "../../components/General/Sidebar";
-import Footer from "../../components/General/Footer";
+import FooterView from "../General/FooterView";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
@@ -58,7 +58,7 @@ const UserInfoView = ({userData}) => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 };

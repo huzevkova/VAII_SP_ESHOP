@@ -1,6 +1,7 @@
 import React from "react";
 import ResultCardView from "./ResultCardView";
 import Dropdown from "react-bootstrap/Dropdown";
+import "./search-style.css";
 
 const ResultListView = ({books, addToCart, openBookDetail, handleDropdownClick}) => {
     return (

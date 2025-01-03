@@ -1,8 +1,8 @@
 import MyNavbar from "../../components/General/MyNavbar";
 import Sidebar from "../../components/General/Sidebar";
-import ResultCardView from "../../components/Search/ResultCardView";
-import Footer from "../../components/General/Footer";
+import FooterView from "../General/FooterView";
 import React from "react";
+import ResultCardView from "../Search/ResultCardView";
 
 const WishlistView = ({wishlist, openBookDetail, addToCartClick, handleDelete}) => {
 
@@ -31,7 +31,7 @@ const WishlistView = ({wishlist, openBookDetail, addToCartClick, handleDelete}) 
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 };

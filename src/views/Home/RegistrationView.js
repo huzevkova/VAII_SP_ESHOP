@@ -1,6 +1,7 @@
 import React from 'react';
+import "./home-style.css";
 import MyNavbar from '../../components/General/MyNavbar.js';
-import Footer from '../../components/General/Footer.js';
+import FooterView from '../General/FooterView.js';
 import {Button, Form} from "react-bootstrap";
 
 const RegistrationView = ({formState, handleInputChange, handleCheckChange, handleRegistration}) => {
@@ -56,7 +57,7 @@ const RegistrationView = ({formState, handleInputChange, handleCheckChange, hand
                     </Form>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 };

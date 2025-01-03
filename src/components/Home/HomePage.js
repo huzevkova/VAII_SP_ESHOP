@@ -1,7 +1,7 @@
 import React from 'react';
 import MyNavbar from '../General/MyNavbar.js';
 import Sidebar from '../General/Sidebar.js';
-import Footer from '../General/Footer.js';
+import FooterView from '../../views/General/FooterView.js';
 import HeroSectionView from '../../views/Home/HeroSectionView';
 import BookCatalogue from '../Book/BookCatalogue';
 
@@ -21,7 +21,7 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 };

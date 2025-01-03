@@ -1,9 +1,10 @@
 import React from "react";
+import "./blog-style.css";
 import MyNavbar from "../../components/General/MyNavbar";
 import Sidebar from "../../components/General/Sidebar";
-import HeroSectionView from "../../components/Home/HeroSectionView";
-import Footer from "../../components/General/Footer";
-import ResultCardView from "../../components/Search/ResultCardView";
+import HeroSectionView from "../Home/HeroSectionView";
+import FooterView from "../General/FooterView";
+import ResultCardView from "../Search/ResultCardView";
 
 const BlogPostView = ({post, bookData, goToBook}) => {
     return (
@@ -32,7 +33,7 @@ const BlogPostView = ({post, bookData, goToBook}) => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 }

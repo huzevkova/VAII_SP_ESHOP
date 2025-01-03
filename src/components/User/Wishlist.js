@@ -1,11 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {useAuth} from "../../AuthProvider";
 import {useNavigate} from "react-router-dom";
-import MyNavbar from "../General/MyNavbar";
-import Footer from "../General/Footer";
-import Sidebar from "../General/Sidebar";
 import {fetchWishlist, removeFromWishlist} from "../../api/wishlistApi";
-import ResultCardView from "../Search/ResultCardView";
 import {addToCart, fetchUserCart} from "../../api/orderApi";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";

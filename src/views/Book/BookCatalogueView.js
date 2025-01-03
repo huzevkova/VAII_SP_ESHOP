@@ -1,5 +1,7 @@
-import BookCardView from "/BookCardView";
+import BookCardView from "./BookCardView";
 import React from "react";
+import "./book-style.css";
+
 
 const BookCatalogueView = ({books, openBookDetail}) => {
     return (
