@@ -8,7 +8,7 @@ const UserInfo = () => {
 
     const navigate = useNavigate();
     const [userData, setUserData] = useState(null);
-    const {user} = useAuth();
+    const {user, token} = useAuth();
 
     if (!user) {
         navigate('/login');
@@ -17,8 +17,13 @@ const UserInfo = () => {
     useEffect(() => {
         const loadUserData = async () => {
             try {
-                const response = await fetchUserById(user);
-                setUserData(response);
+                if (user === "admin") {
+                    const response = await fetchUserById(token.id_user);
+                    setUserData(response);
+                } else {
+                    const response = await fetchUserById(user);
+                    setUserData(response);
+                }
             } catch (err) {
                 console.error(err);
                 setUserData([]);

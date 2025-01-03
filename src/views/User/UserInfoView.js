@@ -51,6 +51,10 @@ const UserInfoView = ({userData}) => {
                                                 onClick={() => navigate('/order_history')}>
                                             Objednávky
                                         </button>
+                                        {userData.type === 1 ? <button className="btn btn-success shadow-sm px-4"
+                                                                       onClick={() => navigate('/administration')}>
+                                            Administratíva
+                                        </button> : null}
                                     </div>
                                 </div>
                             </div>
