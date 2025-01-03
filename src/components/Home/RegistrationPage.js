@@ -6,6 +6,7 @@ import {useNavigate} from "react-router-dom";
 const RegistrationPage = () => {
 
     const navigate = useNavigate();
+    const [error, setError] = useState(null);
 
     const [formData, setFormData] = useState(
         { name: null,
@@ -53,8 +54,9 @@ const RegistrationPage = () => {
         } else if (!formData.surname) {
             setFormState({...formState, surname: 'wrong'});
             return;
-        } else if (!formData.email) {
+        } else if (!formData.email || !formData.email.includes("@")) {
             setFormState({...formState, email: 'wrong'});
+            setError("Zlá forma emailu.");
             return;
         } else if (!formData.password || formData.password.length < 10) {
             setFormState({...formState, password: 'wrong'});
@@ -71,11 +73,11 @@ const RegistrationPage = () => {
 
         try {
             await createUser(updatedFormData);
+            navigate('/login');
         } catch (err) {
             console.log(err);
+            setError(err.message);
         }
-
-        navigate('/login');
     };
 
 
@@ -85,6 +87,7 @@ const RegistrationPage = () => {
             handleInputChange={handleInputChange}
             handleCheckChange={handleCheckChange}
             handleRegistration={handleRegistration}
+            error={error}
         />
     )
 };

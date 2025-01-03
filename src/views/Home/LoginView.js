@@ -5,7 +5,7 @@ import FooterView from '../General/FooterView.js';
 import {FaUserCircle} from "react-icons/fa";
 import {useNavigate} from "react-router-dom";
 
-const LoginView = ({loginState, handleInputChange, handleLogin}) => {
+const LoginView = ({loginState, handleInputChange, handleLogin, error}) => {
 
     const navigate = useNavigate();
 
@@ -33,6 +33,8 @@ const LoginView = ({loginState, handleInputChange, handleLogin}) => {
                                        placeholder="Heslo" onChange={handleInputChange}/>
                                 <label htmlFor="floatingPassword">Heslo</label>
                             </div>
+
+                            {error && <p className="text-danger mt-3">{error}</p>}
 
                             <button type="submit" className="btn btn-primary w-100 mb-3" onClick={handleLogin}>Prihlás ma</button>
 

@@ -38,25 +38,29 @@ const AuthProvider = ({ children }) => {
                 },
                 body: JSON.stringify(data),
             });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Niečo sa pokazilo');
+            }
+
             const res = await response.json();
             if (res.type === 0) {
                 setUser(res.id_user);
                 setToken(res);
                 localStorage.setItem("site", JSON.stringify(res));
                 navigate('/');
-                return;
             } else if (res.type === 1) {
                 setUser("admin");
                 setToken(res);
                 localStorage.setItem("site", JSON.stringify(res));
                 navigate('/administration');
-                return;
             }
-            throw new Error(res.message);
         } catch (err) {
-            console.error(err);
+            throw err;
         }
     };
+
 
     const logOut = () => {
         setUser(null);

@@ -4,7 +4,7 @@ import MyNavbar from '../../components/General/MyNavbar.js';
 import FooterView from '../General/FooterView.js';
 import {Button, Form} from "react-bootstrap";
 
-const RegistrationView = ({formState, handleInputChange, handleCheckChange, handleRegistration}) => {
+const RegistrationView = ({formState, handleInputChange, handleCheckChange, handleRegistration, error}) => {
     return (
         <>
             <MyNavbar/>
@@ -54,6 +54,7 @@ const RegistrationView = ({formState, handleInputChange, handleCheckChange, hand
                         </div>
 
                         <Button className="mt-3 mb-3" onClick={handleRegistration}>Vytvor konto</Button>
+                        {error && <p className="text-danger mt-3">{error}</p>}
                     </Form>
                 </div>
             </div>

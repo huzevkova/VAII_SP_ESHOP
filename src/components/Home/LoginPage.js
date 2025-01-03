@@ -1,12 +1,12 @@
 import React, {useState} from 'react';
 import LoginView from "../../views/Home/LoginView";
-import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../AuthProvider";
 
 const LoginPage = () => {
 
-    const navigate = useNavigate();
     const auth = useAuth();
+
+    const [error, setError] = useState(null);
 
     const [loginData, setLoginData] = useState(
         {email: null,
@@ -21,7 +21,7 @@ const LoginPage = () => {
         setLoginState({...loginState, [e.target.name]: 'normal'});
     }
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         if (loginData.email == null) {
             setLoginState({...loginState, email: 'wrong'})
@@ -29,11 +29,9 @@ const LoginPage = () => {
             setLoginState({...loginState, password: 'wrong'})
         } else {
             try {
-                //const response = await checkUserCredentials(loginData);
-                auth.loginAction(loginData);
+                await auth.loginAction(loginData);
             } catch (err) {
-                setLoginState({...loginState, password: 'wrong'})
-                console.error(err);
+                setError(err.message);
             }
         }
     }
@@ -43,6 +41,7 @@ const LoginPage = () => {
             loginState={loginState}
             handleInputChange={handleInputChange}
             handleLogin={handleLogin}
+            error={error}
         />
     )
 }
