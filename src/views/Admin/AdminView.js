@@ -6,6 +6,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
 import TextField from '@mui/material/TextField';
+import {useNavigate} from "react-router-dom";
 
 const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, handleRowSelection,
                        newRow, setNewRow, handleConfirmAdd,
@@ -13,10 +14,13 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                        handleAdd, handleEdit, handleDelete, handleLogout, handleCancel,
                        openDescription, handleDescription, description, newDescription,
                         orderOptions, setOrderStatus}) => {
+
+    const navigate = useNavigate();
+
     return (
         <div>
             <Navbar bg="primary" variant="dark" className="px-4">
-                <Navbar.Brand>
+                <Navbar.Brand className="clickable-component" onClick={() => navigate('/')}>
                     <img
                         className="brand-img"
                         src="/images/bb_books.png"
