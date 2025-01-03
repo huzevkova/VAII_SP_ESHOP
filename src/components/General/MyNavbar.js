@@ -26,6 +26,12 @@ const MyNavbar = ({search}) => {
         }
     }
 
+    const handleEnter = (event) => {
+        if (event.key === 'Enter') {
+            handleSearch();  // Trigger handleSearch when Enter is pressed
+        }
+    };
+
     return (
         <NavbarView
             user={user ? token : null}
@@ -33,6 +39,7 @@ const MyNavbar = ({search}) => {
             handleSearch={handleSearch}
             handleSearchInputChange={handleSearchInputChange}
             handleDropdownClick={handleDropdownClick}
+            handleEnter={handleEnter}
         />
     )
 };

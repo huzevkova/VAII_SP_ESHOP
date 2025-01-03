@@ -1,11 +1,12 @@
 import MyNavbar from "../../components/General/MyNavbar";
 import SearchFilter from "../../components/Search/SearchFilter";
-import SearchBar from "../../components/General/SearchBar";
+import SearchBarView from "../General/SearchBarView";
 import ResultListView from "../Search/ResultListView";
-import Footer from "../../components/General/Footer";
+import FooterView from "../General/FooterView";
 import React from "react";
+import "./search-style.css";
 
-const SearchView = ({books, addToCart, handleSearch, handleInputChange, openBookDetail, handleDropdownClick, applyFilters, handleCheckboxChange, handlePriceChange}) => {
+const SearchView = ({books, addToCart, handleSearch, handleInputChange, openBookDetail, handleDropdownClick, applyFilters, handleCheckboxChange, handlePriceChange, handleEnter}) => {
     return (
         <>
             <MyNavbar search={false}/>
@@ -15,12 +16,12 @@ const SearchView = ({books, addToCart, handleSearch, handleInputChange, openBook
                         <SearchFilter applyFilters={applyFilters} handleCheckboxChange={handleCheckboxChange} handlePriceChange={handlePriceChange}/>
                     </div>
                     <div className="col-md-9 py-2">
-                        <SearchBar handleSearchInputChange={handleInputChange} handleSearch={handleSearch}/>
+                        <SearchBarView handleSearchInputChange={handleInputChange} handleSearch={handleSearch} handleEnter={handleEnter}/>
                         <ResultListView books={books} openBookDetail={openBookDetail} handleDropdownClick={handleDropdownClick} addToCart={addToCart}/>
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <FooterView/>
         </>
     )
 };

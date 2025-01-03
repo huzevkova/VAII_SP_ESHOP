@@ -188,6 +188,11 @@ const SearchPage = () => {
         }
     }
 
+    const handleEnter = (event) => {
+        if (event.key === 'Enter') {
+            handleSearch();  // Trigger handleSearch when Enter is pressed
+        }
+    };
 
     return (
         <>
@@ -201,6 +206,7 @@ const SearchPage = () => {
             applyFilters={applyFilters}
             handleCheckboxChange={handleCheckboxChange}
             handlePriceChange={handlePriceChange}
+            handleEnter={handleEnter}
         />
             <Dialog open={openCart}>
                 <DialogTitle>

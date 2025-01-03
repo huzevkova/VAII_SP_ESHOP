@@ -1,4 +1,5 @@
 import React from "react";
+import "../Home/home-style.css";
 
 const SideBarView = ({posts, goToBlogPost}) => {
 

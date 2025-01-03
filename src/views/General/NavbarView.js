@@ -1,11 +1,12 @@
 import {Button, Container, Nav, Navbar, NavDropdown} from "react-bootstrap";
-import SearchBar from "../../components/General/SearchBar";
+import SearchBarView from "../General/SearchBarView";
 import {FaShoppingCart} from "react-icons/fa";
 import React from "react";
 import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../AuthProvider";
+import "../Home/home-style.css";
 
-const NavbarView = ({ user, search, handleSearchInputChange, handleSearch, handleDropdownClick}) => {
+const NavbarView = ({ user, search, handleSearchInputChange, handleSearch, handleDropdownClick, handleEnter}) => {
 
     const navigate = useNavigate();
     const auth = useAuth();
@@ -32,7 +33,7 @@ const NavbarView = ({ user, search, handleSearchInputChange, handleSearch, handl
 
                     {search === false ? <></> :
                     <div className="flex-grow-1 d-flex justify-content-center align-items-center w-50">
-                        <SearchBar handleSearch={handleSearch} handleSearchInputChange={handleSearchInputChange}/>
+                        <SearchBarView handleSearch={handleSearch} handleSearchInputChange={handleSearchInputChange} handleEnter={handleEnter}/>
                     </div> }
 
                     <Nav className="ms-auto">
