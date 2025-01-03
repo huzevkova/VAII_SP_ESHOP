@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
-const HeroSection = () => {
+const HeroSectionView = () => {
 
     const navigate = useNavigate();
 
@@ -16,4 +16,4 @@ const HeroSection = () => {
     )
 };
 
-export default HeroSection;
+export default HeroSectionView;

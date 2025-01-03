@@ -7,10 +7,6 @@ const BlogPost = () => {
     const location = useLocation();
     const { post } = location.state;
 
-    if (post) {
-        console.log(post.body);
-    }
-
     return (
         <>
            <BlogPostView post={post} bookData={null} goToBook={null}/>

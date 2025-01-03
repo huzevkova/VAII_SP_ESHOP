@@ -1,8 +1,8 @@
 import React from "react";
-import ResultCard from "./ResultCard";
+import ResultCardView from "./ResultCardView";
 import Dropdown from "react-bootstrap/Dropdown";
 
-const ResultList = ({books, addToCart, openBookDetail, handleDropdownClick}) => {
+const ResultListView = ({books, addToCart, openBookDetail, handleDropdownClick}) => {
     return (
         <section className="py-3">
             <div className="container">
@@ -23,7 +23,7 @@ const ResultList = ({books, addToCart, openBookDetail, handleDropdownClick}) => 
                 </div>
                 <div className="container mt-4">
                     {books.map((book, index) => (
-                        <ResultCard key={index} bookData={book} openBookDetail={openBookDetail} addToCart={addToCart}/>
+                        <ResultCardView key={index} bookData={book} openBookDetail={openBookDetail} addToCart={addToCart}/>
                     ))}
                 </div>
             </div>
@@ -31,4 +31,4 @@ const ResultList = ({books, addToCart, openBookDetail, handleDropdownClick}) => 
     )
 }
 
-export default ResultList;
+export default ResultListView;

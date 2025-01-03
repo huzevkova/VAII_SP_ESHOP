@@ -1,6 +1,6 @@
 import React from "react";
 
-const BookCard = ({ image, title, description, id, openBookDetail }) => {
+const BookCardView = ({ image, title, description, id, openBookDetail }) => {
     return (
     <div className="col-md-4">
         <div className="card book-card">
@@ -15,4 +15,4 @@ const BookCard = ({ image, title, description, id, openBookDetail }) => {
     )
 };
 
-export default BookCard;
+export default BookCardView;

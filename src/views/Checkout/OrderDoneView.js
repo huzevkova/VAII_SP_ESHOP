@@ -1,9 +1,9 @@
 import React from "react";
-import MyNavbar from "../General/MyNavbar";
-import Footer from "../General/Footer";
+import MyNavbar from "../../components/General/MyNavbar";
+import Footer from "../../components/General/Footer";
 import {Container} from "react-bootstrap";
 
-const OrderDonePage = () => {
+const OrderDoneView = () => {
     return (
         <>
             <MyNavbar/>
@@ -16,4 +16,4 @@ const OrderDonePage = () => {
     )
 }
 
-export default OrderDonePage;
+export default OrderDoneView;
