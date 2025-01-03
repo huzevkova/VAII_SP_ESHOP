@@ -40,10 +40,10 @@ const getUserByEmail = async (req, res) => {
             if (match) {
                 res.status(200).json(user);
             } else {
-                res.status(401).json({ message: 'Wrong password' });
+                res.status(401).json({ message: 'Zlé heslo.' });
             }
         } else {
-            res.status(404).json({ message: 'User not found' });
+            res.status(404).json({ message: 'Používateľ s daným emailom nebol nájdený.' });
         }
     } catch (error) {
         console.error('Error fetching user:', error);
@@ -62,13 +62,17 @@ const createUser = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUserId = await userModel.createUser({ name, email, phone_number, city, city_code, street, house_number });
         try {
-            const savePass = await userModel.saveUserPassword({newUserId, hashedPassword});
+            await userModel.saveUserPassword({newUserId, hashedPassword});
             res.status(201).json({message: 'User created successfully', userId: newUserId});
         } catch (err) {
             await userModel.deleteUser(newUserId);
+            res.status(500).json({ message: 'Server error' });
         }
     } catch (err) {
-        console.error('Error creating user:', err);
+        if (err.code === 'ER_DUP_ENTRY') {
+            return res.status(409).json({ message: 'Používateľ s daným emailom už existuje.' });
+        }
+
         res.status(500).json({ message: 'Server error' });
     }
 };

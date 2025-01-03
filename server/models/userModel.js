@@ -26,7 +26,6 @@ const createUser = async (userData) => {
         const [result] = await db.query(query, [name, email, phone_number, city, city_code, street, house_number]);
         return result.insertId;
     } catch (err) {
-        console.error(err);
         throw err;
     }
 };

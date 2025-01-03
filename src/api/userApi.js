@@ -16,22 +16,6 @@ export const fetchUserById = async (id) => {
     return response.json();
 };
 
-export const checkUserCredentials = async (data) => {
-    const response = await fetch(`${API_URL}/auth/login`, {
-        method: 'POST',
-            headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to authorize user');
-    }
-    return response.json();
-};
-
-
 export const createUser = async (userData) => {
     const response = await fetch(`${API_URL}/insert`, {
         method: 'POST',
@@ -41,7 +25,8 @@ export const createUser = async (userData) => {
         body: JSON.stringify(userData),
     });
     if (!response.ok) {
-        throw new Error('Failed to create user');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Niečo sa pokazilo.');
     }
     return response.json();
 };
