@@ -3,6 +3,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import CheckoutInfoView from "./CheckoutInfoView";
 import CheckoutDeliveryView from "./CheckoutDeliveryView";
 import CheckoutSummaryView from "./CheckoutSummaryView";
+import "./cart-style.css";
 
 const CheckoutView = ({currentStep, userData, orderData, orderOptions, payment, delivery, cart, handleInputChange, handlePrevious, handleOrder, handleNext, buttonDisable, extra }) => {
 
