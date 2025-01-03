@@ -6,12 +6,13 @@ import SearchPage from "./components/Search/SearchPage";
 import RegistrationPage from "./components/Home/RegistrationPage";
 import CartPage from "./components/Cart/CartPage";
 import CheckoutPage from "./components/Cart/CheckoutPage";
-import OrderDoneView from "./views/Checkout/OrderDoneView";
+import OrderDoneView from "./views/Cart/OrderDoneView";
 import AdminPage from "./components/Admin/AdminPage";
 import AuthProvider from "./AuthProvider";
 import UserInfo from "./components/User/UserInfo";
 import Wishlist from "./components/User/Wishlist";
 import Orders from "./components/User/Orders";
+import BlogPost from "./components/Home/BlogPost";
 
 function App() {
   return (
@@ -41,6 +42,8 @@ function App() {
                   <Route path="/wishlist" element={<Wishlist/>}/>
 
                   <Route path="/order_history" element={<Orders/>}/>
+
+                  <Route path="/post" element={<BlogPost/>}/>
 
               </Routes>
           </AuthProvider>
