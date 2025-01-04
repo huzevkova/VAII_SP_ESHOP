@@ -13,7 +13,7 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                        editingRow, setEditingRow, handleConfirmEdit,
                        handleAdd, handleEdit, handleDelete, handleLogout, handleCancel,
                        openDescription, handleDescription, description, newDescription,
-                        orderOptions, setOrderStatus}) => {
+                        orderOptions, setOrderStatus, error}) => {
 
     const navigate = useNavigate();
 
@@ -32,7 +32,8 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                 <Button variant="outline-light" onClick={handleLogout}>Odhlásenie</Button>
             </Navbar>
             <Container className="mt-4">
-                <Row className="mb-3">
+                {error && <p className="text-danger text-center mt-3">{error}</p>}
+                <Row className="mb-3 text-center">
                     <Col>
                         <Button variant="primary" onClick={() => handleTabClick("Používatelia")}>
                             Používatelia
