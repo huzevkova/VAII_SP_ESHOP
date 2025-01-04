@@ -19,7 +19,6 @@ const MyNavbar = ({search}) => {
 
     const handleDropdownClick = (e) => {
         if (e.target.name === "all") {
-            console.log(e.target.name);
             navigate('/search', { state: { input: null, genre: null } });
         } else {
             navigate('/search', {state: {input: null, genre: e.target.name}});
@@ -28,7 +27,7 @@ const MyNavbar = ({search}) => {
 
     const handleEnter = (event) => {
         if (event.key === 'Enter') {
-            handleSearch();  // Trigger handleSearch when Enter is pressed
+            handleSearch();
         }
     };
 
