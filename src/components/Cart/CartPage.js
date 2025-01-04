@@ -50,7 +50,7 @@ const CartPage = () => {
 
     const handleQuantityChange = async (index, newQuantity) => {
         if (newQuantity === 0) {
-            handleRemoveItem(index);
+            await handleRemoveItem(index);
         } else {
             try {
                 const count = newQuantity;
