@@ -1,4 +1,3 @@
-const bcrypt = require('bcrypt');
 const bloggerModel = require('../models/bloggerModel');
 
 const getAllBlogPosts = async (req, res) => {
