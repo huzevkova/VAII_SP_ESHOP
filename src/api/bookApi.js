@@ -167,7 +167,8 @@ export const updateBookImage = async (data) => {
         body: JSON.stringify(data),
     });
     if (!response.ok) {
-        throw new Error('Failed to update book image');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Niečo sa pokazilo.');
     }
     return response.json();
 }

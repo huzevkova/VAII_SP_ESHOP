@@ -21,6 +21,7 @@ const AdminPage = () => {
     const navigate = useNavigate();
     const auth = useAuth();
 
+    const [error, setError] = useState(null);
     const [selectedTab, setSelectedTab] = useState(null);
     const [tableName, setTableName] = useState(null);
     const [userData, setUserData] = useState(null);
@@ -166,6 +167,61 @@ const AdminPage = () => {
         setSelectedRow(id === selectedRow ? null : id);
     };
 
+    const checkBookData = (row) => {
+        if (row.title === '' || row.title == null) {
+            setError("Názov knihy nemôže byť prázdny.");
+            return false;
+        } else if (row.author === '' || row.author == null) {
+            setError("Autor knihy nemôže byť prázdny.");
+            return false;
+        } else if (row.language === '' || row.language == null) {
+            setError("Jazyk knihy nemôže byť prázdny.");
+            return false;
+        } else if (row.page_count === '' || row.page_count == null) {
+            setError("Počet strán nemôže byť prázdny.");
+            return false;
+        } else if (row.publish_year === '' || row.publish_year == null) {
+            setError("Rok vydania knihy nemôže byť prázdny.");
+            return false;
+        } else if (row.publisher === '' || row.publisher == null) {
+            setError("Vydavateľ knihy nemôže byť prázdny.");
+            return false;
+        } else if (row.size === '' || row.size == null) {
+            setError("Veľkosť knihy nemôže byť prázdna.");
+            return false;
+        } else if (row.price === '' || row.price == null) {
+            setError("Cena knihy nemôže byť prázdna.");
+            return false;
+        } else if (row.cover === '' || row.cover == null) {
+            setError("Obálka knihy nemôže byť prázdna.");
+            return false;
+        } else if (row.isbn === '' || row.isbn == null) {
+            setError("ISBN knihy nemôže byť prázdne.");
+            return false;
+        } else {
+            if (isNaN(parseFloat(row.price))) {
+                setError("Zlý formát ceny.");
+                return false;
+            }
+
+            if (isNaN(parseInt(row.publish_year))) {
+                setError("Zlý formát roku.");
+                return false;
+            }
+
+            if (isNaN(parseInt(row.page_count))) {
+                setError("Zlý formát počtu strán.");
+                return false;
+            }
+
+            if (editingRow.image !== '' && isNaN(parseInt(row.image))) {
+                setError("Zlý formát obrázku (zadajte číselné ID).");
+                return false;
+            }
+        }
+        return true;
+    }
+
     const handleDelete = async () => {
         if (tableName === "Používatelia") {
             try {
@@ -175,6 +231,7 @@ const AdminPage = () => {
                 setSelectedRow(null);
             } catch (err) {
                 console.error(err);
+                setError(err.message);
             }
         } else if (tableName === "Knihy") {
             try {
@@ -184,6 +241,7 @@ const AdminPage = () => {
                 setSelectedRow(null);
             } catch (err) {
                 console.error(err);
+                setError(err.message);
             }
         } else if (tableName === "Obrázky") {
             try {
@@ -193,6 +251,7 @@ const AdminPage = () => {
                 setSelectedRow(null);
             } catch (err) {
                 console.error(err);
+                setError(err.message);
             }
         }
     };
@@ -208,6 +267,9 @@ const AdminPage = () => {
 
     const handleConfirmAdd = async () => {
         if (tableName === "Knihy") {
+            if (!checkBookData(newRow)) {
+                return;
+            }
             if (openDescription === false) {
                 setNewDescription(true);
                 setOpenDescription(true);
@@ -226,30 +288,36 @@ const AdminPage = () => {
                     setNewRow(null);
                 } catch (err) {
                     console.error(err);
+                    setError(err.message);
                 }
                 setOpenDescription(false);
                 setNewDescription(false);
             }
         } else if (tableName === "Obrázky") {
-            try {
-                let newRowUpdated;
-                if (!newRow.hasOwnProperty("id_book")) {
-                    newRowUpdated = {id_book: null, ...newRow};
-                } else {
-                    newRowUpdated = newRow;
+            if (newRow.path === '' || newRow.path == null) {
+                setError("Cesta k súboru nemôže byť prázdna.");
+            } else {
+                try {
+                    let newRowUpdated;
+                    if (!newRow.hasOwnProperty("id_book")) {
+                        newRowUpdated = {id_book: null, ...newRow};
+                    } else {
+                        newRowUpdated = newRow;
+                    }
+                    const {id} = await createImage(newRowUpdated);
+                    const newTableRow = {id: id, ...newRow};
+                    const requiredKeys = data[0] ? Object.keys(data[0]) : [];
+                    const completeRow = requiredKeys.reduce((acc, key) => {
+                        acc[key] = newTableRow[key] || "";
+                        return acc;
+                    }, {});
+                    setImageData([...data, newTableRow]);
+                    setData([...data, completeRow]);
+                    setNewRow(null);
+                } catch (err) {
+                    console.error(err);
+                    setError(err.message);
                 }
-                const {id} = await createImage(newRowUpdated);
-                const newTableRow = {id: id, ...newRow};
-                const requiredKeys = data[0] ? Object.keys(data[0]) : [];
-                const completeRow = requiredKeys.reduce((acc, key) => {
-                    acc[key] = newTableRow[key] || "";
-                    return acc;
-                }, {});
-                setImageData([...data, newTableRow]);
-                setData([...data, completeRow]);
-                setNewRow(null);
-            } catch (err) {
-                console.error(err);
             }
         }
     };
@@ -257,31 +325,48 @@ const AdminPage = () => {
     const handleConfirmEdit = async () => {
         if (tableName === "Používatelia") {
             try {
-                await updateUser(editingRow);
-                setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
-                setUserData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
-                setEditingRow(null);
+                if (editingRow.name === '') {
+                    setError("Meno nemôže byť prázdne.");
+                } else if (editingRow.email  === '') {
+                    setError("Email nemôže byť prázdny.");
+                } else {
+                    await updateUser(editingRow);
+                    setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
+                    setUserData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
+                    setEditingRow(null);
+                    setError(null);
+                }
             } catch (err) {
                 console.error(err);
+                setError(err.message);
             }
         } else if (tableName === "Knihy") {
+            if (!checkBookData(editingRow)) {
+                return;
+            }
+
             if (openDescription === false) {
                 const book = bookData.find((row) => row.id === editingRow.id);
                 setDescription(book.description);
                 setOpenDescription(true);
             } else {
                 try {
-                    const editingRowWithDescription = { ...editingRow, description: description };
+                    const editingRowWithDescription = {...editingRow, description: description};
                     await updateBook(editingRowWithDescription);
                     setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                     setBookData(data.map((item) => (item.id === editingRowWithDescription.id ? editingRowWithDescription : item)));
                     setEditingRow(null);
+                    setError(null);
                 } catch (err) {
                     console.error(err);
+                    setError(err.message);
                 }
                 setOpenDescription(false);
             }
         } else if (tableName === "Obrázky") {
+            if (editingRow.path === '') {
+                setError("Cesta k súboru nemôže byť prázdna.");
+            }
             try {
                 const {id, path, name} = editingRow;
                 await updateImage({path, name, id});
@@ -291,8 +376,10 @@ const AdminPage = () => {
                 setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                 setImageData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
                 setEditingRow(null);
+                setError(null);
             } catch (err) {
                 console.error(err);
+                setError(err.message);
             }
         } else if (tableName === "Objednávky") {
             try {
@@ -304,8 +391,10 @@ const AdminPage = () => {
                 setData(data.map((item) => (item.id === updatedEditingRow.id ? updatedEditingRow : item)));
                 setOrderData(data.map((item) => (item.id === updatedEditingRow.id ? updatedEditingRow : item)));
                 setEditingRow(null);
+                setError(null);
             } catch (err) {
                 console.error(err);
+                setError(err.message);
             }
         }
     };
@@ -313,6 +402,7 @@ const AdminPage = () => {
     const handleCancel = () => {
         setNewRow(null);
         setEditingRow(null);
+        setError(null);
     }
 
     return (
@@ -340,6 +430,7 @@ const AdminPage = () => {
             newDescription={newDescription}
             orderOptions={orderStatusOptions}
             setOrderStatus={setOrderStatus}
+            error={error}
         />
     );
 }

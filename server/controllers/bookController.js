@@ -270,7 +270,7 @@ const updateBookImage = async (req, res) => {
         if (result) {
             res.status(200).json({ message: 'Book image updated successfully' });
         } else {
-            res.status(404).json({ message: 'Book image could not be updated' });
+            res.status(404).json({ message: 'Kniha s daným ID nebola nájdená' });
         }
     } catch (error) {
         console.error('Error updating book image:', error);
