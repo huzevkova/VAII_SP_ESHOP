@@ -13,6 +13,8 @@ import UserInfo from "./components/User/UserInfo";
 import Wishlist from "./components/User/Wishlist";
 import Orders from "./components/User/Orders";
 import BlogPost from "./components/Home/BlogPost";
+import ProtectedRoute from "./ProtectedRoute";
+import AdminRoute from "./AdminRoute";
 
 function App() {
   return (
@@ -20,30 +22,20 @@ function App() {
           <AuthProvider>
               <Routes>
                   <Route path="/" element={<HomePage/>}/>
-
                   <Route path="/login" element={<LoginPage/>}/>
-
                   <Route path="/book_detail" element={<BookDetailPage/>}/>
-
                   <Route path="/search" element={<SearchPage/>}/>
-
                   <Route path="/registration" element={<RegistrationPage/>}/>
-
-                  <Route path="/cart" element={<CartPage/>}/>
-
-                  <Route path="/checkout" element={<CheckoutPage/>}/>
-
-                  <Route path="/order_done" element={<OrderDoneView/>}/>
-
-                  <Route path="/administration" element={<AdminPage/>}/>
-
-                  <Route path="/user" element={<UserInfo/>}/>
-
-                  <Route path="/wishlist" element={<Wishlist/>}/>
-
-                  <Route path="/order_history" element={<Orders/>}/>
-
                   <Route path="/post" element={<BlogPost/>}/>
+
+                  <Route path="/cart" element={<ProtectedRoute><CartPage/></ProtectedRoute>} />
+                  <Route path="/checkout" element={<ProtectedRoute><CheckoutPage/></ProtectedRoute>} />
+                  <Route path="/order_done" element={<ProtectedRoute><OrderDoneView/></ProtectedRoute>} />
+                  <Route path="/user" element={<ProtectedRoute><UserInfo/></ProtectedRoute>} />
+                  <Route path="/wishlist" element={<ProtectedRoute><Wishlist/></ProtectedRoute>} />
+                  <Route path="/order_history" element={<ProtectedRoute><Orders/></ProtectedRoute>} />
+
+                  <Route path="/administration" element={<AdminRoute><AdminPage/></AdminRoute>} />
 
               </Routes>
           </AuthProvider>

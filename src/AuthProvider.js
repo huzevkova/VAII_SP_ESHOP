@@ -7,7 +7,21 @@ const API_URL = 'http://localhost:5000/api/users';
 
 const AuthProvider = ({ children }) => {
 
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const token = localStorage.getItem("site");
+        if (token) {
+            try {
+                const parsedToken = JSON.parse(token);
+                return parsedToken.type === 1 ? "admin" : parsedToken.id_user;
+            } catch (err) {
+                console.error("Failed to parse token:", err);
+                localStorage.removeItem("site");
+                return null;
+            }
+        }
+        return null;
+    });
+
     const [token, setToken] = useState(localStorage.getItem("site") || "");
     const navigate = useNavigate();
 
