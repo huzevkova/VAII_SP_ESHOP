@@ -19,7 +19,7 @@ const getUserOrders = async (id) => {
 }
 
 const getAllOrders = async () => {
-    const query = 'SELECT * FROM orders JOIN order_status ON (id_status = status)';
+    const query = 'SELECT * FROM orders JOIN order_status ON (id_status = status) WHERE status not like 1';
     const [results] = await db.query(query, []);
     return results;
 }
