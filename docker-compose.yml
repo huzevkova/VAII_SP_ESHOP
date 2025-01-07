@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
     ports:
-      - "3000:80" # Map React app to port 3000
+      - "3000:80" # Map frontend to port 3000
     depends_on:
       - backend
 
@@ -18,4 +18,15 @@ services:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       DB_USER: ${DB_USER}
-      DB_HOST: ${DB_HOST}
+    depends_on:
+      - db
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    ports:
+      - "3307:3306" # Maps the database to localhost
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
