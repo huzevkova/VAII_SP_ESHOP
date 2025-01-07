@@ -16,10 +16,6 @@ const Wishlist = () => {
     const [openCart, setOpenCart] = useState(false);
     const {user} = useAuth();
 
-    if (!user) {
-        navigate('/login');
-    }
-
     useEffect(() => {
         const loadWishlist = async () => {
             try {

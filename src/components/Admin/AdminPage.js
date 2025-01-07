@@ -40,9 +40,11 @@ const AdminPage = () => {
 
     const {user} = useAuth();
 
-    if (user !== "admin") {
-        navigate('/login');
-    }
+    useEffect(() => {
+        if (user !== "admin") {
+            navigate('/login');
+        }
+    }, [user, navigate]);
 
     useEffect(() => {
         const loadUsers = async () => {

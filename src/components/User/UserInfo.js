@@ -10,10 +10,6 @@ const UserInfo = () => {
     const [userData, setUserData] = useState(null);
     const {user, token} = useAuth();
 
-    if (!user) {
-        navigate('/login');
-    }
-
     useEffect(() => {
         const loadUserData = async () => {
             try {

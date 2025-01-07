@@ -11,17 +11,13 @@ const Orders = () => {
     const [orderData, setOrderData] = useState(null);
     const {user} = useAuth();
 
-    if (!user) {
-        navigate('/login');
-    }
-
     useEffect(() => {
         const loadOrders = async () => {
             try {
                 const response = await fetchUserOrders(user);
                 setOrders(response);
             } catch (err) {
-                console.error("Trying here");
+                console.error(err);
                 setOrders([]);
             }
         };

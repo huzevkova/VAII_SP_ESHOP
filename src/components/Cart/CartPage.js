@@ -11,10 +11,6 @@ const CartPage = () => {
     const [cart, setCart] = useState(null);
     const {user} = useAuth();
 
-    if (!user) {
-        navigate('/login');
-    }
-
     useEffect(() => {
         const loadUserCart = async () => {
             try {
@@ -22,29 +18,33 @@ const CartPage = () => {
                 setCart(response);
             } catch (err) {
                 console.error(err);
-                setCart([]);
+                setCart([]);  // Fallback to empty cart on error
             }
         };
 
-        loadUserCart();
-    });
+        if (user) {
+            loadUserCart();
+        }
+    }, [user]);
 
     useEffect(() => {
-        const loadCartItems = async () => {
-            try {
-                const id = parseInt(cart.id_order);
-                const response = await fetchCartItems(id);
-                setCartItems(response);
-            } catch (err) {
-                console.error(err);
-                setCartItems([]);
-            }
-        };
+        if (cart && cart.id_order) {
+            const loadCartItems = async () => {
+                try {
+                    const id = parseInt(cart.id_order);
+                    const response = await fetchCartItems(id);
+                    setCartItems(response);
+                } catch (err) {
+                    console.error(err);
+                    setCartItems([]);  // Fallback to empty items on error
+                }
+            };
 
-        loadCartItems();
+            loadCartItems();
+        }
     }, [cart]);
 
-    if (cart == null) {
+    if (!user || cart == null || cartItems == null) {
         return;
     }
 

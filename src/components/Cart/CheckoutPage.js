@@ -31,10 +31,6 @@ const CheckoutPage = () => {
         payment: null,});
     const {user} = useAuth();
 
-    if (!user) {
-        navigate('/login');
-    }
-
     useEffect(() => {
         const loadUserData = async () => {
             try {
