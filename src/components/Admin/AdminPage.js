@@ -12,13 +12,11 @@ import {
     updateBookImage,
     updateImage
 } from "../../api/bookApi";
-import {useNavigate} from "react-router-dom";
 import {useAuth} from "../../AuthProvider";
 import {fetchOrderOptions, fetchOrders, updateOrder} from "../../api/orderApi";
 
 const AdminPage = () => {
 
-    const navigate = useNavigate();
     const auth = useAuth();
 
     const [error, setError] = useState(null);
@@ -39,12 +37,6 @@ const AdminPage = () => {
     const [newDescription, setNewDescription] = useState(false);
 
     const {user} = useAuth();
-
-    useEffect(() => {
-        if (user !== "admin") {
-            navigate('/login');
-        }
-    }, [user, navigate]);
 
     useEffect(() => {
         const loadUsers = async () => {

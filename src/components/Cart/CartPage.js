@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from "react";
 import CartView from "../../views/Cart/CartView";
 import {useAuth} from "../../AuthProvider";
-import {useNavigate} from "react-router-dom";
 import {fetchCartItems, fetchUserCart, removeFromCart, updateItemCount} from "../../api/orderApi";
 
 const CartPage = () => {
 
-    const navigate = useNavigate();
     const [cartItems, setCartItems] = useState(null);
     const [cart, setCart] = useState(null);
     const {user} = useAuth();

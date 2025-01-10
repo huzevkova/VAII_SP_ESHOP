@@ -1,12 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import {useAuth} from "../../AuthProvider";
-import {useNavigate} from "react-router-dom";
 import {fetchCartItems, fetchUserOrders} from "../../api/orderApi";
 import OrderView from "../../views/User/OrdersView";
 
 const Orders = () => {
 
-    const navigate = useNavigate();
     const [orders, setOrders] = useState(null);
     const [orderData, setOrderData] = useState(null);
     const {user} = useAuth();
