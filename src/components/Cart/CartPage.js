@@ -38,7 +38,9 @@ const CartPage = () => {
                 }
             };
 
-            loadCartItems();
+            if (cartItems == null) {
+                loadCartItems();
+            }
         }
     }, [cart]);
 
@@ -66,13 +68,12 @@ const CartPage = () => {
         }
     };
 
-    const handleRemoveItem = async (index) => {
+    const handleRemoveItem = async (id_book) => {
         try {
-            const id_book = index;
             const id_order = cart.id_order;
-            await removeFromCart({id_book, id_order});
+            await removeFromCart({ id_book, id_order });
             setCartItems((prevCartItems) =>
-                prevCartItems.filter((_, i) => i !== index)
+                prevCartItems.filter((item) => item.id_book !== id_book)
             );
         } catch (err) {
             console.log(err);
