@@ -82,7 +82,7 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                 </DialogTitle>
                 <TextField
                     id="filled-multiline-flexible"
-                    label="Multiline"
+                    label="Popis knihy"
                     multiline
                     value={description}
                     maxRows={4}

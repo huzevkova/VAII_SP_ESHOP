@@ -134,8 +134,7 @@ const AdminPage = () => {
                     const { id_book, ...rest } = obj;
                     return { id: id_book, ...rest };
                 });
-                let updatedData = updatedBookData.map(({ description, ...rest }) => rest);
-                updatedData = updatedData.map(({id_image, path, name, ...rest}) => rest);
+                let updatedData = updatedBookData.map(({id_image, path, name, ...rest}) => rest);
                 setBookData(updatedBookData);
                 return updatedData;
             case "Objednávky":
@@ -208,7 +207,7 @@ const AdminPage = () => {
                 return false;
             }
 
-            if (editingRow.image !== '' && isNaN(parseInt(row.image))) {
+            if (row.image !== '' && row.image != null && isNaN(parseInt(row.image))) {
                 setError("Zlý formát obrázku (zadajte číselné ID).");
                 return false;
             }
@@ -223,6 +222,7 @@ const AdminPage = () => {
                 setUserData(data.filter((item) => item.id !== selectedRow));
                 setData(data.filter((item) => item.id !== selectedRow));
                 setSelectedRow(null);
+                setError(null);
             } catch (err) {
                 console.error(err);
                 setError(err.message);
@@ -233,6 +233,7 @@ const AdminPage = () => {
                 setBookData(data.filter((item) => item.id !== selectedRow));
                 setData(data.filter((item) => item.id !== selectedRow));
                 setSelectedRow(null);
+                setError(null);
             } catch (err) {
                 console.error(err);
                 setError(err.message);
@@ -243,6 +244,7 @@ const AdminPage = () => {
                 setImageData(data.filter((item) => item.id !== selectedRow));
                 setData(data.filter((item) => item.id !== selectedRow));
                 setSelectedRow(null);
+                setError(null);
             } catch (err) {
                 console.error(err);
                 setError(err.message);
@@ -261,13 +263,15 @@ const AdminPage = () => {
 
     const handleConfirmAdd = async () => {
         if (tableName === "Knihy") {
-            if (!checkBookData(newRow)) {
-                return;
-            }
             if (openDescription === false) {
                 setNewDescription(true);
                 setOpenDescription(true);
             } else {
+                setOpenDescription(false);
+                setNewDescription(false);
+                if (!checkBookData(newRow)) {
+                    return;
+                }
                 try {
                     const newRowWithDescription = { ...newRow, description: {description} };
                     const {bookId, message} = await createBook(newRowWithDescription);
@@ -280,12 +284,11 @@ const AdminPage = () => {
                     setBookData([...data, newRowWithDescription]);
                     setData([...data, completeRow]);
                     setNewRow(null);
+                    setError(null);
                 } catch (err) {
                     console.error(err);
                     setError(err.message);
                 }
-                setOpenDescription(false);
-                setNewDescription(false);
             }
         } else if (tableName === "Obrázky") {
             if (newRow.path === '' || newRow.path == null) {
@@ -308,6 +311,7 @@ const AdminPage = () => {
                     setImageData([...data, newTableRow]);
                     setData([...data, completeRow]);
                     setNewRow(null);
+                    setError(null);
                 } catch (err) {
                     console.error(err);
                     setError(err.message);
@@ -341,6 +345,7 @@ const AdminPage = () => {
 
             if (openDescription === false) {
                 const book = bookData.find((row) => row.id === editingRow.id);
+                console.log(book);
                 setDescription(book.description);
                 setOpenDescription(true);
             } else {

@@ -13,7 +13,9 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                 <thead>
                 <tr>
                     {Object.keys(data[0] || {}).map((key) => (
-                        <th key={key}>{key}</th>
+                        key !== "description" ?
+                            (<th key={key}>{key}</th>)
+                            : null
                     ))}
                 </tr>
                 </thead>
@@ -24,8 +26,10 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                         className={row.id === selectedRow ? "table-active" : ""}
                         onClick={() => handleRowSelection(row.id)}
                     >
-                        {Object.values(row).map((value, index) => (
-                            <td key={index}>{value}</td>
+                        {Object.entries(row).map(([key, value], index) => (
+                            key !== "description" ? (  // Exclude description during normal display
+                                <td key={index}>{value}</td>
+                            ) : null
                         ))}
                     </tr>
                 ))}
@@ -33,17 +37,19 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                 {newRow && (
                     <tr>
                         {Object.keys(data[0] || {}).map((key, index) => (
-                            <td key={index}>
-                                {key !== "id" ?
-                                <Form.Control
-                                    type="text"
-                                    defaultValue=""
-                                    placeholder=""
-                                    onChange={(e) =>
-                                        setNewRow({...newRow, [key]: e.target.value})
-                                    }
-                                /> : index+1}
-                            </td>
+                            key !== "description" ? (
+                                <td key={index}>
+                                    {key !== "id" ?
+                                        <Form.Control
+                                            type="text"
+                                            defaultValue=""
+                                            placeholder=""
+                                            onChange={(e) =>
+                                                setNewRow({...newRow, [key]: e.target.value})
+                                            }
+                                        /> : index + 1}
+                                </td>
+                            ) : null
                         ))}
                         <td>
                             <Button variant="success" size="sm" onClick={handleConfirmAdd}>
@@ -62,19 +68,21 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                     <tr>
                         {dataType !== "Objednávky" ?
                         Object.keys(editingRow).map((key, index) => (
-                            <td key={index}>
-                                {key !== "id" ?
-                                <Form.Control
-                                    type="text"
-                                    value={editingRow[key]}
-                                    onChange={(e) =>
-                                        setEditingRow({
-                                            ...editingRow,
-                                            [key]: e.target.value,
-                                        })
-                                    }
-                                /> : index}
-                            </td>
+                            key !== "description" ? (
+                                <td key={index}>
+                                    {key !== "id" ?
+                                        <Form.Control
+                                            type="text"
+                                            value={editingRow[key]}
+                                            onChange={(e) =>
+                                                setEditingRow({
+                                                    ...editingRow,
+                                                    [key]: e.target.value,
+                                                })
+                                            }
+                                        /> : index}
+                                </td>
+                            ) : null
                         )) :
                             Object.keys(editingRow).map((key, index) => (
                                 <td key={index}>
