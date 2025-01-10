@@ -76,7 +76,11 @@ const BookDetailPage = () => {
         loadBookData();
         loadBookGenres();
         loadBookSeries();
-        loadCart();
+        if (user) {
+            loadCart();
+        } else {
+            setCart([]);
+        }
     }, [bookId]);
 
     if (bookData == null || series == null || bookGenres == null || cart == null) {

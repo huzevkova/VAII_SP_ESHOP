@@ -35,6 +35,7 @@ const SearchPage = () => {
                 try {
                     const response = await fetchBooksByName(searchInput);
                     setBooks(response);
+                    setAllBooks(response);
                 } catch (err) {
                     console.error(err);
                     setBooks([]);
