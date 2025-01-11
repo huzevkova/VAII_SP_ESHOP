@@ -36,8 +36,6 @@ const AdminPage = () => {
     const [description, setDescription] = useState(null);
     const [newDescription, setNewDescription] = useState(false);
 
-    const {user} = useAuth();
-
     /**
      * Načítanie dát pri spustení.
      */
