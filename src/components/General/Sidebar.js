@@ -9,6 +9,9 @@ const Sidebar = () => {
 
     const [posts, setPosts] = useState(null);
 
+    /**
+     * Načítanie dát pri spustení.
+     */
     useEffect(() => {
         const loadBlogPosts = async () => {
             try {
@@ -23,10 +26,17 @@ const Sidebar = () => {
         loadBlogPosts();
     });
 
+    /**
+     * Kontrola či sú potrebné dáta načítané.
+     */
     if (posts == null) {
         return;
     }
 
+    /**
+     * Spracovanie prechodu na blog post.
+     * @param index
+     */
     const goToBlogPost = (index) => {
         navigate('/post', { state: { post: posts[index] } });
     }

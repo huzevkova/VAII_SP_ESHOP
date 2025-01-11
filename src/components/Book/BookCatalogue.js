@@ -9,6 +9,9 @@ const BookCatalogue = () => {
 
     const [books, setBooks] = useState(null);
 
+    /**
+     * Načítanie dát pri spustení.
+     */
     useEffect(() => {
         const loadBooks = async () => {
             try {
@@ -25,6 +28,10 @@ const BookCatalogue = () => {
         }
     });
 
+    /**
+     * Otvorenie konkrétnej knihy.
+     * @param id
+     */
     const openBookDetail = (id) => {
         navigate('/book_detail', { state: { bookId: id } });
     }

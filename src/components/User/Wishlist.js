@@ -16,6 +16,9 @@ const Wishlist = () => {
     const [openCart, setOpenCart] = useState(false);
     const {user} = useAuth();
 
+    /**
+     * Načítanie dát pri spustení.
+     */
     useEffect(() => {
         const loadWishlist = async () => {
             try {
@@ -41,10 +44,18 @@ const Wishlist = () => {
         loadWishlist();
     });
 
+    /**
+     * Kontrola či sú potrebné dáta načítané.
+     */
     if (wishlist == null) {
         return;
     }
 
+    /**
+     * Spracovanie odstránenia knihy z wishlistu.
+     * @param id_book
+     * @returns {Promise<void>}
+     */
     const handleDelete = async (id_book) => {
         try {
             await removeFromWishlist({user, id_book})
@@ -52,15 +63,27 @@ const Wishlist = () => {
             console.error(err);
         }
     }
+
+    /**
+     * Spracovanie otvorenia knihy.
+     * @param id
+     */
     const openBookDetail = (id) => {
         navigate('/book_detail', { state: { bookId: id } });
     }
 
+    /**
+     * Spracovanie zatvorenia dialógoévho okna po pridaní knihy do košíka.
+     */
     const handleCloseCart = () => {
         setOpenCart(false);
     };
 
-
+    /**
+     * Spracovnaie pridania knihy do košíka.
+     * @param id
+     * @returns {Promise<void>}
+     */
     const addToCartClick = async (id) => {
         if (user) {
             try {

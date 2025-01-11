@@ -16,11 +16,20 @@ const LoginPage = () => {
         {email: 'normal',
             password: 'normal'});
 
+    /**
+     * Spracovanie zmeny vo vstupných poliach.
+     * @param e
+     */
     const handleInputChange = (e) => {
         setLoginData({ ...loginData, [e.target.name]: e.target.value });
         setLoginState({...loginState, [e.target.name]: 'normal'});
     }
 
+    /**
+     * Spracovanie prihlásenia + informovanie o chybách.
+     * @param e
+     * @returns {Promise<void>}
+     */
     const handleLogin = async (e) => {
         e.preventDefault();
         if (loginData.email == null) {

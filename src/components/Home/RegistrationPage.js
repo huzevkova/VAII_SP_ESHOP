@@ -30,16 +30,28 @@ const RegistrationPage = () => {
             password_confirmation: 'normal',
             agreement: 'normal'});
 
+    /**
+     * Spracovanie zmeny vo vstupných poliach formuláru.
+     * @param e
+     */
     const handleInputChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
         setFormState({...formState, [e.target.name]: 'normal'});
     };
 
+    /**
+     * Spracovanie zakliknutia súhlasu so spracovaním údajov.
+     */
     const handleCheckChange = () => {
         setFormAgreement(!formAgreement);
         setFormState({...formState, agreement: 'normal'});
     }
 
+    /**
+     * Spracovanie registrácie (validácia) + informovanie o chybách.
+     * @param e
+     * @returns {Promise<void>}
+     */
     const handleRegistration = async (e) => {
         e.preventDefault();
         let updatedFormData = {...formData};

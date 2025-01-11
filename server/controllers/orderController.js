@@ -1,5 +1,11 @@
 const orderModel = require('../models/orderModel');
 
+/**
+ * Získa všetky objednávky.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getAllOrders = async (req, res) => {
     try {
         const orders = await orderModel.getAllOrders();
@@ -15,6 +21,12 @@ const getAllOrders = async (req, res) => {
     }
 }
 
+/**
+ * Získa objednávky používateľa podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getUserOrders = async (req, res) => {
     const { id } = req.params;
     try {
@@ -30,6 +42,12 @@ const getUserOrders = async (req, res) => {
     }
 }
 
+/**
+ * Získa obsah (knihy) v konkrétnom košíku podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getCartItems = async (req, res) => {
     const { id } = req.params;
     try {
@@ -45,6 +63,12 @@ const getCartItems = async (req, res) => {
     }
 }
 
+/**
+ * Získa košík konkrétneho používateľa podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getUserCart = async (req, res) => {
     const { id } = req.params;
     try {
@@ -70,6 +94,12 @@ const getUserCart = async (req, res) => {
     }
 }
 
+/**
+ * Vloží do knihu košíka podľa ich id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const insertIntoCart = async (req, res) => {
     const { id_book, id_order } = req.body;
     try {
@@ -83,6 +113,12 @@ const insertIntoCart = async (req, res) => {
     }
 }
 
+/**
+ * Odstráni knihu z košíka podľa ich id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const removeFromCart = async (req, res) => {
     const { id_book, id_order } = req.body;
     try {
@@ -98,6 +134,12 @@ const removeFromCart = async (req, res) => {
     }
 }
 
+/**
+ * Aktualizuje počet kusov knihy v košíku podľa ich id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const updateCartItemCount = async (req, res) => {
     const { count, id_order, id_book } = req.body;
     try {
@@ -113,6 +155,12 @@ const updateCartItemCount = async (req, res) => {
     }
 }
 
+/**
+ * Získa všetky možnosti stavu objednávok.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getOrderStatusOptions = async (req, res) => {
     try {
         const options = await orderModel.getOrderStatusOptions();
@@ -128,6 +176,12 @@ const getOrderStatusOptions = async (req, res) => {
     }
 }
 
+/**
+ * Aktualizuje stav objednávky používateľa podľa ich id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const updateOrderStatus = async (req, res) => {
     const {status, id_order, id_user} = req.body;
     try {
@@ -143,6 +197,12 @@ const updateOrderStatus = async (req, res) => {
     }
 }
 
+/**
+ * Aktualizuje možnosti doručenia objednávky podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const updateOrderDeliveryAndPayment = async (req, res) => {
     const {delivery, payment, id_order} = req.body;
     try {
@@ -158,6 +218,12 @@ const updateOrderDeliveryAndPayment = async (req, res) => {
     }
 }
 
+/**
+ * Získa všetky možnosti doručenia objednávky.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getDeliveryOptions = async (req, res) => {
     try {
         const options = await orderModel.getDeliveryOptions();
@@ -172,6 +238,12 @@ const getDeliveryOptions = async (req, res) => {
     }
 }
 
+/**
+ * Získa všetky možnosti platby za objednávku z DB.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getPaymentOptions = async (req, res) => {
     try {
         const options = await orderModel.getPaymentOptions();

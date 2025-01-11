@@ -193,7 +193,7 @@ const SearchPage = () => {
 
     const handleEnter = (event) => {
         if (event.key === 'Enter') {
-            handleSearch();  // Trigger handleSearch when Enter is pressed
+            handleSearch();
         }
     };
 

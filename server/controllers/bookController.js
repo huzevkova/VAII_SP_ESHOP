@@ -1,5 +1,11 @@
 const bookModel = require('../models/bookModel');
 
+/**
+ * Získa všetky knihy.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getAllBooks = async (req, res) => {
     try {
         const books = await bookModel.getAllBooks()
@@ -15,6 +21,12 @@ const getAllBooks = async (req, res) => {
     }
 }
 
+/**
+ * Získa konkrétnu knihu podľa číselného id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getBookById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -30,6 +42,12 @@ const getBookById = async (req, res) => {
     }
 };
 
+/**
+ * Získa žánre konkrétnej knihy podľa jej id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getGenresById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -45,6 +63,12 @@ const getGenresById = async (req, res) => {
     }
 };
 
+/**
+ * Získa knihy podľa názvu.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getBooksByName = async (req, res) => {
     const { name } = req.params;
     try {
@@ -60,6 +84,12 @@ const getBooksByName = async (req, res) => {
     }
 };
 
+/**
+ * Získa knihy podľa názvu žánru.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getBooksByGenre = async (req, res) => {
     const { genre } = req.params;
     try {
@@ -75,7 +105,12 @@ const getBooksByGenre = async (req, res) => {
     }
 };
 
-
+/**
+ * Získa knihy vyhovujúce podmienkam - autor, jazyk, cena (OR).
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getFilteredBooks = async (req, res) => {
     const { author, language, priceStart, priceEnd } = req.params;
     try {
@@ -91,6 +126,12 @@ const getFilteredBooks = async (req, res) => {
     }
 };
 
+/**
+ * Získa náhodné knihy. Počet kníh je zadaný.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getRandomBooks = async (req, res) => {
     const { number } = req.params;
     try {
@@ -106,6 +147,12 @@ const getRandomBooks = async (req, res) => {
     }
 };
 
+/**
+ * Získa knižnú sériu podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getBookSeries = async (req, res) => {
     const { id } = req.params;
     try {
@@ -116,11 +163,17 @@ const getBookSeries = async (req, res) => {
             res.status(200).json(null);
         }
     } catch (error) {
-        console.error('Error fetching book:', error);
+        console.error('Error fetching book series:', error);
         res.status(500).json({ message: 'Server error' });
     }
 };
 
+/**
+ * Vytvorí novú knihu, ak sú zadané všetky potrebné údaje. Vracia nové id.
+ * @param req
+ * @param res
+ * @returns {Promise<*>}
+ */
 const createBook = async (req, res) => {
     const { title, original_title, author, language, page_count, publish_year, publisher, size, price, cover, image, isbn, description } = req.body;
 
@@ -137,6 +190,12 @@ const createBook = async (req, res) => {
     }
 };
 
+/**
+ * Aktualizuje knihu podľa zadaných údajov.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const updateBook = async (req, res) => {
     const { id, title, original_title, author, language, page_count, publish_year, publisher, size, price, cover, image, isbn, description } = req.body;
     try {
@@ -152,6 +211,12 @@ const updateBook = async (req, res) => {
     }
 }
 
+/**
+ * Zmaže knihu podľa id. Vracia úspech (true) / neúspech (false).
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const deleteBook = async (req, res) => {
     const { id } = req.params;
     try {
@@ -167,6 +232,12 @@ const deleteBook = async (req, res) => {
     }
 };
 
+/**
+ * Získa všetky žánre.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getGenres = async (req, res) => {
     try {
         const genres = await bookModel.getGenres()
@@ -182,6 +253,12 @@ const getGenres = async (req, res) => {
     }
 }
 
+/**
+ * Získa všetkých autorov.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getAuthors = async (req, res) => {
     try {
         const authors = await bookModel.getAuthors()
@@ -197,6 +274,12 @@ const getAuthors = async (req, res) => {
     }
 }
 
+/**
+ * Získa všetky jazyky.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getLangugages = async (req, res) => {
     try {
         const languages = await bookModel.getLanguages()
@@ -212,6 +295,12 @@ const getLangugages = async (req, res) => {
     }
 }
 
+/**
+ * Získa všetky obrázky (ku knihám).
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getImages = async (req, res) => {
     try {
         const images = await bookModel.getImages()
@@ -227,6 +316,12 @@ const getImages = async (req, res) => {
     }
 }
 
+/**
+ * Vytvorí nový obrázok knihy, ak sú zadané všetky potrebné údaje.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const createBookImage = async (req, res) => {
     const {path, name, id_book} = req.body;
     try {
@@ -248,6 +343,12 @@ const createBookImage = async (req, res) => {
     }
 }
 
+/**
+ * Aktualizuje obrázok podľa zadaných údajov.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const updateImage = async (req, res) => {
     const {path, name, id} = req.body;
     try {
@@ -263,6 +364,12 @@ const updateImage = async (req, res) => {
     }
 }
 
+/**
+ * Aktualizuje obrázok konkrétnej knihy podľa ich id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const updateBookImage = async (req, res) => {
     const {id_image, id_book} = req.body;
     try {
@@ -278,6 +385,12 @@ const updateBookImage = async (req, res) => {
     }
 }
 
+/**
+ * Zmaže obrázok podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const deleteImage = async (req, res) => {
     const { id } = req.params;
     try {

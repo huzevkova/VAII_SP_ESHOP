@@ -8,6 +8,9 @@ const UserInfo = () => {
     const [userData, setUserData] = useState(null);
     const {user, token} = useAuth();
 
+    /**
+     * Načítanie dát pri spustení.
+     */
     useEffect(() => {
         const loadUserData = async () => {
             try {
@@ -27,6 +30,9 @@ const UserInfo = () => {
         loadUserData();
     });
 
+    /**
+     * Kontrola či sú potrebné dáta načítané.
+     */
     if (userData == null) {
         return;
     }

@@ -38,6 +38,9 @@ const AdminPage = () => {
 
     const {user} = useAuth();
 
+    /**
+     * Načítanie dát pri spustení.
+     */
     useEffect(() => {
         const loadUsers = async () => {
             try {
@@ -105,6 +108,10 @@ const AdminPage = () => {
         }
     });
 
+    /**
+     * Spracovanie prekliknutia sa na tabuľku.
+     * @param tabName
+     */
     const handleTabClick = (tabName) => {
         setSelectedTab(true);
         setTableName(tabName);
@@ -112,14 +119,26 @@ const AdminPage = () => {
         setSelectedRow(null);
     };
 
+    /**
+     * Spracovnaie odhlásenia.
+     */
     const handleLogOut = () => {
         auth.logOut();
     }
 
+    /**
+     * Spracovanie zmeny popisu knihy.
+     * @param e
+     */
     const handleDescription = (e) => {
         setDescription(e.target.value);
     }
 
+    /**
+     * Nastavenia správnych dát pre tabuľku.
+     * @param tabName
+     * @returns {*|*[]}
+     */
     const getDataForTab = (tabName) => {
         switch (tabName) {
             case "Používatelia":
@@ -156,10 +175,19 @@ const AdminPage = () => {
         }
     };
 
+    /**
+     * Spracovanie výberu riadku v tabuľke.
+     * @param id
+     */
     const handleRowSelection = (id) => {
         setSelectedRow(id === selectedRow ? null : id);
     };
 
+    /**
+     * Validácia vstupných údajov pri editácii knihy alebo vytvorení novej knihy.
+     * @param row
+     * @returns {boolean}
+     */
     const checkBookData = (row) => {
         if (row.title === '' || row.title == null) {
             setError("Názov knihy nemôže byť prázdny.");
@@ -215,6 +243,10 @@ const AdminPage = () => {
         return true;
     }
 
+    /**
+     * Spracovanie zmazania používateľa, knihy alebo obrázku.
+     * @returns {Promise<void>}
+     */
     const handleDelete = async () => {
         if (tableName === "Používatelia") {
             try {
@@ -252,15 +284,25 @@ const AdminPage = () => {
         }
     };
 
+    /**
+     * Spracovanie nového riadku.
+     */
     const handleAdd = () => {
         setNewRow({});
     };
 
+    /**
+     * Spracovanie úpravy existujúceho riadku.
+     */
     const handleEdit = () => {
         const rowToEdit = data.find((item) => item.id === selectedRow);
         setEditingRow({...rowToEdit});
     };
 
+    /**
+     * Spracovanie potvrdenia vytvorenia nového riadku.
+     * @returns {Promise<void>}
+     */
     const handleConfirmAdd = async () => {
         if (tableName === "Knihy") {
             if (openDescription === false) {
@@ -320,6 +362,10 @@ const AdminPage = () => {
         }
     };
 
+    /**
+     * Spracovanie potvrdenia úprav existujúceho riadku.
+     * @returns {Promise<void>}
+     */
     const handleConfirmEdit = async () => {
         if (tableName === "Používatelia") {
             try {
@@ -397,6 +443,9 @@ const AdminPage = () => {
         }
     };
 
+    /**
+     * Spracovanie zrušenia akcie.
+     */
     const handleCancel = () => {
         setNewRow(null);
         setEditingRow(null);

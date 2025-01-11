@@ -29,8 +29,24 @@ const CheckoutPage = () => {
     const [orderOptions, setOrderOptions] = useState({
         delivery: null,
         payment: null,});
+    const isStep1Valid =
+        userData.name &&
+        userData.email &&
+        userData.phone_number &&
+        userData.street &&
+        userData.house_number &&
+        userData.city &&
+        userData.city_code;
+
+    const isStep2Valid =
+        orderOptions.delivery && orderOptions.payment;
+
     const {user} = useAuth();
 
+
+    /**
+     * Načítanie dát pri spustení, po načítaní používateľa.
+     */
     useEffect(() => {
         const loadUserData = async () => {
             try {
@@ -77,7 +93,9 @@ const CheckoutPage = () => {
         loadPaymentOptions();
     }, [user]);
 
-
+    /**
+     * Načítanie dát pri spustení, po načítaní košíka.
+     */
     useEffect(() => {
         const loadOrderData = async () => {
             try {
@@ -93,24 +111,18 @@ const CheckoutPage = () => {
         loadOrderData();
     }, [cart]);
 
+    /**
+     * Kontrola či sú potrebné dáta načítané.
+     */
     if (userData == null || cart == null || delivery == null || payment == null) {
         return;
     } else if (orderData == null) {
         return;
     }
 
-    const isStep1Valid =
-        userData.name &&
-        userData.email &&
-        userData.phone_number &&
-        userData.street &&
-        userData.house_number &&
-        userData.city &&
-        userData.city_code;
-
-    const isStep2Valid =
-        orderOptions.delivery && orderOptions.payment;
-
+    /**
+     * Spracovanie prechodu na ďalší krok objednávania.
+     */
     const handleNext = () => {
         if (currentStep === 1 && isStep1Valid) {
             setCurrentStep(2);
@@ -121,6 +133,9 @@ const CheckoutPage = () => {
         }
     };
 
+    /**
+     * Spracovanie návratu na predchádzajúci krok objednávania.
+     */
     const handlePrevious = () => {
         if (currentStep === 2) {
             setCurrentStep(1);
@@ -129,6 +144,10 @@ const CheckoutPage = () => {
         }
     };
 
+    /**
+     * Spracovanie zmeny vstupných údajov (údaje, možnosti doručenia).
+     * @param e
+     */
     const handleInputChange = (e) => {
         if (currentStep === 1) {
             setUserData({...userData, [e.target.name]: e.target.value});
@@ -137,6 +156,10 @@ const CheckoutPage = () => {
         }
     };
 
+    /**
+     * Spracovanie vytvorenia objednávky.
+     * @returns {Promise<void>}
+     */
     const handleOrder = async () => {
         try {
             const id_order = cart.id_order;

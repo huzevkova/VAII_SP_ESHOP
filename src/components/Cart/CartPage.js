@@ -9,6 +9,9 @@ const CartPage = () => {
     const [cart, setCart] = useState(null);
     const {user} = useAuth();
 
+    /**
+     * Načítanie košíka pri spustení, po načítaní používateľa.
+     */
     useEffect(() => {
         const loadUserCart = async () => {
             try {
@@ -16,7 +19,7 @@ const CartPage = () => {
                 setCart(response);
             } catch (err) {
                 console.error(err);
-                setCart([]);  // Fallback to empty cart on error
+                setCart([]);
             }
         };
 
@@ -25,6 +28,9 @@ const CartPage = () => {
         }
     }, [user]);
 
+    /**
+     * Načítanie dát pri spustení, po načítaní košíka.
+     */
     useEffect(() => {
         if (cart && cart.id_order) {
             const loadCartItems = async () => {
@@ -34,7 +40,7 @@ const CartPage = () => {
                     setCartItems(response);
                 } catch (err) {
                     console.error(err);
-                    setCartItems([]);  // Fallback to empty items on error
+                    setCartItems([]);
                 }
             };
 
@@ -44,10 +50,19 @@ const CartPage = () => {
         }
     }, [cart]);
 
+    /**
+     * Kontrola či sú potrebné dáta načítané.
+     */
     if (!user || cart == null || cartItems == null) {
         return;
     }
 
+    /**
+     * Spracovanie zmeny počtu kusov knihy.
+     * @param index
+     * @param newQuantity
+     * @returns {Promise<void>}
+     */
     const handleQuantityChange = async (index, newQuantity) => {
         if (newQuantity === 0) {
             await handleRemoveItem(index);
@@ -68,6 +83,11 @@ const CartPage = () => {
         }
     };
 
+    /**
+     * Spracovanie odstránenia knihy z košíka.
+     * @param id_book
+     * @returns {Promise<void>}
+     */
     const handleRemoveItem = async (id_book) => {
         try {
             const id_order = cart.id_order;

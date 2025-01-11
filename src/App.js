@@ -1,5 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import HomePage from './components/Home/HomePage';
+import HomePageView from "./views/Home/HomePageView";
 import LoginPage from "./components/Home/LoginPage";
 import BookDetailPage from "./components/Book/BookDetailPage";
 import SearchPage from "./components/Search/SearchPage";
@@ -21,13 +21,15 @@ function App() {
       <Router>
           <AuthProvider>
               <Routes>
-                  <Route path="/" element={<HomePage/>}/>
+                  {/* stránky dostupné všetkým */}
+                  <Route path="/" element={<HomePageView/>}/>
                   <Route path="/login" element={<LoginPage/>}/>
                   <Route path="/book_detail" element={<BookDetailPage/>}/>
                   <Route path="/search" element={<SearchPage/>}/>
                   <Route path="/registration" element={<RegistrationPage/>}/>
                   <Route path="/post" element={<BlogPost/>}/>
 
+                  {/* stránky dostupné prihláseným používateľom */}
                   <Route path="/cart" element={<ProtectedRoute><CartPage/></ProtectedRoute>} />
                   <Route path="/checkout" element={<ProtectedRoute><CheckoutPage/></ProtectedRoute>} />
                   <Route path="/order_done" element={<ProtectedRoute><OrderDoneView/></ProtectedRoute>} />
@@ -35,6 +37,7 @@ function App() {
                   <Route path="/wishlist" element={<ProtectedRoute><Wishlist/></ProtectedRoute>} />
                   <Route path="/order_history" element={<ProtectedRoute><Orders/></ProtectedRoute>} />
 
+                  {/* stránky dostupné len administrátorovi */}
                   <Route path="/administration" element={<AdminRoute><AdminPage/></AdminRoute>} />
 
               </Routes>

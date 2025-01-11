@@ -1,9 +1,8 @@
-import { useAuth } from './AuthProvider'; // Adjust the path as necessary
+import { useAuth } from './AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
 
 const AdminRoute = ({ children }) => {
     const { user } = useAuth();
-    const location = useLocation();
 
     if (user !== "admin") {
         return <Navigate to="/" replace />;

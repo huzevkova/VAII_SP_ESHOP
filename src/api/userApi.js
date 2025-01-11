@@ -1,5 +1,9 @@
 const API_URL = 'http://localhost:5000/api/users';
 
+/**
+ * AJAX volanie na získanie všetkých používateľov. (GET)
+ * @returns {Promise<any>}
+ */
 export const fetchUsers = async () => {
     const response = await fetch(`${API_URL}/`);
     if (!response.ok) {
@@ -8,6 +12,11 @@ export const fetchUsers = async () => {
     return response.json();
 };
 
+/**
+ * AJAX volanie na získanie konkrétneho používateľa podľa ID. (GET)
+ * @param {string} id - ID používateľa
+ * @returns {Promise<any>}
+ */
 export const fetchUserById = async (id) => {
     const response = await fetch(`${API_URL}/${id}`);
     if (!response.ok) {
@@ -16,6 +25,11 @@ export const fetchUserById = async (id) => {
     return response.json();
 };
 
+/**
+ * AJAX volanie na vytvorenie nového používateľa. (POST)
+ * @param {Object} userData - Údaje o používateľovi, ktorý má byť vytvorený
+ * @returns {Promise<any>}
+ */
 export const createUser = async (userData) => {
     const response = await fetch(`${API_URL}/insert`, {
         method: 'POST',
@@ -31,6 +45,11 @@ export const createUser = async (userData) => {
     return response.json();
 };
 
+/**
+ * AJAX volanie na aktualizáciu údajov používateľa podľa ID. (POST)
+ * @param {Object} userData - Údaje o používateľovi vrátane ID
+ * @returns {Promise<any>}
+ */
 export const updateUser = async (userData) => {
     const response = await fetch(`${API_URL}/update/${userData.id}`, {
         method: 'POST',
@@ -45,6 +64,11 @@ export const updateUser = async (userData) => {
     return response.json();
 };
 
+/**
+ * AJAX volanie na odstránenie používateľa podľa ID. (POST)
+ * @param {string} userId - ID používateľa, ktorý má byť odstránený
+ * @returns {Promise<any>}
+ */
 export const deleteUser = async (userId) => {
     const response = await fetch(`${API_URL}/delete/${userId}`, {
         method: 'POST',

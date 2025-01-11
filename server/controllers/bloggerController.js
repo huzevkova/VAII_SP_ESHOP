@@ -1,5 +1,11 @@
 const bloggerModel = require('../models/bloggerModel');
 
+/**
+ * Získa všetky blog posty.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getAllBlogPosts = async (req, res) => {
     try {
         const posts = await bloggerModel.getAllBlogPosts();
@@ -14,6 +20,12 @@ const getAllBlogPosts = async (req, res) => {
     }
 };
 
+/**
+ * Získa konkrétny blog post podľa číselného id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getBlogPostById = async (req, res) => {
     const { id } = req.params;
     try {

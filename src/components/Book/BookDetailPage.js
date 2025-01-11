@@ -24,6 +24,9 @@ const BookDetailPage = () => {
     const [openCart, setOpenCart] = useState(false);
     const [openWish, setOpenWish] = useState(false);
 
+    /**
+     * Načítanie dát pri spustení, po načítaní id knihy.
+     */
     useEffect(() => {
         const loadBookData = async () => {
             try {
@@ -83,18 +86,31 @@ const BookDetailPage = () => {
         }
     }, [bookId]);
 
+    /**
+     * Kontrola či sú potrebné dáta načítané.
+     */
     if (bookData == null || series == null || bookGenres == null || cart == null) {
         return;
     }
 
+    /**
+     * Spracovnaie zavretia dialógového okna informujúceho o pridaní do košíka.
+     */
     const handleCloseCart = () => {
         setOpenCart(false);
     };
 
+    /**
+     * Spracovnaie zavretia dialógového okna informujúceho o pridaní do wishlistu.
+     */
     const handleCloseWish = () => {
         setOpenWish(false);
     };
 
+    /**
+     * Spracovanie pridania knihy do košíka.
+     * @returns {Promise<void>}
+     */
     const onCartClick = async () => {
         if (user) {
             try {
@@ -113,6 +129,10 @@ const BookDetailPage = () => {
         }
     }
 
+    /**
+     * Spracovanie pridania knihy do wishlistu.
+     * @returns {Promise<void>}
+     */
     const onWishlistClick = async () => {
         if (user) {
             try {

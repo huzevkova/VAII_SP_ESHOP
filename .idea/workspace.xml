@@ -4,15 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="zmena v žiadosti - načítanie iba vykonaných objednávok (nie košíkov)">
+    <list default="true" id="d46d1bcc-4e5d-4662-ad0c-02278bf65929" name="Changes" comment="oprava filtrovania ceny">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/db.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/bloggerController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/bloggerController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/bookController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/bookController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/orderController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/orderController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/userController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/userController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/controllers/wishlistController.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/wishlistController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/bloggerModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/bloggerModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/bookModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/bookModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/orderModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/orderModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/userModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/models/wishlistModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/wishlistModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/bloggerApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/bloggerApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/bookApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/bookApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/orderApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/orderApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/userApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/userApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/wishlistApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/wishlistApi.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Admin/AdminPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Admin/AdminTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Admin/AdminTableView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book/BookCatalogue.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book/BookCatalogue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Book/BookDetailPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Book/BookDetailPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Book/BookInfoTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Book/BookInfoTableView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Cart/CartItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart/CartItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Cart/CartPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart/CartPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Cart/CheckoutPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart/CheckoutPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/General/MyNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/General/MyNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/General/Sidebar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/General/Sidebar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/HomePage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home/HomePageView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/LoginPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/LoginPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/RegistrationPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/RegistrationPage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Search/SearchFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/SearchFilter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Search/SearchPage.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Search/SearchPage.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/User/Orders.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/Orders.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/User/UserInfo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/User/UserInfo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Admin/AdminView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Admin/AdminView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Book/BookDetailView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Book/BookDetailView.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Search/SearchFilterView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Search/SearchFilterView.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +122,11 @@
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Home" />
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Book" />
+      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Admin" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\General" />
       <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Cart" />
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Admin" />
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Checkout" />
-      <recent name="C:\Users\bsbia\PhpstormProjects\bb_eshop\src\views\Search" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -207,78 +235,9 @@
       <workItem from="1736274304833" duration="10103000" />
       <workItem from="1736361171624" duration="2177000" />
       <workItem from="1736441179828" duration="20000" />
-    </task>
-    <task id="LOCAL-00086" summary="ošetrneie prístupu administrátora">
-      <option name="closed" value="true" />
-      <created>1735598962205</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1735598962207</updated>
-    </task>
-    <task id="LOCAL-00087" summary="odstránenie loggovania na debugovanie">
-      <option name="closed" value="true" />
-      <created>1735599098235</created>
-      <option name="number" value="00087" />
-      <option name="presentableId" value="LOCAL-00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1735599098236</updated>
-    </task>
-    <task id="LOCAL-00088" summary="pridanie CRUD operácii na prácu s obrázkami ku knihám">
-      <option name="closed" value="true" />
-      <created>1735599131039</created>
-      <option name="number" value="00088" />
-      <option name="presentableId" value="LOCAL-00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1735599131039</updated>
-    </task>
-    <task id="LOCAL-00089" summary="pridanie obrázkov do UI pre administrátora + odstránenie bloggerov">
-      <option name="closed" value="true" />
-      <created>1735599191341</created>
-      <option name="number" value="00089" />
-      <option name="presentableId" value="LOCAL-00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1735599191341</updated>
-    </task>
-    <task id="LOCAL-00090" summary="sfunkčnenie tlačidla košík v karte knihy">
-      <option name="closed" value="true" />
-      <created>1735640096655</created>
-      <option name="number" value="00090" />
-      <option name="presentableId" value="LOCAL-00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1735640096656</updated>
-    </task>
-    <task id="LOCAL-00091" summary="odstránenie prepojenia na blog stránku">
-      <option name="closed" value="true" />
-      <created>1735640131724</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1735640131724</updated>
-    </task>
-    <task id="LOCAL-00092" summary="sfunkčnenie search baru a prepojenia s dropdown menu">
-      <option name="closed" value="true" />
-      <created>1735640410393</created>
-      <option name="number" value="00092" />
-      <option name="presentableId" value="LOCAL-00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1735640410393</updated>
-    </task>
-    <task id="LOCAL-00093" summary="ošetrenie null hodnôt">
-      <option name="closed" value="true" />
-      <created>1735640425498</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1735640425498</updated>
-    </task>
-    <task id="LOCAL-00094" summary="sfunkčnenie tlačidla na pridanie do košíka">
-      <option name="closed" value="true" />
-      <created>1735750202590</created>
-      <option name="number" value="00094" />
-      <option name="presentableId" value="LOCAL-00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1735750202591</updated>
+      <workItem from="1736518532506" duration="316000" />
+      <workItem from="1736535194146" duration="7570000" />
+      <workItem from="1736602209314" duration="6478000" />
     </task>
     <task id="LOCAL-00095" summary="nahradenie volaní do tabuľky bloggerov volaniami do tabuľky s blog postami">
       <option name="closed" value="true" />
@@ -600,7 +559,79 @@
       <option name="project" value="LOCAL" />
       <updated>1736286294556</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="odstránenie zbytočného importu">
+      <option name="closed" value="true" />
+      <created>1736518691234</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1736518691235</updated>
+    </task>
+    <task id="LOCAL-00136" summary="oprava možnej null hodnoty">
+      <option name="closed" value="true" />
+      <created>1736518710839</created>
+      <option name="number" value="00136" />
+      <option name="presentableId" value="LOCAL-00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1736518710839</updated>
+    </task>
+    <task id="LOCAL-00137" summary="ošetrenie výnimiek a oprava editácie popisu knihy">
+      <option name="closed" value="true" />
+      <created>1736546485949</created>
+      <option name="number" value="00137" />
+      <option name="presentableId" value="LOCAL-00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1736546485951</updated>
+    </task>
+    <task id="LOCAL-00138" summary="oprava vymazania knihy z košíka">
+      <option name="closed" value="true" />
+      <created>1736546508349</created>
+      <option name="number" value="00138" />
+      <option name="presentableId" value="LOCAL-00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1736546508350</updated>
+    </task>
+    <task id="LOCAL-00139" summary="aktualizácia">
+      <option name="closed" value="true" />
+      <created>1736546723039</created>
+      <option name="number" value="00139" />
+      <option name="presentableId" value="LOCAL-00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1736546723047</updated>
+    </task>
+    <task id="LOCAL-00140" summary="vytvorenie datbázy pre docker">
+      <option name="closed" value="true" />
+      <created>1736546741738</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1736546741738</updated>
+    </task>
+    <task id="LOCAL-00141" summary="odstránenie logovania pri debugovaní">
+      <option name="closed" value="true" />
+      <created>1736603951876</created>
+      <option name="number" value="00141" />
+      <option name="presentableId" value="LOCAL-00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1736603951876</updated>
+    </task>
+    <task id="LOCAL-00142" summary="premenovanie aplikácie">
+      <option name="closed" value="true" />
+      <created>1736603971087</created>
+      <option name="number" value="00142" />
+      <option name="presentableId" value="LOCAL-00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1736603971087</updated>
+    </task>
+    <task id="LOCAL-00143" summary="oprava filtrovania ceny">
+      <option name="closed" value="true" />
+      <created>1736603982091</created>
+      <option name="number" value="00143" />
+      <option name="presentableId" value="LOCAL-00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1736603982091</updated>
+    </task>
+    <option name="localTasksCounter" value="144" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,15 +652,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="odstránenie prebytočností" />
-    <MESSAGE value="oprava chyby pripájania k databáze" />
-    <MESSAGE value="oprava vzhľadu" />
-    <MESSAGE value="odstránenie nepoužitých súborov" />
-    <MESSAGE value="refaktoring - rozdelenie view a logiky" />
-    <MESSAGE value="oprava neplatných ciest ku komponentom" />
-    <MESSAGE value="refaktoring - odstránenie nevyužitých importov a nadbytočného kódu" />
-    <MESSAGE value="rozdelenie css" />
-    <MESSAGE value="premiestnenie do správneho priečinku" />
     <MESSAGE value="priradenie CSS súboru" />
     <MESSAGE value="pridanie reakcie na stlačenie &quot;enter&quot; v search bare" />
     <MESSAGE value="refaktoring" />
@@ -646,6 +668,15 @@
     <MESSAGE value="zmena spôsobu obmedzenia prístupu user/admin (prostredníctvom ciest)" />
     <MESSAGE value="oprava načítania dát v prípade neprihláseného návštevníka" />
     <MESSAGE value="zmena v žiadosti - načítanie iba vykonaných objednávok (nie košíkov)" />
-    <option name="LAST_COMMIT_MESSAGE" value="zmena v žiadosti - načítanie iba vykonaných objednávok (nie košíkov)" />
+    <MESSAGE value="odstránenie zbytočného importu" />
+    <MESSAGE value="oprava možnej null hodnoty" />
+    <MESSAGE value="ošetrenie výnimiek a oprava editácie popisu knihy" />
+    <MESSAGE value="oprava vymazania knihy z košíka" />
+    <MESSAGE value="aktualizácia" />
+    <MESSAGE value="vytvorenie datbázy pre docker" />
+    <MESSAGE value="odstránenie logovania pri debugovaní" />
+    <MESSAGE value="premenovanie aplikácie" />
+    <MESSAGE value="oprava filtrovania ceny" />
+    <option name="LAST_COMMIT_MESSAGE" value="oprava filtrovania ceny" />
   </component>
 </project>

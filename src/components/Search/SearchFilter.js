@@ -8,6 +8,9 @@ const SearchFilter = ({ applyFilters, handleCheckboxChange, handlePriceChange })
     const [authors, setAuthors] = useState(null);
     const [languages, setLanguages] = useState(null);
 
+    /**
+     * Načítanie dát pri spustení.
+     */
     useEffect(() => {
         const loadGenres = async () => {
             try {
@@ -42,34 +45,20 @@ const SearchFilter = ({ applyFilters, handleCheckboxChange, handlePriceChange })
         loadLanguages();
     }, []);
 
+    /**
+     * Kontrola či sú potrebné dáta načítané.
+     */
     if (genres == null || authors == null || languages == null) {
         return;
     }
 
-    const renderCheckboxList = (items, category) => {
-        return items.map((item) => (
-            <div className="form-check" key={item.id}>
-                <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value={item.value}
-                    id={item.id}
-                    onChange={() => handleCheckboxChange(category, item.value)}
-                />
-                <label className="form-check-label" htmlFor={item.id}>
-                    {item.label}
-                </label>
-            </div>
-        ));
-    };
-
     return (
         <SearchFilterView
-            renderCheckboxList={renderCheckboxList}
             genres={genres}
             authors={authors}
             languages={languages}
             handlePriceChange={handlePriceChange}
+            handleCheckboxChange={handleCheckboxChange}
             applyFilters={applyFilters}
         />
     );

@@ -1,5 +1,5 @@
 import MyNavbar from "../../components/General/MyNavbar";
-import BookInfoTable from "../../components/Book/BookInfoTable";
+import BookInfoTableView from "./BookInfoTableView";
 import FooterView from "../General/FooterView";
 import React from "react";
 import "./book-style.css";
@@ -21,7 +21,7 @@ const BookDetailView = ({bookData, bookGenres, bookSeries, onCartClick, onWishli
                         <h4 className="book mt-3 mb-3">{bookSeries ? (bookSeries.part + '. diel ' + bookSeries.name) : ''}</h4>
                         <h4 className="text-muted">{bookData.author}</h4>
                         <div className="d-flex justify-content-between align-items-start mt-3">
-                            <BookInfoTable bookData={bookData} bookGenres={bookGenres} />
+                            <BookInfoTableView bookData={bookData} bookGenres={bookGenres} />
                             <p className="price">{bookData.price}</p>
                         </div>
                         <p className="fw-bold">Popis:</p>

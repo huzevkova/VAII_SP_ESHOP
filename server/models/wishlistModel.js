@@ -1,11 +1,21 @@
 const db = require('../db');
 
+/**
+ * Získa wishlist konkrétneho používateľa z DB podľa id.
+ * @param id
+ * @returns {Promise<*>}
+ */
 const getUserWishlist = async (id) => {
     const query = 'SELECT * FROM wishlists JOIN books USING (id_book) LEFT JOIN images ON (id_image = image) WHERE id_user = ?';
     const [results] = await db.query(query, [id]);
     return results;
 };
 
+/**
+ * Vloží knihu do wishlistu konkrétneho používateľa v DB podľa ich id.
+ * @param ids
+ * @returns {Promise<boolean>}
+ */
 const insertBookIntoWishlist = async (ids) => {
     const {user, id_book} = ids;
     const query = 'INSERT into wishlists VALUES (?, ?)';
@@ -18,6 +28,11 @@ const insertBookIntoWishlist = async (ids) => {
     }
 };
 
+/**
+ * Odstráni knihu z wishlistu konkrétneho používateľa v DB podľa ich id.
+ * @param ids
+ * @returns {Promise<boolean>}
+ */
 const deleteBookFromWishlist = async (ids) => {
     const {user, id_book} = ids;
     const query = 'DELETE FROM wishlists WHERE id_user = ? AND id_book = ?';

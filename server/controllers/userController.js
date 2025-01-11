@@ -1,6 +1,12 @@
 const bcrypt = require('bcrypt');
 const userModel = require('../models/userModel');
 
+/**
+ * Získa všetkých používateľov.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getAllUsers = async (req, res) => {
     try {
         const users = await userModel.getAllUsers()
@@ -16,6 +22,12 @@ const getAllUsers = async (req, res) => {
     }
 }
 
+/**
+ * Získa konkrétneho používateľa podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getUserById = async (req, res) => {
     const { id } = req.params;
     try {
@@ -31,6 +43,12 @@ const getUserById = async (req, res) => {
     }
 };
 
+/**
+ * Získa konkrétneho používateľa podľa emailu a skotroluje heslo. Vráti informáciu o tom či je zlé heslo, alebo email neexistuje.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getUserByEmail = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -51,6 +69,13 @@ const getUserByEmail = async (req, res) => {
     }
 };
 
+/**
+ * Vytvorí nového používateľa, ak sú vyplnené všetky potebné údaje. Zaheshuje a uloží aj jeho heslo.
+ * Vráti informáciu o tom, ak používateľ s daným emailom už existuje.
+ * @param req
+ * @param res
+ * @returns {Promise<*>}
+ */
 const createUser = async (req, res) => {
     const { name, email, phone_number, city, city_code, street, house_number, password } = req.body;
 
@@ -77,6 +102,12 @@ const createUser = async (req, res) => {
     }
 };
 
+/**
+ * Aktualizuje dáta používateľa podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const updateUser = async (req, res) => {
     const { id, name, email, phone_number, city, city_code, street, house_number, type } = req.body;
     try {
@@ -92,6 +123,12 @@ const updateUser = async (req, res) => {
     }
 }
 
+/**
+ * Zmaže konkrétneho používateľa podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const deleteUser = async (req, res) => {
     const { id } = req.params;
     try {

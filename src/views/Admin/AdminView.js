@@ -1,7 +1,7 @@
 import {Button, Col, Container, Navbar, Row} from "react-bootstrap";
 import React from "react";
 import "./admin_style.css";
-import AdminTable from "../../components/Admin/AdminTable";
+import AdminTableView from "./AdminTableView";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import Dialog from "@mui/material/Dialog";
@@ -56,7 +56,7 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                     </Col>
                 </Row>
                 {selectedTab ?
-                    <AdminTable
+                    <AdminTableView
                         dataType={dataType}
                         data={data}
                         selectedRow={selectedRow}

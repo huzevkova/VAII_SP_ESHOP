@@ -1,5 +1,11 @@
 const wishlistModel = require("../models/wishlistModel");
 
+/**
+ * Získa wishlist konkrétneho používateľa podľa id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const getWishlistByUserId = async (req, res) => {
     const { id } = req.params;
     try {
@@ -15,6 +21,13 @@ const getWishlistByUserId = async (req, res) => {
     }
 };
 
+/**
+ * Vloží knihu do wishlistu konkrétneho používateľa podľa ich id.
+ * Vráti informáciu o tom, ak už kniha vo wishliste je.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const insertIntoWishlist = async (req, res) => {
     const { user, id_book } = req.body;
     try {
@@ -32,6 +45,12 @@ const insertIntoWishlist = async (req, res) => {
     }
 }
 
+/**
+ * Odstráni knihu z wishlistu konkrétneho používateľa podľa ich id.
+ * @param req
+ * @param res
+ * @returns {Promise<void>}
+ */
 const deleteFromWishlist = async (req, res) => {
     const { user, id_book } = req.body;
     try {

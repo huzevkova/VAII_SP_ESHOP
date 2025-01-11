@@ -3,7 +3,7 @@ import {Button} from "react-bootstrap";
 import React from "react";
 import "./search-style.css";
 
-const SearchFilterView = ({renderCheckboxList, genres, authors, languages, handlePriceChange, applyFilters}) => {
+const SearchFilterView = ({genres, authors, languages, handlePriceChange, handleCheckboxChange, applyFilters}) => {
     return (
         <div className="bg-white p-3 shadow-sm rounded">
             <h4 className="mb-4">FILTRUJ PODĽA:</h4>
@@ -11,18 +11,57 @@ const SearchFilterView = ({renderCheckboxList, genres, authors, languages, handl
                 <Accordion.Item eventKey="0">
                     <Accordion.Header id="headingGenre">Žáner</Accordion.Header>
                     <Accordion.Body className="accordion-body">
-                        {renderCheckboxList(genres, "genres")}
+                        {genres.map((item) => (
+                            <div className="form-check" key={item.id}>
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    value={item.value}
+                                    id={item.id}
+                                    onChange={() => handleCheckboxChange("genres", item.value)}
+                                />
+                                <label className="form-check-label" htmlFor={item.id}>
+                                    {item.label}
+                                </label>
+                            </div>
+                        ))}
                     </Accordion.Body>
                 </Accordion.Item>
 
                 <Accordion.Item eventKey="1">
                     <Accordion.Header id="headingAuthor">Autor</Accordion.Header>
-                    <Accordion.Body>{renderCheckboxList(authors, "authors")}</Accordion.Body>
+                    <Accordion.Body>{authors.map((item) => (
+                        <div className="form-check" key={item.id}>
+                            <input
+                                className="form-check-input"
+                                type="checkbox"
+                                value={item.value}
+                                id={item.id}
+                                onChange={() => handleCheckboxChange("authors", item.value)}
+                            />
+                            <label className="form-check-label" htmlFor={item.id}>
+                                {item.label}
+                            </label>
+                        </div>
+                    ))}</Accordion.Body>
                 </Accordion.Item>
 
                 <Accordion.Item eventKey="3">
                     <Accordion.Header id="headingLanguage">Jazyk</Accordion.Header>
-                    <Accordion.Body>{renderCheckboxList(languages, "languages")}</Accordion.Body>
+                    <Accordion.Body>{languages.map((item) => (
+                        <div className="form-check" key={item.id}>
+                            <input
+                                className="form-check-input"
+                                type="checkbox"
+                                value={item.value}
+                                id={item.id}
+                                onChange={() => handleCheckboxChange("languages", item.value)}
+                            />
+                            <label className="form-check-label" htmlFor={item.id}>
+                                {item.label}
+                            </label>
+                        </div>
+                    ))}</Accordion.Body>
                 </Accordion.Item>
 
                 <Accordion.Item eventKey="5">

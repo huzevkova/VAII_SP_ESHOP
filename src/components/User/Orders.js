@@ -9,6 +9,9 @@ const Orders = () => {
     const [orderData, setOrderData] = useState(null);
     const {user} = useAuth();
 
+    /**
+     * Načítanie objednávok pri spustení.
+     */
     useEffect(() => {
         const loadOrders = async () => {
             try {
@@ -23,6 +26,9 @@ const Orders = () => {
         loadOrders();
     });
 
+    /**
+     * Načítanie dát pri spustení, po načítaní objednávok.
+     */
     useEffect(() => {
         const loadOrdersItems = async () => {
             try {
@@ -47,6 +53,9 @@ const Orders = () => {
         }
     }, [orders]);
 
+    /**
+     * Kontrola či sú potrebné dáta načítané.
+     */
     if (orders == null) {
         return;
     } else {
