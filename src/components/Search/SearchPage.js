@@ -35,7 +35,6 @@ const SearchPage = () => {
                 try {
                     const response = await fetchBooksByName(searchInput);
                     setBooks(response);
-                    setAllBooks(response);
                 } catch (err) {
                     console.error(err);
                     setBooks([]);
@@ -55,20 +54,23 @@ const SearchPage = () => {
             };
 
             loadBooksGenre();
-        } else {
-            const loadBooks = async () => {
-                try {
-                    const response = await fetchBooks();
-                    setAllBooks(response);
-                    setBooks(response);
-                } catch (err) {
-                    console.error(err);
-                    setBooks([]);
-                }
-            };
-
-            loadBooks();
         }
+
+        const loadBooks = async () => {
+            try {
+                const response = await fetchBooks();
+                setAllBooks(response);
+                if (input == null && genre == null) {
+                    setBooks(response);
+                }
+            } catch (err) {
+                console.error(err);
+                setBooks([]);
+            }
+        };
+
+        loadBooks();
+
         const loadCart = async () => {
             try {
                 const response = await fetchUserCart(user);
@@ -158,7 +160,7 @@ const SearchPage = () => {
                 filteredBooks.push(allBooks[i]);
             } else if (selectedFilters.languages.length > 0 && selectedFilters.languages.includes(allBooks[i].language)) {
                 filteredBooks.push(allBooks[i]);
-            } else if (allBooks[i].price > selectedFilters.price.from && allBooks[i].price < selectedFilters.price.to) {
+            } else if (allBooks[i].price > parseFloat(selectedFilters.price.from) && allBooks[i].price < parseFloat(selectedFilters.price.to)) {
                 filteredBooks.push(allBooks[i]);
             }
         }
