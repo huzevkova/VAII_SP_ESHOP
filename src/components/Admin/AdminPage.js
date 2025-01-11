@@ -345,7 +345,6 @@ const AdminPage = () => {
 
             if (openDescription === false) {
                 const book = bookData.find((row) => row.id === editingRow.id);
-                console.log(book);
                 setDescription(book.description);
                 setOpenDescription(true);
             } else {

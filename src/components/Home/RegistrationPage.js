@@ -75,7 +75,7 @@ const RegistrationPage = () => {
             await createUser(updatedFormData);
             navigate('/login');
         } catch (err) {
-            console.log(err);
+            console.error(err);
             setError(err.message);
         }
     };

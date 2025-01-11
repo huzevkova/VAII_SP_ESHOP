@@ -76,7 +76,7 @@ const CartPage = () => {
                 prevCartItems.filter((item) => item.id_book !== id_book)
             );
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     };
 
