@@ -1,12 +1,11 @@
 import React from 'react';
-import MyNavbar from '../General/MyNavbar.js';
-import Sidebar from '../General/Sidebar.js';
+import MyNavbar from "../../components/General/MyNavbar";
+import Sidebar from "../../components/General/Sidebar";
 import FooterView from '../../views/General/FooterView.js';
 import HeroSectionView from '../../views/Home/HeroSectionView';
-import BookCatalogue from '../Book/BookCatalogue';
+import BookCatalogue from "../../components/Book/BookCatalogue";
 
-
-const HomePage = () => {
+const HomePageView = () => {
     return (
         <>
             <MyNavbar/>
@@ -26,4 +25,4 @@ const HomePage = () => {
     )
 };
 
-export default HomePage;
+export default HomePageView;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookInfoTable = ({ bookData, bookGenres }) => (
+const BookInfoTableView = ({ bookData, bookGenres }) => (
     <table className="table-borderless">
         <tbody>
         <tr>
@@ -31,4 +31,4 @@ const BookInfoTable = ({ bookData, bookGenres }) => (
     </table>
 );
 
-export default BookInfoTable;
+export default BookInfoTableView;

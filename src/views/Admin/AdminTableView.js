@@ -1,7 +1,7 @@
 import {Button, Form, Table} from "react-bootstrap";
 import React from "react";
 
-const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
+const AdminTableView = ({dataType, data, selectedRow, handleRowSelection,
                     newRow, setNewRow, handleConfirmAdd,
                     editingRow, setEditingRow, handleConfirmEdit,
                     handleAdd, handleEdit, handleDelete, handleCancel,
@@ -27,7 +27,7 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
                         onClick={() => handleRowSelection(row.id)}
                     >
                         {Object.entries(row).map(([key, value], index) => (
-                            key !== "description" ? (  // Exclude description during normal display
+                            key !== "description" ? (
                                 <td key={index}>{value}</td>
                             ) : null
                         ))}
@@ -128,4 +128,4 @@ const AdminTable = ({dataType, data, selectedRow, handleRowSelection,
     )
 };
 
-export default AdminTable;
+export default AdminTableView;
