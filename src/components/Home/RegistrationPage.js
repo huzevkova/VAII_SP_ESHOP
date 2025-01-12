@@ -28,7 +28,10 @@ const RegistrationPage = () => {
             email: 'normal',
             password: 'normal',
             password_confirmation: 'normal',
-            agreement: 'normal'});
+            agreement: 'normal',
+            phone_number: 'normal',
+            city_code: 'normal',
+            house_number: 'normal',});
 
     /**
      * Spracovanie zmeny vo vstupných poliach formuláru.
@@ -60,6 +63,8 @@ const RegistrationPage = () => {
             updatedFormData.name = formData.name + " " + formData.surname;
         }
 
+        console.log("smtg");
+        console.log(/^\d+$/.test(formData.phone_number));
         if (!updatedFormData.name) {
             setFormState({...formState, name: 'wrong'});
             return;
@@ -74,7 +79,16 @@ const RegistrationPage = () => {
             setFormState({...formState, password: 'wrong'});
             return;
         } else if (!formData.password_confirmation || formData.password_confirmation !== formData.password) {
-            setFormState( {...formState, password_confirmation: 'wrong'});
+            setFormState({...formState, password_confirmation: 'wrong'});
+            return;
+        } else if (formData.phone_number != null && !/^\d+$/.test(formData.phone_number)) {
+            setFormState({...formState, phone_number: 'wrong'});
+            return;
+        } else if (formData.city_code != null && !/^\d+$/.test(formData.city_code)) {
+            setFormState({...formState, city_code: 'wrong'});
+            return;
+        } else if (formData.house_number != null &&!/^\d+$/.test(formData.house_number)) {
+            setFormState({...formState, house_number: 'wrong'});
             return;
         } else if (!formAgreement) {
             setFormState({...formState, agreement: 'wrong'});
