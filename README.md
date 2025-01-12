@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Návod na inštaláciu
+## 1. Podmienky
+Pred začatím inštalácie sa uistite, že máte na svojom systéme nainštalované nasledovné:
+•	Node.js (verzia 20.18.0 alebo novšia)
+•	npm (je súčasťou Node.js)
+•	MySQL (verzia 8.0.40)
+Voliteľné (pre Docker inštaláciu):
+•	Docker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 2. Manuálna inštalácia
+## Krok 1: Naklonovanie repozitára
+	git clone github.com/huzevkova/VAII_SP_ESHOP
+## Krok 2: Inštalácia front-end závislostí:
+	cd VAII_SP_ESHOP
+	npm install
+## Krok 3: Inštalácia back-end závislostí:
+	cd server
+	npm install
+## Krok 4: Nastavenie databázy
+  ### 1.	Uistite sa, že váš MySQL server je spustený lokálne.
+  ### 2.	Prihláste sa doňho.
+    mysql -u root -p
+  ### 3.	Vytvorte novú databázu.
+    CREATE DATABASE nazov_databazy;
+    ctrl+d (návrat do normálneho príkazového riadku)
+  ### 4.	Import databázy z sql súboru (namiesto username zadajte meno, ktorým sa do databázy prihlásite).
+    mysql -u username -p vaii_db < schema.sql
+## Krok 4: Vytvorenie súboru .env
+  ### 1.	V priečinku server vytvorte súbor .env a pridajte vaše prihlasovacie údaje k databáze:
+    DB_HOST=localhost
+    DB_USER=uzivatel
+    DB_PASSWORD=heslo
+    DB_NAME=nazov_databazy
+    PORT=5000
+## Krok 5: Spustenie aplikácie
+  ### 1.	Spustite server:
+    cd server
+    npm start
+  ### 2.	Spustite frontend aplikáciu:
+    cd ..
+    npm start
+## Krok 6: Otvorenie webstránky
+  Keď sú obe časti spustené, otvorte váš prehliadač a prejdite na adresu: 
+  http://localhost:3000
 
-## Available Scripts
+# 3. Inštalácia pomocou Dockeru
+## Krok 1: Naklonovanie repozitára
+	git clone github.com/huzevkova/VAII_SP_ESHOP
+## Krok 2: Spustenie Docker Compose
+V koreňovom priečinku projektu spustite nasledujúci príkaz:
+  ###
+    docker-compose up –build
+## Krok 4: Otvorenie webstránky
+Keď sú kontajnery spustené, otvorte váš prehliadač a prejdite na adresu: 
+http://localhost:3000
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Prípadne využite aplikáciu Docker Desktop.
