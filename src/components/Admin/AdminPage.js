@@ -18,7 +18,6 @@ import {fetchOrderOptions, fetchOrders, updateOrder} from "../../api/orderApi";
 const AdminPage = () => {
 
     const auth = useAuth();
-    //const path = require('path');
 
     const [error, setError] = useState(null);
     const [selectedTab, setSelectedTab] = useState(null);
@@ -426,7 +425,7 @@ const AdminPage = () => {
                 setOpenDescription(false);
             }
         } else if (tableName === "Obrázky") {
-            if (fileChange && selectedFile == null) { //ak zmena a prazdny
+            if (fileChange && selectedFile == null) {
                 setError("Cesta k súboru nemôže byť prázdna.");
                 return;
             }
@@ -435,7 +434,7 @@ const AdminPage = () => {
                 if (fileChange) {
                     try {
                         const data = await removeImageFile(editingRow.path);
-                        console.log(data.message); // Log the success or error message
+                        console.log(data.message);
                     } catch (err) {
                         console.error(err);
                         setError(err.message);

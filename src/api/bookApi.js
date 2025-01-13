@@ -278,13 +278,11 @@ export const saveImageFile = async (formData) => {
         });
 
         if (!response.ok) {
-            // Log the response body to help debug the error
             const errorData = await response.json();
             console.error('Error response:', errorData);
             throw new Error('Failed to save image');
         }
 
-        // Log the successful response
         const data = await response.json();
         console.log('Upload response data:', data);
 
