@@ -13,7 +13,7 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                        editingRow, setEditingRow, handleConfirmEdit,
                        handleAdd, handleEdit, handleDelete, handleLogout, handleCancel,
                        openDescription, handleDescription, description, newDescription,
-                        orderOptions, setOrderStatus, error}) => {
+                        orderOptions, setOrderStatus, handleFileChange, error}) => {
 
     const navigate = useNavigate();
 
@@ -73,6 +73,7 @@ const AdminView = ({handleTabClick, selectedTab, data, dataType, selectedRow, ha
                         handleCancel={handleCancel}
                         orderOptions={orderOptions}
                         setOrderStatus={setOrderStatus}
+                        handleFileChange={handleFileChange}
                     /> : <></>
                 }
             </Container>

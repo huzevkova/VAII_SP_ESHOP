@@ -7,7 +7,7 @@ import {
     createImage,
     deleteBook, deleteImage,
     fetchBooks,
-    fetchImages,
+    fetchImages, removeImageFile, saveImageFile,
     updateBook,
     updateBookImage,
     updateImage
@@ -18,6 +18,7 @@ import {fetchOrderOptions, fetchOrders, updateOrder} from "../../api/orderApi";
 const AdminPage = () => {
 
     const auth = useAuth();
+    //const path = require('path');
 
     const [error, setError] = useState(null);
     const [selectedTab, setSelectedTab] = useState(null);
@@ -35,6 +36,9 @@ const AdminPage = () => {
     const [openDescription, setOpenDescription] = useState(false);
     const [description, setDescription] = useState(null);
     const [newDescription, setNewDescription] = useState(false);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [fileChange, setFileChange] = useState(false);
+
 
     /**
      * Načítanie dát pri spustení.
@@ -270,6 +274,10 @@ const AdminPage = () => {
             }
         } else if (tableName === "Obrázky") {
             try {
+                const imageObj = imageData.find(image => image.id === selectedRow);
+                console.log(imageObj.path);
+                const image = imageObj.path;
+                await removeImageFile(image);
                 await deleteImage(selectedRow);
                 setImageData(data.filter((item) => item.id !== selectedRow));
                 setData(data.filter((item) => item.id !== selectedRow));
@@ -301,7 +309,8 @@ const AdminPage = () => {
      * Spracovanie potvrdenia vytvorenia nového riadku.
      * @returns {Promise<void>}
      */
-    const handleConfirmAdd = async () => {
+    const handleConfirmAdd = async (e) => {
+        e.preventDefault();
         if (tableName === "Knihy") {
             if (openDescription === false) {
                 setNewDescription(true);
@@ -331,8 +340,8 @@ const AdminPage = () => {
                 }
             }
         } else if (tableName === "Obrázky") {
-            if (newRow.path === '' || newRow.path == null) {
-                setError("Cesta k súboru nemôže byť prázdna.");
+            if (!selectedFile) {
+                setError("Musíte nahrať obrázok.");
             } else {
                 try {
                     let newRowUpdated;
@@ -341,15 +350,26 @@ const AdminPage = () => {
                     } else {
                         newRowUpdated = newRow;
                     }
-                    const {id} = await createImage(newRowUpdated);
-                    const newTableRow = {id: id, ...newRow};
-                    const requiredKeys = data[0] ? Object.keys(data[0]) : [];
-                    const completeRow = requiredKeys.reduce((acc, key) => {
-                        acc[key] = newTableRow[key] || "";
-                        return acc;
-                    }, {});
-                    setImageData([...data, newTableRow]);
-                    setData([...data, completeRow]);
+                    let fileName = null;
+                    const formData = new FormData();
+                    formData.append("image", selectedFile);
+
+                    try {
+                        const data = await saveImageFile(formData);
+                        fileName = data.filePath.split('/').pop();
+                        console.log(fileName);
+                        setError(null);
+                    } catch (err) {
+                        console.error(err);
+                    }
+
+                    newRowUpdated = {path: fileName, ...newRowUpdated}
+                    const insert = {path: fileName, name: newRowUpdated.name, id_book: newRowUpdated.id_book};
+                    const {id} = await createImage(insert);
+                    let newTableRow = {id: id, ...newRowUpdated};
+                    const save = {id: newTableRow.id, path: fileName, name: newTableRow.name, id_book: newTableRow.id_book};
+                    setImageData([...data, save]);
+                    setData([...data, save]);
                     setNewRow(null);
                     setError(null);
                 } catch (err) {
@@ -406,17 +426,49 @@ const AdminPage = () => {
                 setOpenDescription(false);
             }
         } else if (tableName === "Obrázky") {
-            if (editingRow.path === '') {
+            if (fileChange && selectedFile == null) { //ak zmena a prazdny
                 setError("Cesta k súboru nemôže byť prázdna.");
+                return;
             }
             try {
-                const {id, path, name} = editingRow;
-                await updateImage({path, name, id});
-                const id_image = editingRow.id;
-                const id_book = editingRow.id_book;
+                let fileName = null;
+                if (fileChange) {
+                    try {
+                        const data = await removeImageFile(editingRow.path);
+                        console.log(data.message); // Log the success or error message
+                    } catch (err) {
+                        console.error(err);
+                        setError(err.message);
+                        return;
+                    }
+
+                    const formData = new FormData();
+                    formData.append("image", selectedFile);
+
+                    try {
+                        const data = await saveImageFile(formData)
+                        fileName = data.filePath.split('/').pop();
+                        setError(null);
+                    } catch (err) {
+                        console.error(err);
+                        setError(err.message);
+                        return;
+                    }
+                    setFileChange(false);
+                }
+                let editingRowUpdated;
+                if (fileName != null) {
+                    editingRowUpdated = {id: editingRow.id, path: fileName, name: editingRow.name, id_book: editingRow.id_book};
+                } else {
+                    editingRowUpdated = editingRow;
+                }
+                const {id, path, name} = editingRowUpdated;
+                await updateImage({path: path, name, id});
+                const id_image = editingRowUpdated.id;
+                const id_book = editingRowUpdated.id_book;
                 await updateBookImage({id_image, id_book});
-                setData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
-                setImageData(data.map((item) => (item.id === editingRow.id ? editingRow : item)));
+                setData(data.map((item) => (item.id === editingRowUpdated.id ? editingRowUpdated : item)));
+                setImageData(data.map((item) => (item.id === editingRowUpdated.id ? editingRowUpdated : item)));
                 setEditingRow(null);
                 setError(null);
             } catch (err) {
@@ -450,6 +502,21 @@ const AdminPage = () => {
         setError(null);
     }
 
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedFile(file);
+            const fileName = file.name;
+            if (newRow) {
+                setNewRow({ ...newRow, path: fileName });
+            }
+            if (editingRow) {
+                setEditingRow({ ...editingRow, path: fileName });
+            }
+            setFileChange(true);
+        }
+    };
+
     return (
         <AdminView
             handleTabClick={handleTabClick}
@@ -475,6 +542,7 @@ const AdminPage = () => {
             newDescription={newDescription}
             orderOptions={orderStatusOptions}
             setOrderStatus={setOrderStatus}
+            handleFileChange={handleFileChange}
             error={error}
         />
     );
