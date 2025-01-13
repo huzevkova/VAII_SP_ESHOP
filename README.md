@@ -1,10 +1,15 @@
 # Návod na inštaláciu
 ## 1. Podmienky
 Pred začatím inštalácie sa uistite, že máte na svojom systéme nainštalované nasledovné:
+
 •	Node.js (verzia 20.18.0 alebo novšia)
+
 •	npm (je súčasťou Node.js)
+
 •	MySQL (verzia 8.0.40)
+
 Voliteľné (pre Docker inštaláciu):
+
 •	Docker
 
 # 2. Manuálna inštalácia
