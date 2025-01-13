@@ -1,4 +1,3 @@
-# Use a Node.js image to build the React app
 FROM node:18 as build
 
 WORKDIR /app
@@ -7,12 +6,11 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-
-# Use an nginx image to serve the built React app
 FROM nginx:alpine
 
-# Copy build output to nginx html directory
 COPY --from=build /app/build /usr/share/nginx/html
+
+COPY ./server/images /usr/share/nginx/html/images
 
 EXPOSE 3000
 

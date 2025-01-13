@@ -269,3 +269,37 @@ export const deleteImage = async (id) => {
     }
     return response.json();
 };
+
+export const saveImageFile = async (formData) => {
+    try {
+        const response = await fetch('http://localhost:5000/api/uploads/image/upload', {
+            method: 'POST',
+            body: formData,
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            console.error('Error response:', errorData);
+            throw new Error('Failed to save image');
+        }
+
+        const data = await response.json();
+        console.log('Upload response data:', data);
+
+        return data;
+    } catch (err) {
+        console.error('Upload error:', err);
+        throw new Error('Upload failed: ' + err.message);
+    }
+};
+
+export const removeImageFile = async(image) => {
+    const response = await fetch(`http://localhost:5000/api/uploads/image/delete/${image}`, {
+        method: 'DELETE',
+    });
+
+    if (!response.ok) {
+        throw new Error('Nepodarilo sa zmazať starý obrázok.');
+    }
+    return response.json();
+}

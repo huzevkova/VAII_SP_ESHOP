@@ -13,7 +13,11 @@ const BookDetailView = ({bookData, bookGenres, bookSeries, onCartClick, onWishli
                 <div className="row">
 
                     <div className="col-md-5">
-                        <img src={'/images/books/' + (bookData.path ? bookData.path : 'book.jpg')} alt="Book Cover" className="img-fluid shadow rounded"/>
+                        <img
+                            src={bookData.path ? `http://localhost:5000/images/${bookData.path}` : 'http://localhost:5000/images/book.jpg'}
+                            alt="Book Cover"
+                            className="img-fluid shadow rounded"
+                        />
                     </div>
 
                     <div className="col-md-7">

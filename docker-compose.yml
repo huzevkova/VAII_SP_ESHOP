@@ -4,16 +4,18 @@ services:
       context: .
       dockerfile: Dockerfile.frontend
     ports:
-      - "3000:80" # Map frontend to port 3000
+      - "3000:80"  # Map frontend to port 3000
     depends_on:
       - backend
+    volumes:
+      - ./server/images:/usr/share/nginx/html/images
 
   backend:
     build:
       context: ./server
       dockerfile: Dockerfile.backend
     ports:
-      - "5000:5000" # Map backend to port 5000
+      - "5000:5000"  # Map backend to port 5000
     environment:
       DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
@@ -27,6 +29,6 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
     ports:
-      - "3307:3306" # Maps the database to localhost
+      - "3307:3306"  # Maps the database to localhost
     volumes:
       - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
