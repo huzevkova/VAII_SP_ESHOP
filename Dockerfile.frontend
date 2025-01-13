@@ -7,12 +7,14 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-
 # Use an nginx image to serve the built React app
 FROM nginx:alpine
 
 # Copy build output to nginx html directory
 COPY --from=build /app/build /usr/share/nginx/html
+
+# Copy the images from the backend to the nginx container
+COPY ./server/images /usr/share/nginx/html/images
 
 EXPOSE 3000
 
