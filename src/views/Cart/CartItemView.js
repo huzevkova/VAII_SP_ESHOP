@@ -6,7 +6,7 @@ const CartItemView = ({itemData, quantity, handleDecrement, handleIncrement, han
     return (
         <Row className="align-items-center border-bottom py-3 bg-light border border-dark-subtle rounded">
             <div className="col-md-3 col-sm-1">
-                <Image src={"images/books/" + (itemData.path ? itemData.path : "book.jpg")} alt={itemData.name} thumbnail className="cart-item-image" />
+                <Image src={"/images/" + (itemData.path ? itemData.path : "book.jpg")} alt={itemData.name} thumbnail className="cart-item-image" />
             </div>
             <div className="col-md-4 col-sm-4">
                 <h5 className="mb-1">{itemData.title}</h5>

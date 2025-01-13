@@ -12,7 +12,7 @@ const BookCatalogueView = ({books, openBookDetail}) => {
                     {books ? books.slice(0, 3).map((book, index)=> (
                         <BookCardView
                             key={index}
-                            image={'images/books/' + (book.path ? book.path : 'book.jpg')}
+                            image={book.path ? `http://localhost:5000/images/${book.path}` : 'http://localhost:5000/images/book.jpg'}
                             title={book.title}
                             description={book.description}
                             id={book.id_book}
@@ -24,7 +24,7 @@ const BookCatalogueView = ({books, openBookDetail}) => {
                     {books ? books.slice(3, 6).map((book, index) => (
                         <BookCardView
                             key={index}
-                            image={'images/books/' + (book.path ? book.path : 'book.jpg')}
+                            image={book.path ? `http://localhost:5000/images/${book.path}` : 'http://localhost:5000/images/book.jpg'}
                             title={book.title}
                             description={book.description}
                             id={book.id_book}
